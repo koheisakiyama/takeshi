@@ -16,6 +16,5 @@ Route::get('/', function () {
 });
 
 Route::get(['middleware' => ['web']], function() {
-    Route::index('/', 'ShopsConroller@index');
     Route::get('/search', 'ShopsConroller@search');
 });
