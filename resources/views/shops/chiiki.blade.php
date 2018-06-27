@@ -18,7 +18,7 @@
     <![endif]-->
 <script src = '../../../public/assets/js/jquery-3.3.1.js'></script>
 <script src = '../../../public/assets/js/bootstrap.min.js'></script>
-  </head>
+  </hephpad>
 
   <body>
     <div class="dropdown">
