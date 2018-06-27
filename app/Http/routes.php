@@ -14,8 +14,3 @@
 Route::get('/', function () {
     return view('welcome');
 });
-
-Route::get(['middleware' => ['web']], function() {
-    Route::index('/', 'ShopsConroller@index');
-    Route::get('/search', 'ShopsConroller@search');
-});
