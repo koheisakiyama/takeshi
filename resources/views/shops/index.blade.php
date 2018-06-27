@@ -19,8 +19,20 @@
     </style>
   </head>
     <body>
-    <p>
-    Hello World!
-    </p>
+  <div id="map"></div>
+    <script>
+      var map;
+      function initMap() {
+        map = new google.maps.Map(document.getElementById('map'), {
+          center: {lat: -34.397, lng: 150.644},
+          zoom: 8
+        });
+      }
+    </script>
+<script>
+console.log(env('DB_PASSWORD'))
+</script>
+    <script src="https://maps.googleapis.com/maps/api/js?key={{ env('Google_API_Key') }}&callback=initMap"
+    async defer></script>
   </body>
 </html>
