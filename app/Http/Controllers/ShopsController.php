@@ -8,5 +8,7 @@ use App\Http\Requests;
 
 class ShopsController extends Controller
 {
-    //
+    public function index() {
+      return view ('shops.index');
+    }
 }
