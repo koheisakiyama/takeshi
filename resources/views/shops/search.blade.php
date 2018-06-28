@@ -27,18 +27,11 @@
       <div class="row">
         <div class="result-list col-xs-2 col-sm-2 col-md-2 col-lg-2">
           <ul class="list-group">
-            <li class="list-group-item">
-              Hello World!
-            <a href="/#">
-            ルート
-            </a>
-            </li>
-            <li class="list-group-item">
-              Hoge Hoge
-            <a href="/#">
-            ルート
-            </a>
-            </li>
+              <li class="list-group-item">
+                <p>{{ $shop }}</p>
+                <a href="/#">route</a>
+              </li>
+          </ul>
         </div>
         <div id="map" class="mapArea col-xs-10 col-sm-10 col-md-10 col-lg-10">
         </div>
