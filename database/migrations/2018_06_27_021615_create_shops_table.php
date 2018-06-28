@@ -13,8 +13,18 @@ class CreateShopsTable extends Migration
     public function up()
     {
         Schema::create('shops', function (Blueprint $table) {
-            $table->increments('id');
-            $table->timestamps();
+           $table->increments('id');
+           $table->string('name');
+           $table->text('address');
+           $table->string('area');
+           $table->text('time');
+           $table->double('lat',8,6);
+           $table->double('lon',9,6);
+           $table->string('category');
+           $table->integer('origami');
+           $table->integer('rakuten');
+           $table->integer('line');
+           $table->timestamps();
         });
     }
 
