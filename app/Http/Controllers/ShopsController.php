@@ -13,8 +13,9 @@ class ShopsController extends Controller
       return view ('shops.index');
     }
     public function search() {
+      $shop = Shop::find(1);
       //$shops = Shop::all();
-      $shop = "hoge";
+      //$shop = "hoge";
       return view ('shops.search') -> with('shop', $shop);
       //return view ('shops.search') -> with('shops', $shops);
     }

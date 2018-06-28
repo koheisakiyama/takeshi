@@ -28,7 +28,7 @@
         <div class="result-list col-xs-2 col-sm-2 col-md-2 col-lg-2">
           <ul class="list-group">
               <li class="list-group-item">
-                <p>{{ $shop }}</p>
+                <p>{{ $shop->name }}</p>
                 <a href="/#">route</a>
               </li>
           </ul>
