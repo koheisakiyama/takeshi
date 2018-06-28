@@ -24,13 +24,24 @@
 
     <script>
       function initMap() {
+        /* 地図の中心 20180628 kkoda*/
         var ll = {lat: 35.6284, lng: 139.736571};
         var map = new google.maps.Map(
           document.getElementById('map'), { center: ll, zoom: 14}
         );
 
-        var markerPosi = {lat: 35.6123, lng:139.7724};
-        var marker = new google.maps.Marker({position: markerPosi, map:map});
+        /* マーカーをつけるllを準備 20180628 kkoda */
+        var arr = [];
+        var markerPosi00 = {lat: 35.6123, lng:139.7724};
+        var markerPosi01 = {lat: 35.6322, lng:139.7744};
+        var markerPosi02 = {lat: 35.6212, lng:139.7274};
+        arr[0] = markerPosi00;
+        arr[1] = markerPosi01;
+        arr[2] = markerPosi02;
+        /* マーカーを表示 20180628 kkoda */
+        for(let i = 0; i < arr.length; i++) {
+          var marker = new google.maps.Marker({position:arr[i] , map:map});
+        }
       }
     </script>
 
