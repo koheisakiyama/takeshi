@@ -55,8 +55,8 @@
             /* マーカーをつけるllを準備 20180628 kkoda */
             var arr = [];
             var markerPosi00 = {lat: 35.6123, lng:139.7424};
-            var markerPosi01 = {lat: 35.6322, lng:139.7344};
-            var markerPosi02 = {lat: 35.6212, lng:139.7274};
+            var markerPosi01 = {lat: 35.622, lng:139.7274};
+            var markerPosi02 = {lat: 35.62200, lng:139.7274};
             arr[0] = markerPosi00;
             arr[1] = markerPosi01;
             arr[2] = markerPosi02;

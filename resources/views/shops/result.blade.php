@@ -28,8 +28,10 @@
           document.getElementById('map'), { center: ll, zoom: 14}
         );
 
-        var markerPosi = {lat: 35.6123, lng:139.7724};
+        var markerPosi = {lat: 35.61, lng:139.7724};
         var marker = new google.maps.Marker({position: markerPosi, map:map});
+        var markerPosi0 = {lat: 35.6100, lng:139.7724};
+        var marker = new google.maps.Marker({position: markerPosi0, map:map});
       }
     </script>
 <script>
