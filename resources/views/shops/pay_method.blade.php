@@ -16,8 +16,8 @@
       <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
-    <script src = "../../../public/assets/javascripts/js/jquery-3.3.1.js"></script>
-    <script src = "../../../public/assets/javascripts/js/bootstrap.min.js"></script>
+    <script src = "../../../public/assets/javascripts/jquery-3.3.1.js"></script>
+    <script src = "../../../public/assets/javascripts/bootstrap.min.js"></script>
   </head>
 
   <body>
