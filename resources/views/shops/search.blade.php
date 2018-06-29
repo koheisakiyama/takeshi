@@ -13,31 +13,97 @@
         height: 100%;
       }
       /* Optional: Makes the sample page fill the window. */
-      html, body, div.row, div.container, div.mapArea{
+      html, body, div.row-fluid, div.container-fluid, div.mapArea{
         height: 100%;
         margin: 0;
         padding: 0;
       }
+       #navTgl:checked ~ .contents {
+          -webkit-transform: translateY(250px);
+        transform: translateY(250px);
+      }
+      #navTgl {
+        display: none;
+        overflow: hidden;
+      }
+      .open {
+        z-index: 2;
+        width: 50px;
+        height: 50px;
+        color: white;
+        background-color: lightSeaGreen;
+        font-size: 2em;
+        line-height: 50px;
+        text-align: center;
+        -webkit-transition: background-color .6s, -webkit-transform .6s;
+        transition: background-color .6s, transform .6s;
+       }
+       #navTgl:checked + .open {
+        background-color: indianRed;
+        -webkit-transform: translateY(-500px);
+        transform: translateY(-500px);
+       }
+       .close {
+        pointer-events: none;
+        z-index: 1;
+        width: 100%;
+        height: 100%;
+        transition: background-color .6s;
+       }
+       #navTgl:checked ~ .close {
+        pointer-events: auto;
+        background-color: rgba(0,0,0,.3);
+       }
+
+       .search-result {
+          z-index: 1;
+          position: fixed;
+          overflow: auto;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          padding: 10px;
+          background-color: rgba(0,0,0,.6);
+          -webkit-transform: translateY(100%);
+          transform: translateY(100%);
+          -webkit-transition: -webkit-transform .6s;
+          transition: transform .6s;
+        }
+        #navTgl:checked ~ .search-result {
+          -webkit-transform: translateY(250px);
+          transform: translateY(250px);
+        }
+        .search-result h2 {
+          color: white;
+          text-align: center;
+        }
     </style>
   </head>
 
   <body>
 
-
-    <div class="container">
-      <div class="row">
-        <div class="result-list col-xs-2 col-sm-2 col-md-2 col-lg-2">
-          <ul class="list-group">
-              <li class="list-group-item">
-                <p>{{ $shop->name }}</p>
-                <a href="/#">route</a>
-              </li>
-          </ul>
-        </div>
-        <div id="map" class="mapArea col-xs-10 col-sm-10 col-md-10 col-lg-10">
+    <div class="container-fluid">
+      <div class="row-fluid">
+        <div id="map" class="mapArea">
         </div>
       </div>
+        <div class="result-list">
+          <input type="checkbox" id="navTgl">
+          <label for="navTgl" class="open">≡</label>
+          <label for="navTgl" class="close"></label>
+          <div class="search-result">
+            <h2>検索結果</h2>
+            <ul class="list-group search-result-list">
+                <li class="list-group-item search-result-item">
+                  <p>{{ $shop->name }}</p>
+                  <a href="/#">route</a>
+                </li>
+            </ul>
+          </div>
+        </div>
     </div>
+
         <script>
           function initMap() {
             /* 地図の中心 20180628 kkoda*/
