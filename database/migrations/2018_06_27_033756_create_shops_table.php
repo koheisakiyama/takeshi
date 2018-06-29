@@ -17,9 +17,8 @@ class CreateShopsTable extends Migration
             $table->string('name');
             $table->text('address');
             $table->string('area');
-            $table->text('time');
-            $table->double('lat',8,6);
-            $table->double('lon',9,6);
+            $table->float('lat');
+            $table->float('lon');
             $table->string('category');
             $table->integer('origami');
             $table->integer('rakuten');
