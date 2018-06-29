@@ -14,15 +14,6 @@ class CreateShopsTable extends Migration
     {
         Schema::create('shops', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name');
-            $table->text('address');
-            $table->string('area');
-            $table->float('lat');
-            $table->float('lon');
-            $table->string('category');
-            $table->integer('origami');
-            $table->integer('rakuten');
-            $table->integer('line');
             $table->timestamps();
         });
     }
