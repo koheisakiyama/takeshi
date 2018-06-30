@@ -18,11 +18,30 @@ class ShopsController extends Controller
     }
 
     public function result() {
-      //$shop = Shop::find(1);
-      $shops = Shop::orderBy('id', 'ASC')->take(5)->get();
-      //$shops = Shop::all();
-      //$shop = "hoge";
-      //return view ('shops.result') -> with('shop', $shop);
+      $area = '渋谷';
+      $category = 'レストラン';
+
+      //空のコレクション(Laravelで使える配列みたいなもの)を用意する
+      $origami = collect(); 
+      $rakuten = collect(); 
+      $line    = collect(); 
+
+      //先にエリアとカテゴリーで検索をかける。
+      $withoutService = Shop::where('area', $area)->where('category', $category)->get();
+      //それぞれのサービスごとに検索
+      if(true) $origami = $withoutService->where('origami', 1);
+      if(true) $rakuten = $withoutService->where('rakuten', 1);
+      if(true) $line = $withoutService->where('line', 1);
+
+      //ビューに渡すようのコレクションを用意する
+      $shops = collect(); 
+      //それぞれのコレクションをshopsに追加する。
+      $shops = $shops->merge($origami); 
+      $shops = $shops->merge($rakuten);
+      $shops = $shops->merge($line);
+      //重複をなくす
+      $shops = $shops->unique();
+      
       return view ('shops.result') -> with('shops', $shops);
     }
 }
