@@ -12,11 +12,17 @@ class ShopsController extends Controller
     public function index() {
       return view ('shops.index');
     }
+
     public function search() {
-      $shop = Shop::find(1);
+      return view ('shops.search');
+    }
+
+    public function result() {
+      //$shop = Shop::find(1);
+      $shops = Shop::orderBy('id', 'ASC')->take(5)->get();
       //$shops = Shop::all();
       //$shop = "hoge";
-      return view ('shops.search') -> with('shop', $shop);
-      //return view ('shops.search') -> with('shops', $shops);
+      //return view ('shops.result') -> with('shop', $shop);
+      return view ('shops.result') -> with('shops', $shops);
     }
 }
