@@ -42,6 +42,7 @@ class ShopsController extends Controller
       //重複をなくす
       $shops = $shops->unique();
       
-      return view ('shops.result') -> with('shops', $shops);
+      $test = ['piyo'=>0, 'hoge'=>1];
+      return view ('shops.result') -> with(['shops' => $shops, 'test' => $test]);
     }
 }

@@ -5,7 +5,7 @@
     <meta name="viewport" content="initial-scale=1.0">
     <meta charset="utf-8">
     <link href="{{ asset('assets/css/bootstrap.min.css')}}" rel='stylesheet' type='text/css'>
-    <script src="{{ asset('assets/javascripts/jquery-3.2.1.js') }}"></script>
+    <script src="{{ asset('assets/javascripts/jquery-3.3.1.js') }}"></script>
     <style>
       /* Always set the map height explicitly to define the size of the div
        * element that contains the map. */
@@ -134,10 +134,17 @@
             for(let i = 0; i < arr.length; i++) {
               var marker = new google.maps.Marker({position:arr[i] , map:map});
             }
+
           }
         </script>
     <script src="https://maps.googleapis.com/maps/api/js?key={{ env('Google_API_Key') }}&callback=initMap"
     async defer></script>
+        <script>
+            var shops = <?php echo json_encode($shop); ?>;
+            for(let i = 0; i < shops.length; i++) {
+              console.log(shops[i]);
+            }
+        </script>
 
   </body>
 
