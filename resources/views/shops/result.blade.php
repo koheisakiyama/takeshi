@@ -5,7 +5,7 @@
     <meta name="viewport" content="initial-scale=1.0">
     <meta charset="utf-8">
     <link href="{{ asset('assets/css/bootstrap.min.css')}}" rel='stylesheet' type='text/css'>
-    <script src="{{ asset('assets/javascripts/jquery-3.2.1.js') }}"></script>
+    <script src="{{ asset('assets/javascripts/jquery-3.3.1.js') }}"></script>
     <style>
       /* Always set the map height explicitly to define the size of the div
        * element that contains the map. */
@@ -117,23 +117,32 @@
         <script>
           function initMap() {
             /* 地図の中心 20180628 kkoda*/
-            var ll = {lat: 35.6284, lng: 139.736571};
+            //var ll = {lat: 35.6284, lng: 139.736571};
+            var ll = {lat: 35.65803, lng: 139.699447};
             var map = new google.maps.Map(
               document.getElementById('map'), { center: ll, zoom: 14}
             );
 
             /* マーカーをつけるllを準備 20180628 kkoda */
-            var arr = [];
-            var markerPosi00 = {lat: 35.6123, lng:139.7424};
-            var markerPosi01 = {lat: 35.622, lng:139.7274};
-            var markerPosi02 = {lat: 35.62200, lng:139.7274};
-            arr[0] = markerPosi00;
-            arr[1] = markerPosi01;
-            arr[2] = markerPosi02;
+            //var arr = [];
+            //var markerPosi00 = {lat: 35.6123, lng:139.7424};
+            //var markerPosi01 = {lat: 35.622, lng:139.7274};
+            //var markerPosi02 = {lat: 35.62200, lng:139.7274};
+            //arr[0] = markerPosi00;
+            //arr[1] = markerPosi01;
+            //arr[2] = markerPosi02;
+            // phpからjson形式に変換
+            var shops=<?php echo json_encode($shops); ?> ;
+            jQuery.each( shops, function(index,shop) {
+              console.log(shop);
+              var shop_ll = {lat:shop.lat, lng:shop.lon};
+              var marker = new google.maps.Marker({ position:shop_ll, map:map});
+            });
             /* マーカーを表示 20180628 kkoda */
-            for(let i = 0; i < arr.length; i++) {
-              var marker = new google.maps.Marker({position:arr[i] , map:map});
-            }
+            //for(let i = 0; i < arr.length; i++) {
+            //  var marker = new google.maps.Marker({position:arr[i] , map:map});
+            //}
+
           }
         </script>
     <script src="https://maps.googleapis.com/maps/api/js?key={{ env('Google_API_Key') }}&callback=initMap"
