@@ -7,8 +7,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
     <link href="{{ asset('assets/css/bootstrap.min.css')}}" rel='stylesheet' type='text/css'>
+    <link href="{{ asset('assets/css/bootstrap-multiselect.css')}}" rel='stylesheet' type='text/css'>
     <script src="{{ asset('assets/javascripts/jquery-3.3.1.js') }}"></script>
     <script src = "{{ asset('assets/javascripts/bootstrap.min.js') }}"></script>
+    <script src = "{{ asset('assets/javascripts/bootstrap-multiselect.js') }}"></script>
     <style>
       /* Always set the map height explicitly to define the size of the div
        * element that contains the map. */

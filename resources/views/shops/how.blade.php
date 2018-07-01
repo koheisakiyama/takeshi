@@ -1,36 +1,16 @@
-  <h2>
-    支払方法
-  </h2>
-  <div class="row">
-    <div class="col-sm-3">
-      <div class="input-group">
-        <span class="input-group-addon">
-          <input type="checkbox" aria-label="...">
-          LINE pay
-        </span>
-        <!-- <input type="text" class="form-control" aria-label="..."> -->
-      </div><!-- /input-group -->
-    </div><!-- /.col-lg-6 -->
-    
-    <div class="row">
-    <div class="col-sm-3">
-      <div class="input-group">
-        <span class="input-group-addon">
-          <input type="checkbox" aria-label="...">
-          楽天 pay
-        </span>
-        <!-- <input type="text" class="form-control" aria-label="..."> -->
-      </div><!-- /input-group -->
-    </div><!-- /.col-lg-6 -->
-
-    <div class="row">
-    <div class="col-sm-3">
-      <div class="input-group">
-        <span class="input-group-addon">
-          <input type="checkbox" aria-label="...">
-          origami pay
-        </span>
-        <!-- <input type="text" class="form-control" aria-label="..."> -->
-      </div><!-- /input-group -->
-    </div><!-- /.col-lg-6 -->
-  </div><!-- /.row -->
+<select id="example-getting-started" multiple="multiple" style="width=25%;">
+  <option value="LINE_Pay">LINE Pay</option>
+  <option value="Rakuten_Pay">楽天ペイ</option>
+  <option value="Origami">Origami</option>
+</select>
+<script type="text/javascript">
+  $(document).ready(function() {
+      $('#example-getting-started').multiselect({
+        includeSelectAllOption: true,
+        selectAllNumber: false,
+        nonSelectedText: '支払い方法の選択',
+        selectAllText: '全て選択',
+        allSelectedText: '全て選択する'
+    });
+  });
+</script>
