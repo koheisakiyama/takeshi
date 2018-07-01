@@ -3,9 +3,9 @@
 @section ('content')
 
   <div class="container">
-    @include ('shops.how')
-    @include ('shops.what')
-    @include ('shops.where')
+    @include ('shops.details.how')
+    @include ('shops.details.what')
+    @include ('shops.details.where')
   </div>
 
 @endsection
