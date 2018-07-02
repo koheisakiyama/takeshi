@@ -88,29 +88,27 @@
         <!-- <a href="" class="center-block">pay serch</a> -->
       <!-- </div><div align="center"> -->
       <!-- </h1> -->
-<nav class="navbar navbar-default" style="background-color: #A3D1FF;">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <!-- <a class="navbar-brand" href="#">Bootstrap3 チュートリアル</a> -->
-    </div>
-   {{ Form::open(['action' => 'ShopsController@result', 'method' => 'get']) }}
-    <ul class="nav navbar-nav" style="padding: 0px;">
-      <li class="active"><a href="#" style="background-color: #A3D1FF;"><h1 style="margin: 0px;">pay search</h1></a></li>
-      <li><a href="#">@include ('shops.details.how')</a></li>
-      <li><a href="#">@include ('shops.details.what')</a></li>
-      <li><a href="#">@include ('shops.details.where')</a></li>
-      <li><a href="#">{{ Form::submit('検索', ['class' => 'btn btn-primary']) }}</a></li>
-    </ul>
-    {{ Form::close() }}
+    <nav class="navbar navbar-default" style="background-color: #A3D1FF;">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <!-- <a class="navbar-brand" href="#">Bootstrap3 チュートリアル</a> -->
+        </div>
+       {{ Form::open(['action' => 'ShopsController@result', 'method' => 'get']) }}
+        <ul class="nav navbar-nav" style="padding: 0px;">
+          <li class="active"><a href="#" style="padding: 0;background-color: #A3D1FF; margin:0;"><h1 style="margin: 0px;">pay search</h1></a></li>
+          <li><a href="#">@include ('shops.details.how')</a></li>
+          <li><a href="#">@include ('shops.details.what')</a></li>
+          <li><a href="#">@include ('shops.details.where')</a></li>
+          <li><a href="#">{{ Form::submit('検索', ['class' => 'btn btn-primary']) }}</a></li>
+        </ul>
+        {{ Form::close() }}
+      </div>
+    </nav>
 
-  </div>
-</nav>
-<!--     <div class="container-fluid">
-      <div class="row-fluid"> -->
-
+    <div class="container-fluid">
+      <div class="row-fluid"> 
         @yield ('content')
         <script async defer src="https://maps.googleapis.com/maps/api/js?key={{ env('Google_API_Key') }}&callback=initMap"></script>
-    <!-- </header>/header -->
       </div>
     </div>
   </body>
