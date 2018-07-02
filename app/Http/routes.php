@@ -11,12 +11,17 @@
 |
 */
 
-// 
+
+Route::get('/', function () {
+    return view('welcome');
+});
+
+
 Route::group(['middleware' => ['web']], function () {
 
-
-    // Route::get('/','ShopsController@index');
-    //困ったら↑だけにしてページリセットする。
+    Route::get('/index', 'ShopsController@index');
+    Route::get('/shops/search', 'ShopsController@search');
+    Route::get('/shops/result', 'ShopsController@result');
     Route::get('/road','ShopsController@show');
 
 });
