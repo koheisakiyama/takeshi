@@ -12,7 +12,7 @@
 <script src="https://code.jquery.com/jquery-2.2.1.min.js"></script>
 <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key={{ env('Google_API_Key') }}"></script>
 
-<script src="{{ asset('assets/javascripts/shopRoute.js') }}"></script>
+<script src="{{ asset('assets/javascripts/shopRoad.js') }}"></script>
 
 <!--  -->
 </head>
