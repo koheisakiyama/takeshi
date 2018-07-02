@@ -1,8 +1,5 @@
-<select id="example-getting-started" multiple="multiple" style="width=25%;">
-  <option value="LINE_Pay">LINE Pay</option>
-  <option value="Rakuten_Pay">楽天ペイ</option>
-  <option value="Origami">Origami</option>
-</select>
+{{ Form::select('method[]', ['line'=>'LINE Pay', 'rakuten'=>'楽天ペイ', 'origami'=>'Origami'], null, ['id' => 'example-getting-started','class' => 'form-control', 'multiple'=>'multiple', 'style'=>'width=25%;']) }}
+
 <script type="text/javascript">
   $(document).ready(function() {
       $('#example-getting-started').multiselect({

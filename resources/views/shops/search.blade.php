@@ -2,6 +2,7 @@
 
 @section ('content')
 
+
   <div id="map" style="height:100%;"></div>
 
   <script>
@@ -13,6 +14,5 @@
       });
     }
   </script>
-
 
 @endsection

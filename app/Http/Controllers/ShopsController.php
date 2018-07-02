@@ -17,32 +17,37 @@ class ShopsController extends Controller
       return view ('shops.search');
     }
 
-    public function result() {
-      $area = '渋谷';
-      $category = 'レストラン';
+    public function result(Request $request) {
 
-      //空のコレクション(Laravelで使える配列みたいなもの)を用意する
-      $origami = collect(); 
-      $rakuten = collect(); 
-      $line    = collect(); 
+      $area = $request->area;
+      $category = $request->category;
 
       //先にエリアとカテゴリーで検索をかける。
       $withoutService = Shop::where('area', $area)->where('category', $category)->get();
-      //それぞれのサービスごとに検索
-      if(true) $origami = $withoutService->where('origami', 1);
-      if(true) $rakuten = $withoutService->where('rakuten', 1);
-      if(true) $line = $withoutService->where('line', 1);
-
       //ビューに渡すようのコレクションを用意する
       $shops = collect(); 
-      //それぞれのコレクションをshopsに追加する。
-      $shops = $shops->merge($origami); 
-      $shops = $shops->merge($rakuten);
-      $shops = $shops->merge($line);
+      //それぞれのサービスごとに検索
+      foreach($request->method as $method){
+        //それぞれのコレクションをshopsに追加する。
+        $shops = $shops->merge($withoutService->where($method, 1));
+      }
       //重複をなくす
       $shops = $shops->unique();
+
+      //中心の位置座標
+      $latlng = ['lat'=>35.6284, 'lng'=>139.736571];
+      switch ($area) {
+        case '新宿':
+          $latlng = ['lat'=>35.68959, 'lng'=>139.69821];
+          break;
+        case '品川':
+          $latlng = ['lat'=>35.6284, 'lng'=>139.736571];
+          break;
+        case '渋谷':
+          $latlng = ['lat'=>35.65803, 'lng'=>139.699447];
+          break;
+      }
       
-      $test = Shop::take(5)->get();
-      return view ('shops.result') -> with(['shops' => $shops, 'test' => $test]);
+      return view ('shops.result') -> with(['shops' => $shops, 'latlng'=>$latlng]);
     }
 }
