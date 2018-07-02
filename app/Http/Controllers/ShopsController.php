@@ -18,7 +18,8 @@ class ShopsController extends Controller
     }
 
     public function result(Request $request) {
-      $test=$request->area;
+      //$test=$request->method;
+      $test=['num'=>'0', 'name'=>'ken', 'hob'=>'music'];
       $area = '渋谷';
       $category = 'レストラン';
 

@@ -1,10 +1,3 @@
-<!--
-<select name="pay" id="example-getting-started" multiple="multiple" style="width=25%;">
-  <option value="LINE">LINE Pay</option>
-  <option value="rakuten">楽天ペイ</option>
-  <option value="origami">Origami</option>
-</select>
--->
 {{ Form::select('method', ['line'=>'LINE Pay', 'rakuten'=>'楽天ペイ', 'origami'=>'Origami'], null, ['id' => 'example-getting-started','class' => 'form-control', 'multiple'=>'multiple', 'style'=>'width=25%;']) }}
 <script type="text/javascript">
   $(document).ready(function() {
