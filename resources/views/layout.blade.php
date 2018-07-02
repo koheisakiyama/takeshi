@@ -82,12 +82,31 @@
   </head>
 
   <body>
-    <div class="container-fluid">
-      <div class="row-fluid">
+    <!-- <header class="page-header"> -->
+      <!-- <h1> -->
+        <!-- <div align="center"> -->
+        <!-- <a href="" class="center-block">pay serch</a> -->
+      <!-- </div><div align="center"> -->
+      <!-- </h1> -->
+<nav class="navbar navbar-default" style="background-color: #A3D1FF;">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <!-- <a class="navbar-brand" href="#">Bootstrap3 チュートリアル</a> -->
+    </div>
+    <ul class="nav navbar-nav" style="padding: 0px;">
+      <li class="active"><a href="#" style="background-color: #A3D1FF;"><h1 style="margin: 0px;">pay search</h1></a></li>
+      <li><a href="#">@include ('shops.details.how')</a></li>
+      <li><a href="#">@include ('shops.details.what')</a></li>
+      <li><a href="#">@include ('shops.details.where')</a></li>
+    </ul>
+  </div>
+</nav>
+<!--     <div class="container-fluid">
+      <div class="row-fluid"> -->
 
         @yield ('content')
         <script async defer src="https://maps.googleapis.com/maps/api/js?key={{ env('Google_API_Key') }}&callback=initMap"></script>
-
+    <!-- </header>/header -->
       </div>
     </div>
   </body>
