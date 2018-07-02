@@ -1,7 +1,7 @@
-<select id="example-getting-started" multiple="multiple" style="width=25%;">
-  <option value="LINE_Pay">LINE Pay</option>
-  <option value="Rakuten_Pay">楽天ペイ</option>
-  <option value="Origami">Origami</option>
+<select name="pay" id="example-getting-started" multiple="multiple" style="width=25%;">
+  <option value="LINE">LINE Pay</option>
+  <option value="rakuten">楽天ペイ</option>
+  <option value="origami">Origami</option>
 </select>
 <script type="text/javascript">
   $(document).ready(function() {
