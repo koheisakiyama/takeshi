@@ -22,11 +22,11 @@
   </div>
 
   <script>
-      console.log( '<?php echo $test; ?>');
       function initMap() {
       /* 地図の中心 20180628 kkoda*/
-      //var ll = {lat: 35.6284, lng: 139.736571}; //品川
-      var ll = {lat: 35.65803, lng: 139.699447}; //渋谷
+      var ll = <?php echo json_encode($latlng); ?> ;
+      //console.log(<?php echo json_encode($latlng); ?>);
+
       var map = new google.maps.Map(
         document.getElementById('map'), { center: ll, zoom: 14}
       );

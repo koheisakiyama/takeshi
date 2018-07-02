@@ -1,4 +1,4 @@
-{{ Form::select('category', ['レストラン', 'コンビニ', 'ビューティー', '雑貨'], null, ['class' => 'form-control', 'style'=>'width=25%;']) }}
+{{ Form::select('category', ['レストラン'=>'レストラン', 'コンビニ'=>'コンビニ', 'ビューティー'=>'ビューティー', '雑貨'=>'雑貨'], null, ['class' => 'form-control', 'style'=>'width=25%;']) }}
   <!--
   <select class="form-control" style="width:25%;">
     <option>カテゴリを選択</option>

@@ -1,4 +1,18 @@
+<div>
+{{ Form::checkbox('method[]', 'line', null)  }}
+{{ Form::label('method[]', 'LINE Pay')  }}
+</div>
+<div>
+{{ Form::checkbox('method[]', 'rakuten', null)  }}
+{{ Form::label('method[]', '楽天Pay')  }}
+</div>
+<div>
+{{ Form::checkbox('method[]', 'origami', null)  }}
+{{ Form::label('method[]', 'Origami Pay')  }}
+</div>
+<!--
 {{ Form::select('method', ['line'=>'LINE Pay', 'rakuten'=>'楽天ペイ', 'origami'=>'Origami'], null, ['id' => 'example-getting-started','class' => 'form-control', 'multiple'=>'multiple', 'style'=>'width=25%;']) }}
+
 <script type="text/javascript">
   $(document).ready(function() {
       $('#example-getting-started').multiselect({
@@ -10,3 +24,4 @@
     });
   });
 </script>
+-->
