@@ -99,7 +99,7 @@
           <li><a href="#">@include ('shops.details.how')</a></li>
           <li><a href="#">@include ('shops.details.what')</a></li>
           <li><a href="#">@include ('shops.details.where')</a></li>
-          <li><a href="#">{{ Form::submit('検索', ['class' => 'btn btn-primary']) }}</a></li>
+          <li><a href="#">{{ Form::submit('検索', ['class' => 'btn btn-primary navbar-form']) }}</a></li>
         </ul>
         {{ Form::close() }}
       </div>
