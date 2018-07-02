@@ -5,7 +5,7 @@
   <option value="origami">Origami</option>
 </select>
 -->
-{{ Form::select('how', ['LINE Pay', '楽天ペイ', 'Origami'], null, ['id' => 'example-getting-started','class' => 'form-control', 'multiple'=>'multiple', 'style'=>'width=25%;']) }}
+{{ Form::select('method', ['line'=>'LINE Pay', 'rakuten'=>'楽天ペイ', 'origami'=>'Origami'], null, ['id' => 'example-getting-started','class' => 'form-control', 'multiple'=>'multiple', 'style'=>'width=25%;']) }}
 <script type="text/javascript">
   $(document).ready(function() {
       $('#example-getting-started').multiselect({

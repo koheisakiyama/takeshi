@@ -1,4 +1,4 @@
-{{ Form::select('where', ['新宿', '渋谷', '品川'], null, ['class' => 'form-control','style'=>'width=25%;']) }}
+{{ Form::select('area', ['新宿', '渋谷', '品川'], null, ['class' => 'form-control','style'=>'width=25%;']) }}
 <!--
 <select class="form-control" style="width:25%;">
   <option>地域を選択</option>

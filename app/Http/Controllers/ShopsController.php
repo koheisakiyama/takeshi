@@ -17,7 +17,8 @@ class ShopsController extends Controller
       return view ('shops.search');
     }
 
-    public function result() {
+    public function result(Request $request) {
+      $test=$request->area;
       $area = '渋谷';
       $category = 'レストラン';
 
@@ -42,7 +43,6 @@ class ShopsController extends Controller
       //重複をなくす
       $shops = $shops->unique();
       
-      $test = Shop::take(5)->get();
       return view ('shops.result') -> with(['shops' => $shops, 'test' => $test]);
     }
 }

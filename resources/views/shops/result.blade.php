@@ -2,6 +2,7 @@
 
 @section ('content')
 
+<p>{{ $test }}</p>
   <div id="map" style="height:75%;"></div>
   <div class="result-list pre-scrollable" style="height:75%;">
   <!--
