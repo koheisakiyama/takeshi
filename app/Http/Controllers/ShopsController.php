@@ -27,7 +27,7 @@ class ShopsController extends Controller
       //ビューに渡すようのコレクションを用意する
       $shops = collect(); 
       //それぞれのサービスごとに検索
-      foreach($request->method as $method){
+      foreach((array) $request->method as $method){
         //それぞれのコレクションをshopsに追加する。
         $shops = $shops->merge($withoutService->where($method, 1));
       }
