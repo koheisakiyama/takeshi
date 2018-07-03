@@ -47,10 +47,19 @@ class ShopsController extends Controller
       return view ('shops.result') -> with(['shops' => $shops, 'test' => $test]);
     }
     
-    public function show()
-    {
-    // ルート表示のコントローラー。。seina
+    public function show($id){
+    // ルート表示のコントローラー
+    //出発地(検索で選択された場所)と目的地(クリックされた店のid)のlatとlonを取得、ビューに渡す。seina
 
-      return view('shops.road');
+    //  $start = (35.658034,139.701636); //渋谷駅(一応出発地に設定)
+      $lat1 = 35.658034;
+      $lon1 = 139.701636;
+
+      $shop_id = Shop::find($id); //idからDBにアクセスして取得したレコード。
+      
+      $lat2 = Shop::find($shop_id->lat); //取得したレコードのlat,lonを取得。したい。。
+      $lon2 = Shop::find($shop_id->lon); 
+
+      return view('shops.road')->with(array('lat1'=>$lat1,'lon1'=>$lon1, 'lat2'=>$lat2 ,'lon2'=> $lon2));
     }
 }
