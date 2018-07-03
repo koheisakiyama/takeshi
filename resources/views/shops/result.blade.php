@@ -22,10 +22,11 @@
   </div>
 
   <script>
-    function initMap() {
+      function initMap() {
       /* 地図の中心 20180628 kkoda*/
-      //var ll = {lat: 35.6284, lng: 139.736571}; //品川
-      var ll = {lat: 35.65803, lng: 139.699447}; //渋谷
+      var ll = <?php echo json_encode($latlng); ?> ;
+      //console.log(<?php echo json_encode($latlng); ?>);
+
       var map = new google.maps.Map(
         document.getElementById('map'), { center: ll, zoom: 14}
       );
@@ -33,7 +34,6 @@
       // phpからjson形式に変換
       var shops=<?php echo json_encode($shops); ?> ;
       jQuery.each( shops, function(index,shop) {
-        console.log(shop);
         var shop_ll = {lat:shop.lat, lng:shop.lon};
         var marker = new google.maps.Marker({ position:shop_ll, map:map});
       });
