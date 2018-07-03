@@ -9,6 +9,7 @@ use App\Shop;
 
 class ShopsController extends Controller
 {
+
     public function index() {
       return view ('shops.index');
     }
@@ -49,5 +50,21 @@ class ShopsController extends Controller
       }
       
       return view ('shops.result') -> with(['shops' => $shops, 'latlng'=>$latlng]);
+    }
+    
+    public function show($id){
+    // ルート表示のコントローラー
+    //出発地(検索で選択された場所)と目的地(クリックされた店のid)のlatとlonを取得、ビューに渡す。seina
+
+    //  $start = (35.658034,139.701636); //渋谷駅(一応出発地に設定)
+      $lat1 = 35.658034;
+      $lon1 = 139.701636;
+
+      $shop_id = Shop::find($id); //idからDBにアクセスして取得したレコード。
+
+      $lat2 = $shop_id->lat; //取得したレコードのlat,lonを取得。したい。。
+      $lon2 = $shop_id->lon; 
+
+      return view('shops.road')->with(array('lat1'=>$lat1,'lon1'=>$lon1, 'lat2'=>$lat2 ,'lon2'=> $lon2));
     }
 }
