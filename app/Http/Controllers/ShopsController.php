@@ -56,9 +56,9 @@ class ShopsController extends Controller
       $lon1 = 139.701636;
 
       $shop_id = Shop::find($id); //idからDBにアクセスして取得したレコード。
-      
-      $lat2 = Shop::find($shop_id->lat); //取得したレコードのlat,lonを取得。したい。。
-      $lon2 = Shop::find($shop_id->lon); 
+
+      $lat2 = $shop_id->lat; //取得したレコードのlat,lonを取得。したい。。
+      $lon2 = $shop_id->lon; 
 
       return view('shops.road')->with(array('lat1'=>$lat1,'lon1'=>$lon1, 'lat2'=>$lat2 ,'lon2'=> $lon2));
     }
