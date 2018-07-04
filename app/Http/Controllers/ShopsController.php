@@ -52,7 +52,7 @@ class ShopsController extends Controller
       return view ('shops.result') -> with(['shops' => $shops, 'latlng'=>$latlng]);
     }
     
-    public function show($id){
+    public function navi($id){
     // ルート表示のコントローラー
     //出発地(検索で選択された場所)と目的地(クリックされた店のid)のlatとlonを取得、ビューに渡す。seina
 
@@ -74,6 +74,6 @@ class ShopsController extends Controller
         
        $g_latlng = ['lat'=>$shop->lat, 'lng'=>$shop->lon];
 
-      return view('shops.road')->with(['s_latlng' => $s_latlng, 'g_latlng'=>$g_latlng]);
+      return view('shops.navi')->with(['s_latlng' => $s_latlng, 'g_latlng'=>$g_latlng]);
     }
 }

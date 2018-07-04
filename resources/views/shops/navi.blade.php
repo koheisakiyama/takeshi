@@ -1,7 +1,7 @@
 <!-- 出発点・検索に入力された値、目的地・選ばれた店情報の所在地　でルートを表示するviewファイル。  seina2018.6.27-->
 
-@extends('layout')
-@section('content')
+@extends ('layout')
+@section ('content')
 
 <!-- <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key={{ env('Google_API_Key') }}"></script> -->
 
