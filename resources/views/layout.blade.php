@@ -82,7 +82,7 @@
   </head>
 
   <body>
-    <header class="page-header" style="padding: 0; margin:0;">
+    <header class="page-header" style="padding: 0; margin:0; height:10%;">
       <nav class="navbar navbar-inverse" style="background-color: #A3D1FF; border-color: #A3D1FF; margin:0;">
         <div class="container-fluid">
          {{ Form::open(['action' => 'ShopsController@result', 'method' => 'get']) }}
@@ -98,7 +98,7 @@
       </nav>
     </header>
 
-    <div class="container-fluid">
+    <div class="container-fluid" style="height:90%;">
       <div class="row-fluid"> 
         @yield ('content')
         <script async defer src="https://maps.googleapis.com/maps/api/js?key={{ env('Google_API_Key') }}&callback=initMap"></script>
