@@ -5,11 +5,10 @@
 
 <!-- <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key={{ env('Google_API_Key') }}"></script> -->
 
-  <div id="map_canvas" style="width: 100%; height: 600px;"></div>
+  <div id="map_canvas" style="width: 100%; height: 100%;"></div>
 <!-- 
   <script src="{{ asset('assets/javascripts/shopRoad.js') }}"></script>
    -->
-<p>{{$lat2}}</p>
 
 <script type="text/javascript">
 

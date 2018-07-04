@@ -56,12 +56,27 @@ class ShopsController extends Controller
     // ルート表示のコントローラー
     //出発地(検索で選択された場所)と目的地(クリックされた店のid)のlatとlonを取得、ビューに渡す。seina
 
+    $shop_id = Shop::find($id); //idからDBにアクセスして取得したレコード。
+
     //  $start = (35.658034,139.701636); //渋谷駅(一応出発地に設定)
       $lat1 = 35.658034;
       $lon1 = 139.701636;
-
-      $shop_id = Shop::find($id); //idからDBにアクセスして取得したレコード。
-
+    //出発地の場合分けをする 江田
+      switch ($shop_id->area) {
+        case '新宿':
+          $lat1 = 35.68959;
+          $lon1 = 139.69821;
+          break;
+        case '品川':
+          $lat1 = 35.6284; 
+          $lon1 = 139.736571;
+          break;
+        case '渋谷':
+          $lat1 = 35.65803;
+          $lon1 = 139.699447;
+          break;
+      }
+        
       $lat2 = $shop_id->lat; //取得したレコードのlat,lonを取得。したい。。
       $lon2 = $shop_id->lon; 
 
