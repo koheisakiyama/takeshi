@@ -81,7 +81,7 @@
     </style>
   </head>
 
-  <body>s
+  <body>
     <!-- <header class="page-header"> -->
       <!-- <h1> -->
         <!-- <div align="center"> -->
