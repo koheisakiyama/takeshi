@@ -82,28 +82,21 @@
   </head>
 
   <body>
-    <!-- <header class="page-header"> -->
-      <!-- <h1> -->
-        <!-- <div align="center"> -->
-        <!-- <a href="" class="center-block">pay serch</a> -->
-      <!-- </div><div align="center"> -->
-      <!-- </h1> -->
-    <nav class="navbar navbar-inverse navbar-fixed-top" style="background-color: #A3D1FF;">
-      <div class="container-fluid">
-        <div class="navbar-header">
-          <!-- <a class="navbar-brand" href="#">Bootstrap3 チュートリアル</a> -->
+    <header class="page-header" style="padding: 0; margin:0;">
+      <nav class="navbar navbar-inverse" style="background-color: #A3D1FF; border-color: #A3D1FF; margin:0;">
+        <div class="container-fluid">
+         {{ Form::open(['action' => 'ShopsController@result', 'method' => 'get']) }}
+          <ul class="nav navbar-nav" style="padding: 0px;">
+            <li class="active"><a href="#" style="padding: 0;background-color: #A3D1FF; margin:0;"><h1 style="margin: 10px;">pay search</h1></a></li>
+            <li><a href="#">@include ('shops.details.how')</a></li>
+            <li><a href="#">@include ('shops.details.what')</a></li>
+            <li><a href="#">@include ('shops.details.where')</a></li>
+            <li><a href="#">{{ Form::submit('検索', ['class' => 'btn btn-primary navbar-form']) }}</a></li>
+          </ul>
+          {{ Form::close() }}
         </div>
-       {{ Form::open(['action' => 'ShopsController@result', 'method' => 'get']) }}
-        <ul class="nav navbar-nav" style="padding: 0px;">
-          <li class="active"><a href="#" style="padding: 0;background-color: #A3D1FF; margin:0;"><h1 style="margin: 10px;">pay search</h1></a></li>
-          <li><a href="#">@include ('shops.details.how')</a></li>
-          <li><a href="#">@include ('shops.details.what')</a></li>
-          <li><a href="#">@include ('shops.details.where')</a></li>
-          <li><a href="#">{{ Form::submit('検索', ['class' => 'btn btn-primary navbar-form']) }}</a></li>
-        </ul>
-        {{ Form::close() }}
-      </div>
-    </nav>
+      </nav>
+    </header>
 
     <div class="container-fluid">
       <div class="row-fluid"> 
