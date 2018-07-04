@@ -82,7 +82,7 @@
   </head>
 
   <body>
-    <!-- <header class="page-header"> -->
+    <header class="page-header">
       <!-- <h1> -->
         <!-- <div align="center"> -->
         <!-- <a href="" class="center-block">pay serch</a> -->
@@ -100,11 +100,16 @@
           <li><a href="#">@include ('shops.details.what')</a></li>
           <li><a href="#">@include ('shops.details.where')</a></li>
           <li><a href="#">{{ Form::submit('検索', ['class' => 'btn btn-primary navbar-form']) }}</a></li>
+          <li>      
+            <div style="margin: 15px 0">
+            {{ Form::textarea('review', '', ['placeholder' => 'キーワードを入力してください', 'style' => 'width: 55s%;height: 30px;']) }}
+            </div></li><!-- フリーワード検索ボックス -->
+          <li><a href="#">{{ Form::submit('検索', ['class' => 'btn btn-primary navbar-form']) }}</a></li><!-- フリーワード検索ボタン -->
         </ul>
         {{ Form::close() }}
       </div>
     </nav>
-
+    </header>
     <div class="container-fluid">
       <div class="row-fluid"> 
         @yield ('content')
