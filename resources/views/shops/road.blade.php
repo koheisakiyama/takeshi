@@ -14,14 +14,9 @@
 
 $(function() {
   //出発地をidから引き出したlatlonに代入する
-  //php変数をjavascript変数に変換ができない・・・
-     var lat1 =<?php echo json_encode($lat1); ?>;
-     var lon1 =<?php echo json_encode($lon1); ?>;
-     var lat2 =<?php echo json_encode($lat2); ?>;
-     var lon2 =<?php echo json_encode($lon2); ?>;
 
-    var latlng1 = new google.maps.LatLng(lat1, lon1); 
-    var latlng2 = new google.maps.LatLng(lat2, lon2); 
+    var s_latlng = new google.maps.LatLng(<?php echo json_encode($s_latlng); ?>); 
+    var g_latlng = new google.maps.LatLng(<?php echo json_encode($g_latlng); ?>); 
     var map;
     var directionsService = new google.maps.DirectionsService();
     var directionsRenderer = new google.maps.DirectionsRenderer();
@@ -29,7 +24,7 @@ $(function() {
     // 地図初期化のオプション
     var mapOptions = {
         zoom: 17,
-        center: latlng1,
+        center: s_latlng,
         mapTypeId: google.maps.MapTypeId.ROADMAP,
         scaleControl: true,
     };
@@ -38,8 +33,8 @@ $(function() {
 
     // ルートを取得
     var request = {
-      origin: latlng1,        // 出発地点の緯度、経度
-      destination: latlng2,   // 到着地点の緯度、経度
+      origin: s_latlng,        // 出発地点の緯度、経度
+      destination: g_latlng,   // 到着地点の緯度、経度
       travelMode: google.maps.DirectionsTravelMode.WALKING // ルートの種類
     };
     directionsService.route(request, function(result, status) {

@@ -56,30 +56,24 @@ class ShopsController extends Controller
     // ルート表示のコントローラー
     //出発地(検索で選択された場所)と目的地(クリックされた店のid)のlatとlonを取得、ビューに渡す。seina
 
-    $shop_id = Shop::find($id); //idからDBにアクセスして取得したレコード。
+    $shop = Shop::find($id); //idからDBにアクセスして取得したレコード。
 
-    //  $start = (35.658034,139.701636); //渋谷駅(一応出発地に設定)
-      $lat1 = 35.658034;
-      $lon1 = 139.701636;
+    $s_latlng = ['lat'=>35.65803, 'lng'=>139.699447];
     //出発地の場合分けをする 江田
-      switch ($shop_id->area) {
+      switch ($shop->area) {
         case '新宿':
-          $lat1 = 35.68959;
-          $lon1 = 139.69821;
+          $s_latlng = ['lat'=>35.68959, 'lng'=>139.69821];
           break;
         case '品川':
-          $lat1 = 35.6284; 
-          $lon1 = 139.736571;
+          $s_latlng = ['lat'=>35.6284, 'lng'=>139.736571];
           break;
         case '渋谷':
-          $lat1 = 35.65803;
-          $lon1 = 139.699447;
+          $s_latlng = ['lat'=>35.65803, 'lng'=>139.699447];
           break;
       }
         
-      $lat2 = $shop_id->lat; //取得したレコードのlat,lonを取得。したい。。
-      $lon2 = $shop_id->lon; 
+       $g_latlng = ['lat'=>$shop->lat, 'lng'=>$shop->lon];
 
-      return view('shops.road')->with(array('lat1'=>$lat1,'lon1'=>$lon1, 'lat2'=>$lat2 ,'lon2'=> $lon2));
+      return view('shops.road')->with(['s_latlng' => $s_latlng, 'g_latlng'=>$g_latlng]);
     }
 }
