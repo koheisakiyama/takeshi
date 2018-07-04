@@ -3,7 +3,7 @@
 @section ('content')
 
   <div id="map" style="height:75%;"></div>
-  <div class="result-list pre-scrollable" style="height:75%;">
+  <div class="result-list pre-scrollable" style="height:25%;">
   <!--
     <input type="checkbox" id="navTgl">
     <label for="navTgl" class="open">≡</label>
