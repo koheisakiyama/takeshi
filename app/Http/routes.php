@@ -11,6 +11,17 @@
 |
 */
 
+
 Route::get('/', function () {
     return view('welcome');
+});
+
+
+Route::group(['middleware' => ['web']], function () {
+
+    Route::get('/index', 'ShopsController@index');
+    Route::get('/shops/search', 'ShopsController@search');
+    Route::get('/shops/result', 'ShopsController@result');
+    Route::get('/shops/road/{id}','ShopsController@show');
+
 });
