@@ -6,13 +6,14 @@
 
   <script>
     var map;
+    var lat = 35.628;
+    var lng = 139.736571;
     function initMap() {
       map = new google.maps.Map(document.getElementById('map'), {
-        center: {lat: 35.6284, lng: 139.736571},
+        center: {lat: lat, lng: lng},
         zoom: 14
       });
     }
   </script>
-
 
 @endsection
