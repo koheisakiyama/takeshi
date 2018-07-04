@@ -9,7 +9,6 @@
 <!-- 
   <script src="{{ asset('assets/javascripts/shopRoad.js') }}"></script>
    -->
-<p>{{$lat2}}</p>
 
 <script type="text/javascript">
 
