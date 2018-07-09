@@ -46,7 +46,7 @@
             <div class="content">
                 <div class="title">pay search</div>
                 <!--ウェルカム画面のボタンを押すとindexに遷移する -->
-                <a href="/index" class="btn btn-primary btn-lg">
+                <a href="/search" class="btn btn-primary btn-lg">
                 <i class="glyphicon glyphicon-ruble"></i>Lets start!!!</a>
         </div>
     </body>
