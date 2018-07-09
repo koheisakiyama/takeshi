@@ -15,7 +15,10 @@
         @foreach ($shops as $shop)
           <li class="list-group-item search-result-item">
             <p>{{ $shop->name }}</p>
-            <a href="/shops/road/{{ $shop->id }}">route</a>  
+            <p>{{ $shop->address }}</p>
+            <p>{{ $shop->time }}</p>
+            <p>エロピヨ</p>
+            <a href="/shops/road/{{ $shop->id }}">route</a>
           </li>
         @endforeach
       </ul>

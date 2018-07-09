@@ -82,7 +82,7 @@
   </head>
 
   <body>
-    <!-- <header class="page-header"> -->
+    <header class="page-header">
       <!-- <h1> -->
         <!-- <div align="center"> -->
         <!-- <a href="" class="center-block">pay serch</a> -->
@@ -104,6 +104,7 @@
         {{ Form::close() }}
       </div>
     </nav>
+  </header>
 
     <div class="container-fluid">
       <div class="row-fluid"> 
