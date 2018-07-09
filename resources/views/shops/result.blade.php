@@ -17,7 +17,7 @@
             <p>{{ $shop->name }}</p>
             <p>{{ $shop->address }}</p>
             <p>{{ $shop->time }}</p>
-            <p>エロピヨ</p>
+            <a href= "{{ $shop->link }}">店舗情報</a>
             <a href="/shops/road/{{ $shop->id }}">route</a>
           </li>
         @endforeach
