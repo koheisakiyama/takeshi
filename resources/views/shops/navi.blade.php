@@ -5,7 +5,9 @@
 
 <!-- <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key={{ env('Google_API_Key') }}"></script> -->
 
-  <div id="map_canvas" style="width: 100%; height: 100%;"></div>
+  <!--<div id="map_canvas" style="width: 100%; height: 100%;"></div> -->
+  <div id="map_canvas" style="width: 100%; height: 75%;"></div>
+  <div id="directions_panel" class="pre-scrollable" style="width: 100%; height: 25%;background-color:#A3D1FF;"></div>
 <!-- 
   <script src="{{ asset('assets/javascripts/shopRoad.js') }}"></script>
    -->
@@ -35,12 +37,16 @@ $(function() {
     var request = {
       origin: s_latlng,        // 出発地点の緯度、経度
       destination: g_latlng,   // 到着地点の緯度、経度
+      //travelMode: google.maps.DirectionsTravelMode.DRIVING // ルートの種類
       travelMode: google.maps.DirectionsTravelMode.WALKING // ルートの種類
     };
     directionsService.route(request, function(result, status) {
       directionsRenderer.setDirections(result); // 取得したルートをセット
       directionsRenderer.setMap(map); // ルートを地図に表示
+      directionsRenderer.setPanel(document.getElementById('directions_panel')); // 道順を表示する k-koda
     });
   });
+
+  google.maps.event.addDomListener(window,'load',init);
 </script>
 @endsection
