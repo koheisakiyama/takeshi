@@ -20,11 +20,14 @@ class ShopsController extends Controller
 
     public function result(Request $request) {
 
+      $keyword = $request->keyword;
+      // $shops = Shop::where('name', 'LIKE', "%{$request->keyword}%")->get();フリーワード検索覚書＿菅沼
+
       $area = $request->area;
       $category = $request->category;
 
       //先にエリアとカテゴリーで検索をかける。
-      $withoutService = Shop::where('area', $area)->where('category', $category)->get();
+      $withoutService = Shop::where('area', $area)->where('category', $category)->where('name', 'LIKE', "%{$request->keyword}%")->get();
       //ビューに渡すようのコレクションを用意する
       $shops = collect(); 
       //それぞれのサービスごとに検索

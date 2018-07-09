@@ -101,7 +101,7 @@
           <li><a href="#">@include ('shops.details.where')</a></li>
           <li>      
             <div style="margin: 15px 0">
-            {{ Form::textarea('review', '', ['placeholder' => 'キーワードを入力してください', 'style' => 'width: 55s%;height: 30px;']) }}
+            {{ Form::textarea('keyword', '', ['placeholder' => 'キーワードを入力してください', 'style' => 'width: 55s%;height: 30px;']) }}
             </div></li><!-- フリーワード検索ボックス -->
           <li><a href="#">{{ Form::submit('検索', ['class' => 'btn btn-primary navbar-form']) }}</a></li><!-- 検索ボタン -->
         </ul>
