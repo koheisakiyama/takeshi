@@ -26,8 +26,10 @@ class ShopsController extends Controller
       $area = $request->area;
       $category = $request->category;
 
-      //先にエリアとカテゴリーで検索をかける。
-      $withoutService = Shop::where('area', $area)->where('category', $category)->where('name', 'LIKE', "%{$request->keyword}%")->get();
+      //先にエリアとカテゴリーとキーワードで検索をかける。
+      $withoutService = Shop::where('area', $area)->get();
+      $withoutService = Shop::where('category', $category)->get();
+      $withoutService = Shop::where('name', 'LIKE', "%{$request->keyword}%")->get();
       //ビューに渡すようのコレクションを用意する
       $shops = collect(); 
       //それぞれのサービスごとに検索
