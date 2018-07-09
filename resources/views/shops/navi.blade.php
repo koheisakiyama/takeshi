@@ -9,6 +9,7 @@
 <!-- 
   <script src="{{ asset('assets/javascripts/shopRoad.js') }}"></script>
    -->
+  <div id="dumpresult"></div>
 
 <script type="text/javascript">
 
