@@ -1,5 +1,5 @@
-
-   function initMap() {
+<script>
+  function initMap() {
       if (navigator.geolocation) {
           navigator.geolocation.getCurrentPosition(
           function(position) {
@@ -38,3 +38,4 @@
         alert("この端末では位置情報が取得できません");
       }
     }
+  </script>
