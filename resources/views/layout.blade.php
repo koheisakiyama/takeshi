@@ -11,6 +11,8 @@
     <script src="{{ asset('assets/javascripts/jquery-3.3.1.js') }}"></script>
     <script src = "{{ asset('assets/javascripts/bootstrap.min.js') }}"></script>
     <script src = "{{ asset('assets/javascripts/bootstrap-multiselect.js') }}"></script>
+    <!-- jsファイルを作成　seina -->
+    <script src= "{{ asset('assets/javascripts/currentLocation.js') }}"></script>
     <style>
       /* Always set the map height explicitly to define the size of the div
        * element that contains the map. */
@@ -81,7 +83,7 @@
     </style>
   </head>
 
-  <body>
+  <body> 
     <!-- <header class="page-header"> -->
       <!-- <h1> -->
         <!-- <div align="center"> -->

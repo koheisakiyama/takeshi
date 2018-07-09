@@ -64,16 +64,16 @@ class ShopsController extends Controller
     //出発地の場合分けをする 江田
       switch ($shop_id->area) {
         case '新宿':
-          $lat1 = 35.68959;
-          $lon1 = 139.69821;
+          $lat1 = 35.691976;
+          $lon1 = 139.701383;
           break;
         case '品川':
-          $lat1 = 35.6284; 
-          $lon1 = 139.736571;
+          $lat1 = 35.628848;
+          $lon1 = 139.738642;
           break;
         case '渋谷':
-          $lat1 = 35.65803;
-          $lon1 = 139.699447;
+          $lat1 = 35.658034;
+          $lon1 = 139.701636;
           break;
       }
         
