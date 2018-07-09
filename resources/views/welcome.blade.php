@@ -1,9 +1,14 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Laravel</title>
+        <title>pay search</title>
 
         <link href="https://fonts.googleapis.com/css?family=Lato:100" rel="stylesheet" type="text/css">
+        <link href="{{ asset('assets/css/bootstrap.min.css')}}" rel='stylesheet' type='text/css'>
+    <link href="{{ asset('assets/css/bootstrap-multiselect.css')}}" rel='stylesheet' type='text/css'>
+    <script src="{{ asset('assets/javascripts/jquery-3.3.1.js') }}"></script>
+    <script src = "{{ asset('assets/javascripts/bootstrap.min.js') }}"></script>
+    <script src = "{{ asset('assets/javascripts/bootstrap-multiselect.js') }}"></script>
 
         <style>
             html, body {
@@ -33,13 +38,16 @@
             .title {
                 font-size: 96px;
             }
+
         </style>
     </head>
     <body>
         <div class="container">
             <div class="content">
-                <div class="title">Laravel 5</div>
-            </div>
+                <div class="title">pay search</div>
+                <!--ウェルカム画面のボタンを押すとindexに遷移する -->
+                <a href="/index" class="btn btn-primary btn-lg">
+                <i class="glyphicon glyphicon-ruble"></i>Lets start!!!</a>
         </div>
     </body>
 </html>

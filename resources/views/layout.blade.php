@@ -95,7 +95,7 @@
         </div>
        {{ Form::open(['action' => 'ShopsController@result', 'method' => 'get']) }}
         <ul class="nav navbar-nav" style="padding: 0px;">
-          <li class="active"><a href="#" style="padding: 0;background-color: #A3D1FF; margin:0;"><h1 style="margin: 10px;">pay search</h1></a></li>
+          <li class="active"><a href="/index" style="padding: 0;background-color: #A3D1FF; margin:0;"><h1 style="margin: 10px;">pay search</h1></a></li>
           <li><a href="#">@include ('shops.details.how')</a></li>
           <li><a href="#">@include ('shops.details.what')</a></li>
           <li><a href="#">@include ('shops.details.where')</a></li>
