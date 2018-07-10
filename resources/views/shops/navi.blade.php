@@ -18,7 +18,15 @@
   var marker = null;  // マーカーオブジェクト
   var watchId = null; // 監視対象の地図のID
   if (navigator.geolocation) {
-    var id = navigator.geolocation.watchPosition(initMap, onError);
+    var id = navigator.geolocation.watchPosition(
+              initMap, 
+              onError, 
+              {
+                enableHighAccuracy : true,
+                maximumAge         : 60000,
+                timeout            : 55000,
+                frequency          : 30000,
+    });
   } else {
     window.alert('Geolocation API対応ブラウザでアクセスしてください。');
 
