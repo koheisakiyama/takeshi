@@ -14,7 +14,7 @@
 
 <script type="text/javascript">
 
-$(function() {
+  function initMap() {
   //出発地をidから引き出したlatlonに代入する
 
     var s_latlng = new google.maps.LatLng(<?php echo json_encode($s_latlng); ?>); 
@@ -45,8 +45,7 @@ $(function() {
       directionsRenderer.setMap(map); // ルートを地図に表示
       directionsRenderer.setPanel(document.getElementById('directions_panel')); // 道順を表示する k-koda
     });
-  });
+  }
 
-  google.maps.event.addDomListener(window,'load',init);
 </script>
 @endsection
