@@ -104,7 +104,7 @@
         {{ Form::close() }}
       </div>
     </nav>
-
+    
     <div class="container-fluid">
       <div class="row-fluid"> 
         @yield ('content')

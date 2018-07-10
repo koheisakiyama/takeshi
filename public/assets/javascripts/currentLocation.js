@@ -1,21 +1,16 @@
 
-  function initMap() {
+  $(function currentLocation() {
+      var loc = new Array();
       if (navigator.geolocation) {
           navigator.geolocation.getCurrentPosition(
           function(position) {
-            var mapLatLng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
-            var mapOptions = {
-              zoom : 15,          // 拡大倍率
-              center : mapLatLng  // 緯度・経度
-            };
-            var map = new google.maps.Map(
-              document.getElementById("map"), // マップを表示する要素
-              mapOptions         // マップオプション
-            );
-            var marker = new google.maps.Marker({
-              map : map,             // 対象の地図オブジェクト
-              position : mapLatLng   // 緯度・経度
-            });
+
+            loc['cLat'] = pos.coords.longitude; 
+            loc{'cLon'} = pos.coords.latitude;
+            return();
+        // 取得した現在地のlatlonを取り出して、resultページなどに送ろうか画策中です。。。07/10
+        // 現在地が必要そうなページでここで発行したlatlonを受け取り、各mapに表示させる計画。
+        
           },
           function(error) {
             switch(error.code) {
@@ -37,4 +32,4 @@
       } else {
         alert("この端末では位置情報が取得できません");
       }
-    }
+    });
