@@ -28,8 +28,8 @@ class ShopsController extends Controller
 
       //先にエリアとカテゴリーとキーワードで検索をかける。
       $withoutService = Shop::where('area', $area)->get();
-      $withoutService = Shop::where('category', $category)->get();
-      $withoutService = Shop::where('name', 'LIKE', "%{$request->keyword}%")->get();
+      $withoutService = $withoutService->merge($withoutService->where('category', $category))->get();
+      $withoutService = $withoutService->merge($withoutService->where('name', 'LIKE', "%{$request->keyword}%"))->get();
       //ビューに渡すようのコレクションを用意する
       $shops = collect(); 
       //それぞれのサービスごとに検索
@@ -37,6 +37,19 @@ class ShopsController extends Controller
         //それぞれのコレクションをshopsに追加する。
         $shops = $shops->merge($withoutService->where($method, 1));
       }
+
+// 妥協用
+     // //先にエリアとカテゴリーで検索をかける。
+     // $withoutService = Shop::where('area', $area)->where('category', $category)->where('name', 'LIKE', "%{$request->keyword}%")->get();
+     // //ビューに渡すようのコレクションを用意する
+     // $shops = collect();
+     // //それぞれのサービスごとに検索
+     // foreach((array) $request->method as $method){
+     //   //それぞれのコレクションをshopsに追加する。
+     //   $shops = $shops->merge($withoutService->where($method, 1));
+     // }
+// 妥協用ここまで
+
       //重複をなくす
       $shops = $shops->unique();
 
