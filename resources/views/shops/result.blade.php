@@ -14,9 +14,12 @@
       <ul class="list-group search-result-list">
         @foreach ($shops as $shop)
           <li class="list-group-item search-result-item">
-            <p>{{ $shop->name }}</p>
-            <p>{{ $shop->address }}</p>
-            <p>{{ $shop->time }}</p>
+            <p style="float: left; font-size: 18px; font-weight: bold; color: #ff0099">{{ $shop->name }}</p>
+            <p style="float: left; font-size: 18px; margin-right: 15px;"></p>
+            <p style="float: left; font-size: 16px;">{{ $shop->address }}</p>
+            <p style="float: left; font-size: 18px; margin-right: 15px; margin-left: 15px;">/</p>
+            <p style="float: left; font-size: 16px;">{{ $shop->time }}  </p>
+            <p style="font-size: 18px; margin-left: 15px;">/</p>
             <a href= "{{ $shop->link }}">店舗情報</a>
             <a href="/shops/road/{{ $shop->id }}">route</a>
           </li>
