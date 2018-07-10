@@ -14,19 +14,35 @@
 
 <script type="text/javascript">
 
-  function initMap() {
+  var map = null;     // 地図オブジェクト
+  var marker = null;  // マーカーオブジェクト
+  var watchId = null; // 監視対象の地図のID
+  if (navigator.geolocation) {
+    var id = navigator.geolocation.watchPosition(initMap, onError);
+  } else {
+    window.alert('Geolocation API対応ブラウザでアクセスしてください。');
+
+  }
+  // エラー時のコールバック関数
+  function onError(error) {
+      alert('コード: '        + error.code    + '\n' +
+              'メッセージ: '    + error.message + '\n');
+  }
+
+  function initMap(position) {
   //出発地をidから引き出したlatlonに代入する
 
     var s_latlng = new google.maps.LatLng(<?php echo json_encode($s_latlng); ?>); 
     var g_latlng = new google.maps.LatLng(<?php echo json_encode($g_latlng); ?>); 
-    var map;
+    var center = new google.maps.LatLng(<?php echo json_encode($s_latlng); ?>); 
+    var current = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
     var directionsService = new google.maps.DirectionsService();
     var directionsRenderer = new google.maps.DirectionsRenderer();
 
     // 地図初期化のオプション
     var mapOptions = {
         zoom: 17,
-        center: s_latlng,
+        center: center,
         mapTypeId: google.maps.MapTypeId.ROADMAP,
         scaleControl: true,
     };
@@ -44,6 +60,11 @@
       directionsRenderer.setDirections(result); // 取得したルートをセット
       directionsRenderer.setMap(map); // ルートを地図に表示
       directionsRenderer.setPanel(document.getElementById('directions_panel')); // 道順を表示する k-koda
+    });
+
+    marker = new google.maps.Marker({
+      position: current,
+      map: map
     });
   }
 

@@ -25,7 +25,6 @@
       function initMap() {
       /* 地図の中心 20180628 kkoda*/
       var ll = <?php echo json_encode($latlng); ?> ;
-      //console.log(<?php echo json_encode($latlng); ?>);
 
       var map = new google.maps.Map(
         document.getElementById('map'), { center: ll, zoom: 14}
