@@ -3,9 +3,6 @@
 @extends ('layout')
 @section ('content')
 
-<!-- <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key={{ env('Google_API_Key') }}"></script> -->
-
-  <!--<div id="map_canvas" style="width: 100%; height: 100%;"></div> -->
   <div id="map_canvas" style="width: 100%; height: 75%;"></div>
   <div id="directions_panel" class="pre-scrollable" style="width: 100%; height: 25%;background-color:#A3D1FF;"></div>
 <!-- 
@@ -25,7 +22,7 @@
                 enableHighAccuracy : true,
                 maximumAge         : 60000,
                 timeout            : 55000,
-                frequency          : 30000,
+                frequency          : 30000
     });
   } else {
     window.alert('Geolocation API対応ブラウザでアクセスしてください。');
@@ -39,6 +36,7 @@
 
   function initMap(position) {
   //出発地をidから引き出したlatlonに代入する
+    console.log(position.coords.latitude);
 
     var s_latlng = new google.maps.LatLng(<?php echo json_encode($s_latlng); ?>); 
     var g_latlng = new google.maps.LatLng(<?php echo json_encode($g_latlng); ?>); 
