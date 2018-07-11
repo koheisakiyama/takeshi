@@ -24,19 +24,61 @@
   <script>
       function initMap() {
       /* 地図の中心 20180628 kkoda*/
-      var ll = <?php echo json_encode($latlng); ?> ;
-      //console.log(<?php echo json_encode($latlng); ?>);
 
-      var map = new google.maps.Map(
-        document.getElementById('map'), { center: ll, zoom: 14}
-      );
+      if (navigator.geolocation) {
+          navigator.geolocation.getCurrentPosition(
+          function(position) {
+            var mapLatLng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+            
+            var mapOptions = {
+              zoom : 15,          // 拡大倍率
+              center : mapLatLng  // 緯度・経度
+            };
+            
+            var ll = <?php echo json_encode($latlng); ?> ;
+            //console.log(<?php echo json_encode($latlng); ?>);
 
-      // phpからjson形式に変換
-      var shops=<?php echo json_encode($shops); ?> ;
-      jQuery.each( shops, function(index,shop) {
-        var shop_ll = {lat:shop.lat, lng:shop.lon};
-        var marker = new google.maps.Marker({ position:shop_ll, map:map});
-      });
+            var map = new google.maps.Map(
+               document.getElementById('map'), { center: ll, zoom: 14}
+            );
+
+            // phpからjson形式に変換
+            var shops=<?php echo json_encode($shops); ?> ;
+          jQuery.each( shops, function(index,shop) {
+            var shop_ll = {lat:shop.lat, lng:shop.lon};
+            var marker = new google.maps.Marker({ position:shop_ll, map:map});
+             });
+
+            var marker = new google.maps.Marker({
+              icon: {
+                      path: google.maps.SymbolPath.CIRCLE,
+                      scale: 4
+                    },
+              map : map,             // 対象の地図オブジェクト
+              position : mapLatLng,   // 緯度・経度
+            });
+           
+          },
+          function(error) {
+            switch(error.code) {
+              case 1: // PERMISSION_DENIED
+                alert("位置情報の利用が許可されていません");
+                break;
+              case 2: // POSITION_UNAVAILABLE
+                alert("現在位置が取得できませんでした");
+                break;
+              case 3: // TIMEOUT
+                alert("タイムアウトになりました");
+                break;
+              default:
+                alert("その他のエラー(エラーコード:"+error.code+")");
+                break;
+            }
+          }
+        );
+      } else {
+        alert("この端末では位置情報が取得できません");
+      }
     }
   </script>
 
