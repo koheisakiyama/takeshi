@@ -26,17 +26,23 @@ class ShopsController extends Controller
       $area = $request->area;
       $category = $request->category;
 
-      //先にエリアとカテゴリーとキーワードで検索をかける。
-      $withoutService = Shop::where('area', $area)->get();
-      $withoutService = $withoutService->merge($withoutService->where('category', $category))->get();
-      $withoutService = $withoutService->merge($withoutService->where('name', 'LIKE', "%{$request->keyword}%"))->get();
-      //ビューに渡すようのコレクションを用意する
-      $shops = collect(); 
-      //それぞれのサービスごとに検索
-      foreach((array) $request->method as $method){
-        //それぞれのコレクションをshopsに追加する。
-        $shops = $shops->merge($withoutService->where($method, 1));
-      }
+// 菅沼版
+      // $withoutService = collect();
+
+      // //先にエリアとカテゴリーとキーワードで検索をかける。
+      // $withoutService = $withoutService->merge(Shop::where('area', $area)->get());
+      // $withoutService = $withoutService->merge(Shop::where('category', $category))->get();
+      // $withoutService = $withoutService->merge($withoutService->where('name', 'LIKE', "%{$request->keyword}%")->get();
+
+      // //ビューに渡すようのコレクションを用意する
+      // $shops = collect(); 
+
+      // //それぞれのサービスごとに検索
+      // foreach((array) $request->method as $method){
+      //   //それぞれのコレクションをshopsに追加する。
+      //   $shops = $shops->merge($withoutService->where($method, 1));
+      // }
+// 菅沼版ここまで
 
 // 妥協用
      // //先にエリアとカテゴリーで検索をかける。
@@ -50,8 +56,37 @@ class ShopsController extends Controller
      // }
 // 妥協用ここまで
 
+// 江田版
+      $ar_method = $request->method;
+
+        $shops = Shop::where('name', 'LIKE', "%{$request->keyword}%")->get();
+
+      // if(null != $keyword){
+      //   $shops = Shop::where('name', 'LIKE', "%{$request->keyword}%")->get();
+      // } else {
+      //   $shops = Shop::all();
+      // }
+
+      if(null != $area){
+        $shops = $shops->where('area',$area);
+      }
+
+      if(null != $category){
+        $shops = $shops->where('category',$category);
+      }
+
+      if(null != $ar_method){
+        $methodColl = collect();
+        foreach( $ar_method as $method ){
+        //それぞれのコレクションをに追加する。
+          $methodColl = $methodColl->merge($shops->where($method, 1));
+        }
+        $shops = $methodColl;
       //重複をなくす
-      $shops = $shops->unique();
+        $shops = $shops->unique();
+      }
+
+// 江田版ここまで
 
       //中心の位置座標
       $latlng = ['lat'=>35.6284, 'lng'=>139.736571];
