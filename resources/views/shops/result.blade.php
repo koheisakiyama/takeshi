@@ -30,16 +30,16 @@
           function(position) {
             var mapLatLng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
             
-            var mapOptions = {
-              zoom : 15,          // 拡大倍率
-              center : mapLatLng  // 緯度・経度
-            };
+            // var mapOptions = {
+            //   zoom : 14,          // 拡大倍率
+            //   center : mapLatLng  // 緯度・経度
+            // }; //反映されてなかったっぽい。
             
             var ll = <?php echo json_encode($latlng); ?> ;
             //console.log(<?php echo json_encode($latlng); ?>);
 
             var map = new google.maps.Map(
-               document.getElementById('map'), { center: ll, zoom: 14}
+               document.getElementById('map'), { center: ll, zoom: 13}
             );
 
             // phpからjson形式に変換

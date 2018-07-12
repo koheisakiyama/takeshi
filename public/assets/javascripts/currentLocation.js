@@ -3,7 +3,9 @@
       if (navigator.geolocation) {
           navigator.geolocation.getCurrentPosition(
           function(position) {
+
             var mapLatLng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+
             var mapOptions = {
               zoom : 15,          // 拡大倍率
               center : mapLatLng  // 緯度・経度
@@ -12,6 +14,7 @@
               document.getElementById("map"), // マップを表示する要素
               mapOptions         // マップオプション
             );
+            
             var marker = new google.maps.Marker({
               icon: {
                       path: google.maps.SymbolPath.CIRCLE,
