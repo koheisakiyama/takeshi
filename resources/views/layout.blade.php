@@ -107,6 +107,7 @@
         </ul>
         {{ Form::close() }}
       </div>
+
     </nav>
     </header>
     <div class="container-fluid">

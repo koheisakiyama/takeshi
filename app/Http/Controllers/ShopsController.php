@@ -51,7 +51,7 @@ class ShopsController extends Controller
         $shops = $shops->unique();
       }
 
-// 江田版ここまで
+//絞込みここまで
 
       //中心の位置座標
       $latlng = ['lat'=>35.6284, 'lng'=>139.736571];
