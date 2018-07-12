@@ -1,8 +1,13 @@
+// なぜ＄あるとうまく動くのか・・・・・・initMapしたら解決したが、＄マークがつくとinitMapしていなくても実行される理由はわからないまま。
 
-  $(function currentLocation() {
+   function initMap() {
       if (navigator.geolocation) {
-          navigator.geolocation.getCurrentPosition(
-          function(position) {
+          navigator.geolocation.getCurrentPosition(successCallback,errorCallback);
+          }else {
+        alert("この端末では位置情報が取得できません");
+      }
+
+          function successCallback(position) {
             var mapLatLng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
             var mapOptions = {
               zoom : 15,          // 拡大倍率
@@ -20,9 +25,9 @@
               map : map,             // 対象の地図オブジェクト
               position : mapLatLng,   // 緯度・経度
             });
-           
-          },
-          function(error) {
+          }
+
+          function errorCallback(error) {
             switch(error.code) {
               case 1: // PERMISSION_DENIED
                 alert("位置情報の利用が許可されていません");
@@ -38,8 +43,4 @@
                 break;
             }
           }
-        );
-      } else {
-        alert("この端末では位置情報が取得できません");
-      }
-    });
+  }
