@@ -99,19 +99,43 @@
           <li><a href="#">@include ('shops.details.how')</a></li>
           <li><a href="#">@include ('shops.details.what')</a></li>
           <li><a href="#">@include ('shops.details.where')</a></li>
-          <li>      
-            <div style="margin: 15px;margin-right: 20px;">
-            {{ Form::text('keyword', '', ['placeholder' => 'キーワードを入力してください', 'style' => 'width: 150%;height: 30px;']) }}
-            </div></li><!-- フリーワード検索ボックス -->
+          <li>
+            <a>
+              <!-- <div class="well"> -->
+            {{ Form::text('keyword', '', ['placeholder' => 'キーワードを入力してください','style' => 'width: 135%;height: 34px;background-color: #FFFFFF;', 'class' =>'well well-sm']) }}
+          <!-- </div> -->
+            </a>
+          </li><!-- フリーワード検索ボックス -->
           <li style="margin-left: 50px;"><a href="#">{{ Form::submit('検索', ['class' => 'btn btn-primary navbar-form']) }}</a></li><!-- 検索ボタン -->
         </ul>
         {{ Form::close() }}
+
+
+        <ul class="navbar-right" style="margin-right: 75px;margin-top: 10px;list-style: none;">
+          <li>
+            <!-- 会員機能関連 -->
+            @if (Auth::check())
+              <div class="user_nav grid-6">
+                <!-- ルートを変更が必要 -->
+                <a href="/logout">ログアウト</a>
+                <a class="post" href="/tweets/create">投稿する</a>
+              </div>
+            @else
+              <div class="grid-6">
+                <!-- ルートを変更が必要 -->
+                <a href="/" class="" style="width: 125px;height: 64px"><button type="button" class="btn btn-default navbar-btn">ログイン</button></a>
+                <a href="/" class="" style="width: 125px;height: 64px"><button type="button" class="btn btn-default navbar-btn">新規登録</button></a>
+              </div>
+            @endif
+          </li>
+        </ul>
+
       </div>
 
     </nav>
     </header>
     <div class="container-fluid">
-      <div class="row-fluid"> 
+      <div class="row-fluid">
         @yield ('content')
         <script async defer src="https://maps.googleapis.com/maps/api/js?key={{ env('Google_API_Key') }}&callback=initMap"></script>
       </div>
