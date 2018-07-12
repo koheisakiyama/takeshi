@@ -5,7 +5,9 @@
   <div id="map" style="height:100%;"></div>
 
 
-  <script src= "{{ asset('assets/javascripts/currentLocation.js') }}"></script>
+  <script src= "{{ asset('assets/javascripts/currentLocation.js') }}">
+    
+  </script>
   <!-- <script>
     var map;
     var lat = 35.628;
