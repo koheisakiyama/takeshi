@@ -82,40 +82,33 @@
   </head>
 
   <body>
-    <header class="page-header">
-
-      <!-- <h1> -->
-        <!-- <div align="center"> -->
-        <!-- <a href="" class="center-block">pay serch</a> -->
-      <!-- </div><div align="center"> -->
-      <!-- </h1> -->
-    <nav class="navbar navbar-inverse navbar-fixed-top" style="background-color: #A3D1FF;">
-      <div class="container-fluid">
-        <div class="navbar-header">
-          <!-- <a class="navbar-brand" href="#">Bootstrap3 チュートリアル</a> -->
+    <header class="page-header" style="padding: 0; margin:0; height:10%;">
+      <nav class="navbar navbar-inverse" style="background-color: #A3D1FF; border-color: #A3D1FF; margin:0;">
+        <div class="container-fluid">
+         {{ Form::open(['action' => 'ShopsController@result', 'method' => 'get']) }}
+          <ul class="nav navbar-nav" style="padding: 0px;">
+            <li class="active"><a href="#" style="padding: 0;background-color: #A3D1FF; margin:0;"><h1 style="margin: 10px;">pay search</h1></a></li>
+            <li><a>@include ('shops.details.how')</a></li>
+            <li><a>@include ('shops.details.what')</a></li>
+            <li><a>@include ('shops.details.where')</a></li>
+            <li>      
+              <div style="margin: 15px;margin-right: 20px;">
+                {{ Form::text('keyword', '', ['placeholder' => 'キーワードを入力してください', 'style' => 'width: 150%;height: 30px;']) }}
+              </div>
+            </li><!-- フリーワード検索ボックス -->
+            <li style="margin-left: 50px;">
+              <a>{{ Form::submit('検索', ['class' => 'btn btn-primary navbar-form']) }}</a>
+            </li><!-- 検索ボタン -->
+          </ul>
+          {{ Form::close() }}
         </div>
-       {{ Form::open(['action' => 'ShopsController@result', 'method' => 'get']) }}
-        <ul class="nav navbar-nav" style="padding: 0px;">
-          <li class="active"><a href="/index" style="padding: 0;background-color: #A3D1FF; margin:0;"><h1 style="margin: 10px;">pay search</h1></a></li>
-          <li><a href="#">@include ('shops.details.how')</a></li>
-          <li><a href="#">@include ('shops.details.what')</a></li>
-          <li><a href="#">@include ('shops.details.where')</a></li>
-          <li>      
-            <div style="margin: 15px;margin-right: 20px;">
-            {{ Form::text('keyword', '', ['placeholder' => 'キーワードを入力してください', 'style' => 'width: 150%;height: 30px;']) }}
-            </div></li><!-- フリーワード検索ボックス -->
-          <li style="margin-left: 50px;"><a href="#">{{ Form::submit('検索', ['class' => 'btn btn-primary navbar-form']) }}</a></li><!-- 検索ボタン -->
-        </ul>
-        {{ Form::close() }}
-      </div>
-    </nav>
-
+      </nav>
     </header>
-    <div class="container-fluid">
+
+    <div class="container-fluid" style="height:90%;">
       <div class="row-fluid"> 
         @yield ('content')
     <!-- jsファイルを作成　seina -->
-    <!-- <script src= "{{ asset('assets/javascripts/currentLocation.js') }}"></script> -->
         <script async defer src="https://maps.googleapis.com/maps/api/js?key={{ env('Google_API_Key') }}&callback=initMap"></script>
       </div>
     </div>

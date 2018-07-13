@@ -19,9 +19,8 @@ Route::get('/', function () {
 
 Route::group(['middleware' => ['web']], function () {
 
-    Route::get('/index', 'ShopsController@index');
-    Route::get('/shops/search', 'ShopsController@search');
-    Route::get('/shops/result', 'ShopsController@result');
-    Route::get('/shops/road/{id}','ShopsController@show');
+    Route::get('/search', 'ShopsController@search');
+    Route::get('/result', 'ShopsController@result');
+    Route::get('/navi/{id}','ShopsController@navi');
 
 });
