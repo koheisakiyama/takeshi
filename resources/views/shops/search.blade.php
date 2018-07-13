@@ -5,6 +5,7 @@
 
   <div id="map" style="height:100%;"></div>
 
+  <!--
   <script>
     var map=null;
     function initMap() {
@@ -14,5 +15,7 @@
       });
     }
   </script>
+  -->
+  <script src="{{ asset('assets/javascripts/currentLocation.js') }}"></script>
 
 @endsection

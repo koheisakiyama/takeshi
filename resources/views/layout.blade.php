@@ -109,7 +109,7 @@
       <div class="row-fluid"> 
         @yield ('content')
     <!-- jsファイルを作成　seina -->
-        <script async defer src="https://maps.googleapis.com/maps/api/js?key={{ env('Google_API_Key') }}&callback=initMap"></script>
+        <script async defer src="https://maps.googleapis.com/maps/api/js?key={{ env('Google_API_Key') }}"></script>
       </div>
     </div>
   </body>

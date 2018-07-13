@@ -33,16 +33,11 @@ function initMap(position) {
     directionsRenderer.setMap(map); // ルートを地図に表示
     directionsRenderer.setPanel(document.getElementById('directions_panel')); // 道順を表示する k-koda
     route = result.routes[0].legs[0].steps;
-    //for(var i in route){
-      //console.log(route[i].instructions);
-    //}
     stepLat = route[0].start_location.lat(); // ステップの緯度を取得
     stepLng = route[0].start_location.lng(); // ステップの緯度を取得
     stepComment = route[0].instructions; // ステップの説明を取得
     stepDuration = route[0].duration.text; // ステップの時間を取得
     stepDistance = route[0].distance.text; // ステップの距離を取得
-    //console.log(stepDuration);
-    //console.log(stepDistance);
     $(function (){
       document.getElementById('step_comment').innerHTML=stepComment;
         document.getElementById('step_duration').innerHTML=stepDuration;
