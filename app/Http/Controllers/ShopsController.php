@@ -20,22 +20,39 @@ class ShopsController extends Controller
 
     public function result(Request $request) {
 
+      $keyword = $request->keyword;
       $area = $request->area;
       $category = $request->category;
+      $ar_method = $request->method;
+// 絞り込み
 
-      //先にエリアとカテゴリーで検索をかける。
-      $withoutService = Shop::where('area', $area)->where('category', $category)->get();
-      //ビューに渡すようのコレクションを用意する
-      $shops = collect(); 
-      //それぞれのサービスごとに検索
-      foreach((array) $request->method as $method){
-        //それぞれのコレクションをshopsに追加する。
-        $shops = $shops->merge($withoutService->where($method, 1));
+      //キーワード検索
+      $shops = Shop::where('name', 'LIKE', "%{$request->keyword}%")->get();
+      //地域検索
+      if(null != $area){
+        $shops = $shops->where('area',$area);
       }
+      //カテゴリー検索
+      if(null != $category){
+        $shops = $shops->where('category',$category);
+      }
+      //支払い方法検索
+      if(null != $ar_method){
+        //foreach構文内用の箱を用意
+        $methodColl = collect();
+        foreach( $ar_method as $method ){
+        //それぞれのコレクションをに追加する。
+          $methodColl = $methodColl->merge($shops->where($method, 1));
+        }
+      //絞込み結果を$shopsに戻す
+        $shops = $methodColl;
       //重複をなくす
-      $shops = $shops->unique();
+        $shops = $shops->unique();
+      }
 
-      //中心の位置座標
+//絞込みここまで
+
+      //中心の位置座標 何も入れなければ品川に。
       $latlng = ['lat'=>35.6284, 'lng'=>139.736571];
       switch ($area) {
         case '新宿':
@@ -48,7 +65,7 @@ class ShopsController extends Controller
           $latlng = ['lat'=>35.65803, 'lng'=>139.699447];
           break;
       }
-      
+
       return view ('shops.result') -> with(['shops' => $shops, 'latlng'=>$latlng]);
     }
     
