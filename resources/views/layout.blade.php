@@ -94,7 +94,7 @@
           <!-- <a class="navbar-brand" href="#">Bootstrap3 チュートリアル</a> -->
         </div>
        {{ Form::open(['action' => 'ShopsController@result', 'method' => 'get']) }}
-        <ul class="nav navbar-nav" style="padding: 0px;">
+        <ul class="nav navbar-nav" style="padding: 0px;height: 70px;">
           <li class="active"><a href="/index" style="padding: 0;background-color: #A3D1FF; margin:0;"><h1 style="margin: 10px;">pay search</h1></a></li>
           <li><a href="#">@include ('shops.details.how')</a></li>
           <li><a href="#">@include ('shops.details.what')</a></li>
@@ -117,8 +117,8 @@
             @if (Auth::check())
               <div class="user_nav grid-6">
                 <!-- ルートを変更が必要 -->
-                <a href="/logout">ログアウト</a>
-                <a class="post" href="/tweets/create">投稿する</a>
+                <a href="/">ログアウト</a>
+                <a class="post" href="/">投稿する</a>
               </div>
             @else
               <div class="grid-6">
