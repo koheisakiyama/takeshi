@@ -83,15 +83,9 @@
 
   <body>
     <header class="page-header">
-      <!-- <h1> -->
-        <!-- <div align="center"> -->
-        <!-- <a href="" class="center-block">pay serch</a> -->
-      <!-- </div><div align="center"> -->
-      <!-- </h1> -->
     <nav class="navbar navbar-inverse navbar-fixed-top" style="background-color: #A3D1FF;">
       <div class="container-fluid">
         <div class="navbar-header">
-          <!-- <a class="navbar-brand" href="#">Bootstrap3 チュートリアル</a> -->
         </div>
        {{ Form::open(['action' => 'ShopsController@result', 'method' => 'get']) }}
         <ul class="nav navbar-nav" style="padding: 0px;height: 70px;">
@@ -101,9 +95,7 @@
           <li><a href="#">@include ('shops.details.where')</a></li>
           <li>
             <a>
-              <!-- <div class="well"> -->
             {{ Form::text('keyword', '', ['placeholder' => 'キーワードを入力してください','style' => 'width: 135%;height: 34px;background-color: #FFFFFF;', 'class' =>'well well-sm']) }}
-          <!-- </div> -->
             </a>
           </li><!-- フリーワード検索ボックス -->
           <li style="margin-left: 50px;"><a href="#">{{ Form::submit('検索', ['class' => 'btn btn-primary navbar-form']) }}</a></li><!-- 検索ボタン -->
@@ -123,7 +115,7 @@
             @else
               <div class="grid-6">
                 <!-- ルートを変更が必要 -->
-                <a href="/" class="" style="width: 125px;height: 64px"><button type="button" class="btn btn-default navbar-btn">ログイン</button></a>
+                <a href="/menbers/login/" class="" style="width: 125px;height: 64px"><button type="button" class="btn btn-default navbar-btn">ログイン</button></a>
                 <a href="/" class="" style="width: 125px;height: 64px"><button type="button" class="btn btn-default navbar-btn">新規登録</button></a>
               </div>
             @endif
