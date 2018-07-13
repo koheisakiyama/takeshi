@@ -82,7 +82,8 @@
   </head>
 
   <body>
-    <!-- <header class="page-header"> -->
+    <header class="page-header">
+
       <!-- <h1> -->
         <!-- <div align="center"> -->
         <!-- <a href="" class="center-block">pay serch</a> -->
@@ -99,15 +100,22 @@
           <li><a href="#">@include ('shops.details.how')</a></li>
           <li><a href="#">@include ('shops.details.what')</a></li>
           <li><a href="#">@include ('shops.details.where')</a></li>
-          <li><a href="#">{{ Form::submit('検索', ['class' => 'btn btn-primary navbar-form']) }}</a></li>
+          <li>      
+            <div style="margin: 15px;margin-right: 20px;">
+            {{ Form::text('keyword', '', ['placeholder' => 'キーワードを入力してください', 'style' => 'width: 150%;height: 30px;']) }}
+            </div></li><!-- フリーワード検索ボックス -->
+          <li style="margin-left: 50px;"><a href="#">{{ Form::submit('検索', ['class' => 'btn btn-primary navbar-form']) }}</a></li><!-- 検索ボタン -->
         </ul>
         {{ Form::close() }}
       </div>
     </nav>
 
+    </header>
     <div class="container-fluid">
       <div class="row-fluid"> 
         @yield ('content')
+    <!-- jsファイルを作成　seina -->
+    <!-- <script src= "{{ asset('assets/javascripts/currentLocation.js') }}"></script> -->
         <script async defer src="https://maps.googleapis.com/maps/api/js?key={{ env('Google_API_Key') }}&callback=initMap"></script>
       </div>
     </div>

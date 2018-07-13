@@ -1,4 +1,4 @@
-<!-- 出発点・検索に入力された値、目的地・選ばれた店情報の所在地　でルートを表示するviewファイル。  seina2018.6.27-->
+<!-- 出発点:検索に入力された値、目的地:選ばれた店情報の所在地　でルートを表示するviewファイル。  seina-->
 
 @extends('layout')
 @section('content')
@@ -33,6 +33,7 @@ $(function() {
         mapTypeId: google.maps.MapTypeId.ROADMAP,
         scaleControl: true,
     };
+    
     // 地図を表示
     map = new google.maps.Map(document.getElementById("map_canvas"), mapOptions);
 

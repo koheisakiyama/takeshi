@@ -18,6 +18,7 @@ class CreateShopsTable extends Migration
             $table->text('address');
             $table->string('area');
             $table->text('time');
+            $table->text('link');
             $table->double('lat',8,6);
             $table->double('lon',9,6);
             $table->string('category');
