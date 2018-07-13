@@ -13,19 +13,19 @@
     -->
       <ul class="list-group search-result-list" style="margin-bottom:0px;">
         @foreach ($shops as $shop)
-          <li class="list-group-item search-result-item">
-            <p style="float: left; font-size: 18px; font-weight: bold; color: #ff0099">{{ $shop->name }}</p>
+          <li class="list-group-item search-result-item" style="background-color: #F0F0F0">
+            <p style="float: left; font-size: 18px; font-weight: bold; color: #4169E1">{{ $shop->name }}</p>
             <p style="float: left; font-size: 18px; margin-right: 15px;"></p>
             <p style="float: left; font-size: 16px;">{{ $shop->address }}</p>
             <p style="float: left; font-size: 18px; margin-right: 15px; margin-left: 15px;">/</p>
             <p style="float: left; font-size: 16px;">{{ $shop->time }}</p>
-            <p style="font-size: 18px; margin-left: 15px; color: #FFFFFF">/</p>
+            <p style="font-size: 18px; margin-left: 15px; color: #F0F0F0">/</p>
           @if ( $shop->link == "なし")
             <p>URLないです</p>
           @else
-            <a href="{{ $shop->link }}">店舗情報</a>
+            <a href="{{ $shop->link }}" style="font-size: 17px; color: #6495ED">店舗情報</a>
           @endif
-            <a href="/shops/road/{{ $shop->id }}">route</a>
+            <a href="/shops/road/{{ $shop->id }}" style="font-size: 17px; color: #6495ED">route</a>
           </li>
         @endforeach
       </ul>
