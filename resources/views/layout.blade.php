@@ -109,6 +109,7 @@
         {{ Form::close() }}
       </div>
     </nav>
+
     </header>
     <div class="container-fluid">
       <div class="row-fluid"> 
