@@ -24,7 +24,6 @@ class ShopsController extends Controller
       $area = $request->area;
       $category = $request->category;
       $ar_method = $request->method;
-
 // 絞り込み
 
       //キーワード検索
@@ -66,10 +65,10 @@ class ShopsController extends Controller
           $latlng = ['lat'=>35.65803, 'lng'=>139.699447];
           break;
       }
-      
+
       return view ('shops.result') -> with(['shops' => $shops, 'latlng'=>$latlng]);
     }
-    
+
     public function show($id){
     // ルート表示のコントローラー
     //出発地(検索で選択された場所)と目的地(クリックされた店のid)のlatとlonを取得、ビューに渡す。seina
@@ -94,9 +93,9 @@ class ShopsController extends Controller
           $lon1 = 139.701636;
           break;
       }
-        
+
       $lat2 = $shop_id->lat; //取得したレコードのlat,lonを取得。したい。。
-      $lon2 = $shop_id->lon; 
+      $lon2 = $shop_id->lon;
 
       return view('shops.road')->with(array('lat1'=>$lat1,'lon1'=>$lon1, 'lat2'=>$lat2 ,'lon2'=> $lon2));
     }
