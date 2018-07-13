@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>QR Map</title>
+    <title>pay search</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -74,7 +74,11 @@
           -webkit-transform: translateY(250px);
           transform: translateY(250px);
         }
-        .search-result h3 {
+
+
+
+
+{
           color: white;
           text-align: center;
         }
@@ -82,54 +86,54 @@
   </head>
 
   <body>
-    <header class="page-header">
-    <nav class="navbar navbar-inverse navbar-fixed-top" style="background-color: #A3D1FF;">
-      <div class="container-fluid">
-        <div class="navbar-header">
-        </div>
-       {{ Form::open(['action' => 'ShopsController@result', 'method' => 'get']) }}
-        <ul class="nav navbar-nav" style="padding: 0px;height: 70px;">
-          <li class="active"><a href="/index" style="padding: 0;background-color: #A3D1FF; margin:0;"><h1 style="margin: 10px;">pay search</h1></a></li>
-          <li><a>@include ('shops.details.how')</a></li>
-          <li><a>@include ('shops.details.what')</a></li>
-          <li><a>@include ('shops.details.where')</a></li>
+    <header class="page-header" style="padding: 0; margin:0; height:10%;">
+      <nav class="navbar navbar-inverse" style="background-color: #A3D1FF; border-color: #A3D1FF; margin:0;">
+        <div class="container-fluid">
+         {{ Form::open(['action' => 'ShopsController@result', 'method' => 'get']) }}
+          <ul class="nav navbar-nav" style="padding: 0px;">
+            <li class="active"><a href="#" style="padding: 0;background-color: #A3D1FF; margin:0;"><h1 style="margin: 10px;">pay search</h1></a></li>
+            <li><a>@include ('shops.details.how')</a></li>
+            <li><a>@include ('shops.details.what')</a></li>
+            <li><a>@include ('shops.details.where')</a></li>
+            <li>      
+              <div style="margin: 15px;margin-right: 20px;">
+                {{ Form::text('keyword', '', ['placeholder' => 'キーワードを入力してください', 'style' => 'width: 150%;height: 30px;']) }}
+              </div>
+            </li><!-- フリーワード検索ボックス -->
+            <li style="margin-left: 50px;">
+              <a>{{ Form::submit('検索', ['class' => 'btn btn-primary navbar-form']) }}</a>
+            </li><!-- 検索ボタン -->
+          </ul>
+          {{ Form::close() }}
+
+                                <!-- 会員機能関連 -->
+        <ul class="navbar-right" style="margin-right: 75px;margin-top: 10px;list-style: none;">
           <li>
-            <a>
-            {{ Form::text('keyword', '', ['placeholder' => 'キーワードを入力してください','style' => 'width: 135%;height: 34px;background-color: #FFFFFF;', 'class' =>'well well-sm']) }}
-            </a>
-          </li><!-- フリーワード検索ボックス -->
-          <li style="margin-left: 50px;"><a>{{ Form::submit('検索', ['class' => 'btn btn-primary navbar-form']) }}</a></li><!-- 検索ボタン -->
-        </ul>
-        {{ Form::close() }}
-
-
-              <!-- 会員機能関連 -->
-        <!-- <ul class="navbar-right" style="margin-right: 75px;margin-top: 10px;list-style: none;"> -->
-          <!-- <li> -->
-            <!-- @if (Auth::check())
-              <div class="user_nav grid-6"> -->
+            @if (Auth::check())
+              <div class="user_nav grid-6">
                 <!-- ルートを変更が必要 -->
-                <!-- <a href="/">ログアウト</a>
+                <a href="/">ログアウト</a>
                 <a class="post" href="/">投稿する</a>
               </div>
             @else
-              <div class="grid-6"> -->
+              <div class="grid-6">
                 <!-- ルートを変更が必要 -->
-                <!-- <a href="/menbers/login/" class="" style="width: 125px;height: 64px"><button type="button" class="btn btn-default navbar-btn">ログイン</button></a>
+                <a href="menbers/auth/login/" class="" style="width: 125px;height: 64px"><button type="button" class="btn btn-default navbar-btn">ログイン</button></a>
                 <a href="/" class="" style="width: 125px;height: 64px"><button type="button" class="btn btn-default navbar-btn">新規登録</button></a>
               </div>
-            @endif -->
+            @endif
+          </li>
+        </ul>
             <!-- 会員機能関連ここまで -->
-          <!-- </li> -->
-        <!-- </ul> -->
 
-      </div>
-
-    </nav>
+        </div>
+      </nav>
     </header>
-    <div class="container-fluid">
-      <div class="row-fluid">
+
+    <div class="container-fluid" style="height:90%;">
+      <div class="row-fluid"> 
         @yield ('content')
+    <!-- jsファイルを作成　seina -->
         <script async defer src="https://maps.googleapis.com/maps/api/js?key={{ env('Google_API_Key') }}&callback=initMap"></script>
       </div>
     </div>

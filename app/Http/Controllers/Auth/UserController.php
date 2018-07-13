@@ -14,6 +14,9 @@ class LoginController extends Controller
         $this->middleware('auth', array());
     }
 
+    public function login() {
+      return view ('content');
+    }
 
     // 以下省略
 }
