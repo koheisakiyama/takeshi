@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>QR Map</title>
+    <title>pay search</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -88,10 +88,17 @@
          {{ Form::open(['action' => 'ShopsController@result', 'method' => 'get']) }}
           <ul class="nav navbar-nav" style="padding: 0px;">
             <li class="active"><a href="#" style="padding: 0;background-color: #A3D1FF; margin:0;"><h1 style="margin: 10px;">pay search</h1></a></li>
-            <li><a href="#">@include ('shops.details.how')</a></li>
-            <li><a href="#">@include ('shops.details.what')</a></li>
-            <li><a href="#">@include ('shops.details.where')</a></li>
-            <li><a href="#">{{ Form::submit('検索', ['class' => 'btn btn-primary navbar-form']) }}</a></li>
+            <li><a>@include ('shops.details.how')</a></li>
+            <li><a>@include ('shops.details.what')</a></li>
+            <li><a>@include ('shops.details.where')</a></li>
+            <li>      
+              <div style="margin: 15px;margin-right: 20px;">
+                {{ Form::text('keyword', '', ['placeholder' => 'キーワードを入力してください', 'style' => 'width: 150%;height: 30px;']) }}
+              </div>
+            </li><!-- フリーワード検索ボックス -->
+            <li style="margin-left: 50px;">
+              <a>{{ Form::submit('検索', ['class' => 'btn btn-primary navbar-form']) }}</a>
+            </li><!-- 検索ボタン -->
           </ul>
           {{ Form::close() }}
         </div>
@@ -101,7 +108,8 @@
     <div class="container-fluid" style="height:90%;">
       <div class="row-fluid"> 
         @yield ('content')
-        <script async defer src="https://maps.googleapis.com/maps/api/js?key={{ env('Google_API_Key') }}&callback=initMap"></script>
+    <!-- jsファイルを作成　seina -->
+        <script async defer src="https://maps.googleapis.com/maps/api/js?key={{ env('Google_API_Key') }}"></script>
       </div>
     </div>
   </body>
