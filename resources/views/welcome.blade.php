@@ -20,6 +20,8 @@
                 text-align: center;
                 display: table-cell;
                 vertical-align: middle;
+                width: 100%;
+                margin: auto;
             }
 
             body {
@@ -39,6 +41,7 @@
             .content {
                 text-align: center;
                 display: inline-block;
+                margin: auto;
             }
 
             .title {
@@ -65,7 +68,7 @@
                 <div class="title">pay search</div>
                 <div class="text">あなたのキャッシュレス決済を、もっと賢く、スマートに</div>
                 <!--ウェルカム画面のボタンを押すとindexに遷移する -->
-                <a href="/index" class="btn btn-primary btn-lg white">
+                <a href="/search" class="btn btn-primary btn-lg">
                 <i class="glyphicon glyphicon-ruble"></i>Lets start!!!</a>
         </div>
     </body>
