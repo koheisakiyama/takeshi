@@ -5,9 +5,6 @@
 
   <div id="map_canvas" style="width: 100%; height: 75%;"></div>
   <div id="directions_panel" class="pre-scrollable" style="width: 100%; height: 25%;background-color:#A3D1FF;"></div>
-<!-- 
-  <script src="{{ asset('assets/javascripts/shopRoad.js') }}"></script>
-   -->
   <div class="modal fade" id="sampleModal" tabindex="-1">
   	<div class="modal-dialog">
   		<div class="modal-content">
@@ -24,7 +21,10 @@
   		</div>
   	</div>
   </div>
+<!-- 
+  <script src="{{ asset('assets/javascripts/shopRoad.js') }}"></script>
 
+   -->
 <script type="text/javascript">
 
   var map = null;        // 地図オブジェクト
@@ -40,6 +40,8 @@
   var stepDistance = null; // ステップごとの距離
   var stepDuration = null; // ステップごとの時間
   var stepComment = null; // ステップごとの説明
+  var s_ll = <?php echo json_encode($s_latlng); ?>; 
+  var g_ll = <?php echo json_encode($g_latlng); ?>; 
 
   // 現在地取得のオプション
   var getOpt = {
@@ -58,7 +60,7 @@
     fillColor: '#0088ff',
     fillOpacity: 0.2
   };
-  
+  /*
   navigator.geolocation.getCurrentPosition(initMap, onError,  getOpt);
   
   function initMap(position) {
@@ -67,8 +69,10 @@
     errPos = position.coords.accuracy; // 位置の誤差を取得
     //var s_latlng = new google.maps.LatLng(<?php echo json_encode($s_latlng); ?>); 
     var s_latlng = current;
-    var g_latlng = new google.maps.LatLng(<?php echo json_encode($g_latlng); ?>); 
+    //var g_latlng = new google.maps.LatLng(<?php echo json_encode($g_latlng); ?>); 
     //var center = new google.maps.LatLng(<?php echo json_encode($s_latlng); ?>); 
+    var g_latlng = new google.maps.LatLng(g_ll); 
+    var center = new google.maps.LatLng(s_ll); 
     var directionsService = new google.maps.DirectionsService();
     var directionsRenderer = new google.maps.DirectionsRenderer();
 
@@ -169,7 +173,10 @@
       alert('コード: '        + error.code    + '\n' +
               'メッセージ: '    + error.message + '\n');
   }
-
-
+  */
 </script>
+<script src="{{ asset('assets/javascripts/navi.js') }}"></script>
+<!--
+-->
+
 @endsection
