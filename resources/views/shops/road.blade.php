@@ -33,6 +33,7 @@ $(function() {
         mapTypeId: google.maps.MapTypeId.ROADMAP,
         scaleControl: true,
     };
+    
     // 地図を表示
     map = new google.maps.Map(document.getElementById("map_canvas"), mapOptions);
 

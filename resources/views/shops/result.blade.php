@@ -24,22 +24,21 @@
   <script>
       function initMap() {
       /* 地図の中心 20180628 kkoda*/
-
+      
       if (navigator.geolocation) {
-          navigator.geolocation.getCurrentPosition(
-          function(position) {
+          navigator.geolocation.getCurrentPosition(successCallback,errorCallback);
+          }else {
+        alert("この端末では位置情報が取得できません");
+      };
+
+          function successCallback(position) {
             var mapLatLng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
-            
-            // var mapOptions = {
-            //   zoom : 14,          // 拡大倍率
-            //   center : mapLatLng  // 緯度・経度
-            // }; //反映されてなかったっぽい。
-            
+
             var ll = <?php echo json_encode($latlng); ?> ;
             //console.log(<?php echo json_encode($latlng); ?>);
 
             var map = new google.maps.Map(
-               document.getElementById('map'), { center: ll, zoom: 13}
+               document.getElementById('map'), { center: ll, zoom: 15}
             );
 
             // phpからjson形式に変換
@@ -58,8 +57,9 @@
               position : mapLatLng,   // 緯度・経度
             });
            
-          },
-          function(error) {
+          };
+
+          function errorCallback(error) {
             switch(error.code) {
               case 1: // PERMISSION_DENIED
                 alert("位置情報の利用が許可されていません");
@@ -75,10 +75,6 @@
                 break;
             }
           }
-        );
-      } else {
-        alert("この端末では位置情報が取得できません");
-      }
     }
   </script>
 

@@ -53,7 +53,7 @@ class ShopsController extends Controller
 
 //絞込みここまで
 
-      //中心の位置座標
+      //中心の位置座標 何も入れなければ品川に。
       $latlng = ['lat'=>35.6284, 'lng'=>139.736571];
       switch ($area) {
         case '新宿':

@@ -1,4 +1,5 @@
 // route.blade.phpが引っ張ってくる、ルート表示を行うjavascriptの記述ページ。　seina2018/06/28→結局うまく出発地のlatlonが引けずにroad.blade.phpにscriptタグで直接打ち込んだので、このファイルは今の所お蔵入り。
+
 $(function() {
     //出発地をidから引き出したlatlonに代入する
      var lat1 =<?php echo json_encode($lat1); ?>;
