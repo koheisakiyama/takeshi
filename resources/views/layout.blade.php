@@ -9,9 +9,8 @@
     <link href="{{ asset('assets/css/bootstrap.min.css')}}" rel='stylesheet' type='text/css'>
     <link href="{{ asset('assets/css/bootstrap-multiselect.css')}}" rel='stylesheet' type='text/css'>
     <script src="{{ asset('assets/javascripts/jquery-3.3.1.js') }}"></script>
-    <script src="{{ asset('assets/javascripts/bootstrap.min.js') }}"></script>
-    <script src="{{ asset('assets/javascripts/bootstrap-multiselect.js') }}"></script>
-    <script src="{{ asset('assets/javascripts/shops/errorCallback.js') }}"></script>
+    <script src = "{{ asset('assets/javascripts/bootstrap.min.js') }}"></script>
+    <script src = "{{ asset('assets/javascripts/bootstrap-multiselect.js') }}"></script>
     <style>
       /* Always set the map height explicitly to define the size of the div
        * element that contains the map. */
@@ -92,7 +91,7 @@
             <li><a>@include ('shops.details.how')</a></li>
             <li><a>@include ('shops.details.what')</a></li>
             <li><a>@include ('shops.details.where')</a></li>
-            <li>
+            <li>      
               <div style="margin: 15px;margin-right: 20px;">
                 {{ Form::text('keyword', '', ['placeholder' => 'キーワードを入力してください', 'style' => 'width: 150%;height: 30px;']) }}
               </div>
@@ -107,25 +106,9 @@
     </header>
 
     <div class="container-fluid" style="height:90%;">
-      <div class="row-fluid">
-        <!-- jsファイルを作成　seina -->
-        <script src="{{ asset('assets/javascripts/shops/initMap.js') }}"></script>
-        <script src="{{ asset('assets/javascripts/shops/currentLocation.js') }}"></script>
-        <script type="text/javascript">
-          var currentPos = null;  // 現在地
-          var center = {lat: 35.6284, lng: 139.736571};      // 地図中心
-          var userMarker = null;  // マーカーオブジェクト
-          var map = null;         // 地図オブジェクト
-          var mapOptions = {      // 地図のオプション
-                  zoom : 15,                                // 拡大倍率
-                  center : center,                          // 緯度・経度
-                  // mapTypeId: google.maps.MapTypeId.ROADMAP, // 市街地図
-          };
-          // 端末の現在地の取得
-          navigator.geolocation.getCurrentPosition(initMap,errorCallback);
-          console.log(mapOptions);
-        </script>
+      <div class="row-fluid"> 
         @yield ('content')
+    <!-- jsファイルを作成　seina -->
         <script async defer src="https://maps.googleapis.com/maps/api/js?key={{ env('Google_API_Key') }}"></script>
       </div>
     </div>
