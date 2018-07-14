@@ -31,9 +31,6 @@
       </ul>
   </div>
 
-  <script>
-    navigator.geolocation.getCurrentPosition(initMap,errorCallback);
-  </script>
   <script src="{{ asset('assets/javascripts/shops/result.js') }}"></script>
 
 @endsection

@@ -2,7 +2,8 @@ function initMap(position) {
   var mapLatLng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
   var ll = <?php echo json_encode($latlng); ?> ;
   var map = new google.maps.Map(
-      document.getElementById('map'), { center: ll, zoom: 15}
+      document.getElementById('map'), 
+      mapOpt
       );
   // phpからjson形式に変換
   var shops=<?php echo json_encode($shops); ?> ;

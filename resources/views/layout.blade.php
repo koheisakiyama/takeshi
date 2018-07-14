@@ -12,6 +12,7 @@
     <script src = "{{ asset('assets/javascripts/bootstrap.min.js') }}"></script>
     <script src = "{{ asset('assets/javascripts/bootstrap-multiselect.js') }}"></script>
     <script src="{{ asset('assets/javascripts/shops/errorCallback.js') }}"></script>
+    <script src="{{ asset('assets/javascripts/shops/initMap.js') }}"></script>
     <style>
       /* Always set the map height explicitly to define the size of the div
        * element that contains the map. */
@@ -108,12 +109,11 @@
 
     <div class="container-fluid" style="height:90%;">
       <div class="row-fluid"> 
-        @yield ('content')
         <!-- jsファイルを作成　seina -->
         <script type="text/javascript">
-          var map = null;        // 地図オブジェクト
           var current = null; // 現在地
           var center = {lat: 35.6284,lng: 139.736571};
+          var map = null;        // 地図オブジェクト
           var userMarker = null; // マーカーオブジェクト
           var errPos = null;     // 位置測定の誤差 単位はメートル
           var errCir = null;     // 誤差の範囲
@@ -124,7 +124,13 @@
             timeout            : 9000,
           };
         </script>
+        <script src="{{ asset('assets/javascripts/shops/currentLocation.js') }}"></script>
+        <script type="text/javascript">
+          navigator.geolocation.getCurrentPosition(currentLocation,errorCallback);
+        </script>
+        @yield ('content')
         <script async defer src="https://maps.googleapis.com/maps/api/js?key={{ env('Google_API_Key') }}"></script>
+
       </div>
     </div>
   </body>

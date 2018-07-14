@@ -10,14 +10,6 @@ function initMap(position) {
   var directionsService = new google.maps.DirectionsService();
   var directionsRenderer = new google.maps.DirectionsRenderer();
 
-  // 地図初期化のオプション
-  var mapOptions = {
-      zoom: 17,
-      //center: center,
-      center: current,
-      mapTypeId: google.maps.MapTypeId.ROADMAP,
-      //scaleControl: true,
-  };
   // 地図を表示
   map = new google.maps.Map(document.getElementById("map_canvas"), mapOptions);
 
