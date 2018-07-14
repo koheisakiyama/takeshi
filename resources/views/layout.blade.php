@@ -12,7 +12,6 @@
     <script src="{{ asset('assets/javascripts/bootstrap.min.js') }}"></script>
     <script src="{{ asset('assets/javascripts/bootstrap-multiselect.js') }}"></script>
     <script src="{{ asset('assets/javascripts/shops/errorCallback.js') }}"></script>
-    <script src="{{ asset('assets/javascripts/shops/initMap.js') }}"></script>
     <style>
       /* Always set the map height explicitly to define the size of the div
        * element that contains the map. */
@@ -120,14 +119,27 @@
           // 現在地取得のオプション
           var getOpt = {
             enableHighAccuracy : true,
-            maximumAge         : 10000,
-            timeout            : 9000,
+            maximumAge         : 30000,
+            timeout            : 25000,
+          };
+          // 誤差円のオプション
+          var cirOpt = {
+            map: map,
+            center: current,
+            radius: errPos, // 単位はメートル
+            strokeColor: '#0088ff',
+            strokeOpacity: 0.8,
+            strokeWeight: 1,
+            fillColor: '#0088ff',
+            fillOpacity: 0.2
           };
         </script>
         <! -- なぜかこの順番で読み込まないと動かない。。。 -->
-        <script src="{{ asset('assets/javascripts/shops/currentLocation.js') }}"></script>
         <script async defer src="https://maps.googleapis.com/maps/api/js?key={{ env('Google_API_Key') }}"></script>
+        <script src="{{ asset('assets/javascripts/shops/initMap.js') }}"></script>
+        <script src="{{ asset('assets/javascripts/shops/currentLocation.js') }}"></script>
         <script src="{{ asset('assets/javascripts/shops/result.js') }}"></script>
+        <script src="{{ asset('assets/javascripts/shops/navi.js') }}"></script>
         @yield ('content')
 
       </div>
