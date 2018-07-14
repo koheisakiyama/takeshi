@@ -3,19 +3,10 @@
 @section ('content')
 
 
-  <div id="map" style="height:100%;"></div>
-
-  <!--
-  <script>
-    var map=null;
-    function initMap() {
-      map = new google.maps.Map(document.getElementById('map'), {
-        center: {lat: 35.6284, lng: 139.736571},
-        zoom: 14
-      });
-    }
+  <div id="map" style="height:100%;width:100%;"></div>
+  <script src="{{ asset('assets/javascripts/shops/currentLocation.js') }}"></script>
+  <script type="text/javascript">
+    navigator.geolocation.getCurrentPosition(initMap,errorCallback);
   </script>
-  -->
-  <script src="{{ asset('assets/javascripts/currentLocation.js') }}"></script>
 
 @endsection
