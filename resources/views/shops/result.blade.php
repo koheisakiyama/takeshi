@@ -2,7 +2,7 @@
 
 @section ('content')
 
-  <div id="map" style="height:75%;"></div>
+  <div id="map" style="height:75%;width:100%"></div>
   <div class="result-list pre-scrollable" style="height:25%;">
   <!--
     <input type="checkbox" id="navTgl">
@@ -31,6 +31,12 @@
       </ul>
   </div>
 
-  <script src="{{ asset('assets/javascripts/shops/result.js') }}"></script>
+  <script type="text/javascript">
+    var areaLatLng = <?php echo json_encode($latlng); ?> ;
+    //var latlng = <?php echo json_encode($latlng); ?> ;
+    var shops= <?php echo json_encode($shops); ?> ;
+    displayShops(areaLatLng);
+  </script>
+  </script>
 
 @endsection

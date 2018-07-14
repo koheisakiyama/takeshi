@@ -9,8 +9,8 @@
     <link href="{{ asset('assets/css/bootstrap.min.css')}}" rel='stylesheet' type='text/css'>
     <link href="{{ asset('assets/css/bootstrap-multiselect.css')}}" rel='stylesheet' type='text/css'>
     <script src="{{ asset('assets/javascripts/jquery-3.3.1.js') }}"></script>
-    <script src = "{{ asset('assets/javascripts/bootstrap.min.js') }}"></script>
-    <script src = "{{ asset('assets/javascripts/bootstrap-multiselect.js') }}"></script>
+    <script src="{{ asset('assets/javascripts/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('assets/javascripts/bootstrap-multiselect.js') }}"></script>
     <script src="{{ asset('assets/javascripts/shops/errorCallback.js') }}"></script>
     <script src="{{ asset('assets/javascripts/shops/initMap.js') }}"></script>
     <style>
@@ -124,12 +124,11 @@
             timeout            : 9000,
           };
         </script>
+        <! -- なぜかこの順番で読み込まないと動かない。。。 -->
         <script src="{{ asset('assets/javascripts/shops/currentLocation.js') }}"></script>
-        <script type="text/javascript">
-          navigator.geolocation.getCurrentPosition(currentLocation,errorCallback);
-        </script>
-        @yield ('content')
         <script async defer src="https://maps.googleapis.com/maps/api/js?key={{ env('Google_API_Key') }}"></script>
+        <script src="{{ asset('assets/javascripts/shops/result.js') }}"></script>
+        @yield ('content')
 
       </div>
     </div>
