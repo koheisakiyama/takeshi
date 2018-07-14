@@ -24,8 +24,7 @@ class ShopsController extends Controller
       $area = $request->area;
       $category = $request->category;
       $ar_method = $request->method;
-// 絞り込み
-
+      // 絞り込み
       //キーワード検索
       $shops = Shop::where('name', 'LIKE', "%{$request->keyword}%")->get();
       //地域検索
@@ -68,7 +67,7 @@ class ShopsController extends Controller
 
       return view ('shops.result') -> with(['shops' => $shops, 'latlng'=>$latlng]);
     }
-    
+
     public function navi($id){
     // ルート表示のコントローラー
     //出発地(検索で選択された場所)と目的地(クリックされた店のid)のlatとlonを取得、ビューに渡す。seina
@@ -88,7 +87,7 @@ class ShopsController extends Controller
           $s_latlng = ['lat'=>35.65803, 'lng'=>139.699447];
           break;
       }
-        
+
        $g_latlng = ['lat'=>$shop->lat, 'lng'=>$shop->lon];
 
       return view('shops.navi')->with(['s_latlng' => $s_latlng, 'g_latlng'=>$g_latlng]);
