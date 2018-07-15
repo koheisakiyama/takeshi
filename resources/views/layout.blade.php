@@ -11,8 +11,6 @@
     <script src="{{ asset('assets/javascripts/jquery-3.3.1.js') }}"></script>
     <script src="{{ asset('assets/javascripts/bootstrap.min.js') }}"></script>
     <script src="{{ asset('assets/javascripts/bootstrap-multiselect.js') }}"></script>
-    <script src="{{ asset('assets/javascripts/shops/errorCallback.js') }}"></script>
-    <script src="{{ asset('assets/javascripts/shops/initMap.js') }}"></script>
     <style>
       /* Always set the map height explicitly to define the size of the div
        * element that contains the map. */
@@ -93,7 +91,7 @@
             <li><a>@include ('shops.details.how')</a></li>
             <li><a>@include ('shops.details.what')</a></li>
             <li><a>@include ('shops.details.where')</a></li>
-            <li>      
+            <li>
               <div style="margin: 15px;margin-right: 20px;">
                 {{ Form::text('keyword', '', ['placeholder' => 'キーワードを入力してください', 'style' => 'width: 150%;height: 30px;']) }}
               </div>
@@ -108,7 +106,7 @@
     </header>
 
     <div class="container-fluid" style="height:90%;">
-      <div class="row-fluid"> 
+      <div class="row-fluid">
         <!-- jsファイルを作成　seina -->
         <script type="text/javascript">
           var current = null; // 現在地
@@ -125,10 +123,13 @@
           };
         </script>
         <! -- なぜかこの順番で読み込まないと動かない。。。 -->
+        <script src="{{ asset('assets/javascripts/shops/errorCallback.js') }}"></script>
+        <script src="{{ asset('assets/javascripts/shops/initMap.js') }}"></script>
+        <script src="{{ asset('assets/javascripts/shops/drawUserMarker.js') }}"></script>
         <script src="{{ asset('assets/javascripts/shops/currentLocation.js') }}"></script>
-        <script async defer src="https://maps.googleapis.com/maps/api/js?key={{ env('Google_API_Key') }}"></script>
         <script src="{{ asset('assets/javascripts/shops/result.js') }}"></script>
         <script src="{{ asset('assets/javascripts/shops/navi.js') }}"></script>
+        <script async defer src="https://maps.googleapis.com/maps/api/js?key={{ env('Google_API_Key') }}"></script>
         @yield ('content')
 
       </div>

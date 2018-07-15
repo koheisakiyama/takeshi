@@ -3,7 +3,7 @@
 @extends ('layout')
 @section ('content')
 
-  <div id="map_canvas" style="width: 100%; height: 75%;"></div>
+  <div id="map" style="width: 100%; height: 75%;"></div>
   <div id="directions_panel" class="pre-scrollable" style="width: 100%; height: 25%;background-color:#A3D1FF;"></div>
   <div class="modal fade" id="sampleModal" tabindex="-1">
   	<div class="modal-dialog">
@@ -37,11 +37,6 @@
   var steps = new Array();
   var s_ll = <?php echo json_encode($s_latlng); ?>; 
   var g_ll = <?php echo json_encode($g_latlng); ?>; 
-  var mapOpt = {
-    zoom : 15,        // 拡大倍率
-    center : s_ll,  // 緯度・経度
-    //mapTypeId: google.maps.MapTypeId.ROADMAP,
-  };
   // 誤差円のオプション
   var cirOpt = {
     map: map,
@@ -55,7 +50,7 @@
   };
   navigator.geolocation.getCurrentPosition(startNavi, errorCallback,  getOpt);
   // 移動時の現在地の取得
-  navigator.geolocation.watchPosition(setMarker, errorCallback, getOpt);
+  navigator.geolocation.watchPosition(navigation, errorCallback, getOpt);
 </script>
 
 @endsection

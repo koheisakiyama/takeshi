@@ -37,6 +37,5 @@
     var shops= <?php echo json_encode($shops); ?> ;
     displayShops(areaLatLng);
   </script>
-  </script>
 
 @endsection

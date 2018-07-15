@@ -1,15 +1,14 @@
 function startNavi(position) {
 //出発地をidから引き出したlatlonに代入する
   current = new google.maps.LatLng(position.coords.latitude, position.coords.longitude); // 現在地の緯度経度取得
-  errPos = position.coords.accuracy; // 位置の誤差を取得
   var s_latlng = current;
   var g_latlng = new google.maps.LatLng(g_ll); 
   var center = new google.maps.LatLng(s_ll); 
   var directionsService = new google.maps.DirectionsService();
   var directionsRenderer = new google.maps.DirectionsRenderer();
 
-  // 地図を表示
-  map = new google.maps.Map(document.getElementById("map_canvas"), mapOpt);
+  // 地図とユーザーのマーカーの作成と表示
+  currentLocation(position);
 
   // ルートを取得
   var request = {
@@ -37,23 +36,21 @@ function startNavi(position) {
       stepNum++;
   });
 
-  // マーカーの作成と表示
-  userMarker = new google.maps.Marker({position: current, map: map});
   // 誤差を円で描く
+  errPos = position.coords.accuracy; // 位置の誤差を取得
   errCir = new google.maps.Circle(cirOpt);
   errCir.setMap(map);
 }
 
 // 移動した時の現在地をマーカーで表示
-function setMarker(position){ 
-  console.log(userMarker);
-    userMarker.setMap(null); // すで表示されているマーカーを削除
-    errCir.setMap(null); // すで表示されている円を削除
-  current = new google.maps.LatLng(position.coords.latitude, position.coords.longitude); // 現在地の緯度経度取得
-  errPos = position.coords.accuracy; // 位置の誤差を取得
+function navigation(position){ 
+
   // マーカーの作成と表示
-  userMarker = new google.maps.Marker({position: current, map: map});
+  current = new google.maps.LatLng(position.coords.latitude, position.coords.longitude); // 現在地の緯度経度取得
+  drawUserMarker(current);
   // 誤差を円で描く
+  errCir.setMap(null); // すで表示されている円を削除
+  errPos = position.coords.accuracy; // 位置の誤差を取得
   errCir = new google.maps.Circle(cirOpt);
   errCir.setMap(map);
 
