@@ -128,6 +128,7 @@
         <script src="{{ asset('assets/javascripts/shops/currentLocation.js') }}"></script>
         <script async defer src="https://maps.googleapis.com/maps/api/js?key={{ env('Google_API_Key') }}"></script>
         <script src="{{ asset('assets/javascripts/shops/result.js') }}"></script>
+        <script src="{{ asset('assets/javascripts/shops/navi.js') }}"></script>
         @yield ('content')
 
       </div>

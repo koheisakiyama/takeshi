@@ -1,6 +1,4 @@
-navigator.geolocation.getCurrentPosition(initMap, onError,  getOpt);
-
-function initMap(position) {
+function startNavi(position) {
 //出発地をidから引き出したlatlonに代入する
   current = new google.maps.LatLng(position.coords.latitude, position.coords.longitude); // 現在地の緯度経度取得
   errPos = position.coords.accuracy; // 位置の誤差を取得
@@ -11,7 +9,7 @@ function initMap(position) {
   var directionsRenderer = new google.maps.DirectionsRenderer();
 
   // 地図を表示
-  map = new google.maps.Map(document.getElementById("map_canvas"), mapOptions);
+  map = new google.maps.Map(document.getElementById("map_canvas"), mapOpt);
 
   // ルートを取得
   var request = {
@@ -24,42 +22,37 @@ function initMap(position) {
     directionsRenderer.setDirections(result); // 取得したルートをセット
     directionsRenderer.setMap(map); // ルートを地図に表示
     directionsRenderer.setPanel(document.getElementById('directions_panel')); // 道順を表示する k-koda
-    route = result.routes[0].legs[0].steps;
-    stepLat = route[0].start_location.lat(); // ステップの緯度を取得
-    stepLng = route[0].start_location.lng(); // ステップの緯度を取得
-    stepComment = route[0].instructions; // ステップの説明を取得
-    stepDuration = route[0].duration.text; // ステップの時間を取得
-    stepDistance = route[0].distance.text; // ステップの距離を取得
-    $(function (){
-      document.getElementById('step_comment').innerHTML=stepComment;
-        document.getElementById('step_duration').innerHTML=stepDuration;
-        document.getElementById('step_distance').innerHTML=stepDistance;
-        console.log(stepComment);
-        $('#sampleModal').modal();
-      });
-      stepLat = route[stepNum].start_location.lat(); // ステップの緯度を取得
-      stepLng = route[stepNum].start_location.lng(); // ステップの緯度を取得
-      stepComment = route[stepNum].instructions; // ステップの説明を取得
-      stepDuration = route[stepNum].duration.text; // ステップの時間を取得
-      stepDistance = route[stepNum].distance.text; // ステップの距離を取得
-      stepNum++;
-    });
 
-    // マーカーの作成と表示
-    marker = new google.maps.Marker({position: current, map: map});
-    // 誤差を円で描く
-    errCir = new google.maps.Circle(cirOpt);
-    errCir.setMap(map);
+    route = result.routes[0].legs[0].steps;
+    for (var i in route) {
+      steps.push({
+        latlng  : route[i].start_location, // ステップの緯度を取得
+        comment : route[i].instructions, // ステップの説明を取得
+        duration: route[i].duration.text, // ステップの時間を取得
+        distance: route[i].distance.text, // ステップの距離を取得
+      });
+    }
+
+      insertModal(steps[0]);
+      stepNum++;
+  });
+
+  // マーカーの作成と表示
+  userMarker = new google.maps.Marker({position: current, map: map});
+  // 誤差を円で描く
+  errCir = new google.maps.Circle(cirOpt);
+  errCir.setMap(map);
 }
 
 // 移動した時の現在地をマーカーで表示
 function setMarker(position){ 
-  marker.setMap(null); // すで表示されているマーカーを削除
-  errCir.setMap(null); // すで表示されている円を削除
+  console.log(userMarker);
+    userMarker.setMap(null); // すで表示されているマーカーを削除
+    errCir.setMap(null); // すで表示されている円を削除
   current = new google.maps.LatLng(position.coords.latitude, position.coords.longitude); // 現在地の緯度経度取得
   errPos = position.coords.accuracy; // 位置の誤差を取得
   // マーカーの作成と表示
-  marker = new google.maps.Marker({position: current, map: map});
+  userMarker = new google.maps.Marker({position: current, map: map});
   // 誤差を円で描く
   errCir = new google.maps.Circle(cirOpt);
   errCir.setMap(map);
@@ -70,27 +63,15 @@ function setMarker(position){
   var diffLng = Math.pow(current.lng() - stepLng,2);
   // 近かったらmodalを表示
   if (Math.sqrt(diffLat+diffLng) < 0.0001) {
-    $(function (){
-      //$('#sampleButton').click( function () {
-        document.getElementById('step_comment').innerHTML=stepComment;
-        document.getElementById('step_duration').innerHTML=stepDuration;
-        document.getElementById('step_distance').innerHTML=stepDistance;
-        console.log(stepComment);
-        $('#sampleModal').modal();
-      //});
-    });
-    stepLat = route[stepNum].start_location.lat(); // ステップの緯度を取得
-    stepLng = route[stepNum].start_location.lng(); // ステップの緯度を取得
-    stepComment = route[stepNum].instructions; // ステップの説明を取得
-    stepDuration = route[stepNum].duration.text; // ステップの時間を取得
-    stepDistance = route[stepNum].distance.text; // ステップの距離を取得
+    insertModal(step[stepNum]);
     stepNum++;
   }
 }
-// 移動時の現在地の取得
-navigator.geolocation.watchPosition(setMarker, onError, getOpt);
-// エラー時のコールバック関数
-function onError(error) {
-    alert('コード: '        + error.code    + '\n' +
-            'メッセージ: '    + error.message + '\n');
+
+function insertModal(step){
+  document.getElementById('step_comment').innerHTML=step.comment;
+  document.getElementById('step_duration').innerHTML=step.duration;
+  document.getElementById('step_distance').innerHTML=step.distance;
+  console.log(step.comment);
+  $('#sampleModal').modal();
 }

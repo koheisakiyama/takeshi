@@ -34,8 +34,14 @@
   var stepDistance = null; // ステップごとの距離
   var stepDuration = null; // ステップごとの時間
   var stepComment = null; // ステップごとの説明
+  var steps = new Array();
   var s_ll = <?php echo json_encode($s_latlng); ?>; 
   var g_ll = <?php echo json_encode($g_latlng); ?>; 
+  var mapOpt = {
+    zoom : 15,        // 拡大倍率
+    center : s_ll,  // 緯度・経度
+    //mapTypeId: google.maps.MapTypeId.ROADMAP,
+  };
   // 誤差円のオプション
   var cirOpt = {
     map: map,
@@ -47,7 +53,9 @@
     fillColor: '#0088ff',
     fillOpacity: 0.2
   };
+  navigator.geolocation.getCurrentPosition(startNavi, errorCallback,  getOpt);
+  // 移動時の現在地の取得
+  navigator.geolocation.watchPosition(setMarker, errorCallback, getOpt);
 </script>
-<script src="{{ asset('assets/javascripts/shops/navi.js') }}"></script>
 
 @endsection
