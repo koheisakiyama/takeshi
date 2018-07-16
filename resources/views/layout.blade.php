@@ -16,6 +16,7 @@
        * element that contains the map. */
       html, body, div.row-fluid, div.container-fluid{
         height: 100%;
+        width: 100%;
         margin: 0;
         padding: 0;
       }
@@ -74,26 +75,22 @@
           -webkit-transform: translateY(250px);
           transform: translateY(250px);
         }
-        .search-result h3 {
-          color: white;
-          text-align: center;
-        }
     </style>
   </head>
 
   <body>
-    <header class="page-header" style="padding: 0; margin:0; height:10%;">
+    <header class="page-header" style="padding: 0; margin:0; height:10%;width:100%;">
       <nav class="navbar navbar-inverse" style="background-color: #A3D1FF; border-color: #A3D1FF; margin:0;">
         <div class="container-fluid">
-         {{ Form::open(['action' => 'ShopsController@result', 'method' => 'get']) }}
-          <ul class="nav navbar-nav" style="padding: 0px;">
-            <li class="active"><a href="#" style="padding: 0;background-color: #A3D1FF; margin:0;"><h1 style="margin: 10px;">pay search</h1></a></li>
-            <li><a>@include ('shops.details.how')</a></li>
-            <li><a>@include ('shops.details.what')</a></li>
-            <li><a>@include ('shops.details.where')</a></li>
+         {{ Form::open(['action' => 'ShopsController@result', 'method' => 'get', 'style'=>'width=100%;']) }}
+          <ul class="nav navbar-nav" style="padding: 0px;width:100%;">
+            <li class="active"><a href="/" style="padding: 0;background-color: #A3D1FF; margin:0;"><h1 style="margin: 10px;">pay search</h1></a></li>
+            <li style="width:25%"><a>@include ('shops.details.how')</a></li>
+            <li style="width:25%"><a>@include ('shops.details.what')</a></li>
+            <li style="width:25%"><a>@include ('shops.details.where')</a></li>
             <li>
               <div style="margin: 15px;margin-right: 20px;">
-                {{ Form::text('keyword', '', ['placeholder' => 'キーワードを入力してください', 'style' => 'width: 150%;height: 30px;']) }}
+                {{ Form::text('keyword', '', ['placeholder' => 'フリーワード検索', 'style' => 'width: 100%;height: 30px;']) }}
               </div>
             </li><!-- フリーワード検索ボックス -->
             <li style="margin-left: 50px;">
@@ -105,7 +102,7 @@
       </nav>
     </header>
 
-    <div class="container-fluid" style="height:90%;">
+    <div class="container-fluid" style="height:90%;width:100%;">
       <div class="row-fluid">
         <!-- jsファイルを作成　seina -->
         <script type="text/javascript">
@@ -113,8 +110,6 @@
           var center = {lat: 35.6284,lng: 139.736571};
           var map = null;        // 地図オブジェクト
           var userMarker = null; // マーカーオブジェクト
-          var errPos = null;     // 位置測定の誤差 単位はメートル
-          var errCir = null;     // 誤差の範囲
           // 現在地取得のオプション
           var getOpt = {
             enableHighAccuracy : true,

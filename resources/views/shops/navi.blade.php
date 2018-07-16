@@ -28,26 +28,11 @@
 <script type="text/javascript">
 
   var route = null;
-  var stepLat = null; // ステップごとの緯度
-  var stepLng = null; // ステップごとの経度
   var stepNum = 0; // ステップ番号
-  var stepDistance = null; // ステップごとの距離
-  var stepDuration = null; // ステップごとの時間
-  var stepComment = null; // ステップごとの説明
   var steps = new Array();
   var s_ll = <?php echo json_encode($s_latlng); ?>; 
   var g_ll = <?php echo json_encode($g_latlng); ?>; 
   // 誤差円のオプション
-  var cirOpt = {
-    map: map,
-    center: current,
-    radius: errPos, // 単位はメートル
-    strokeColor: '#0088ff',
-    strokeOpacity: 0.8,
-    strokeWeight: 1,
-    fillColor: '#0088ff',
-    fillOpacity: 0.2
-  };
   navigator.geolocation.getCurrentPosition(startNavi, errorCallback,  getOpt);
   // 移動時の現在地の取得
   navigator.geolocation.watchPosition(navigation, errorCallback, getOpt);
