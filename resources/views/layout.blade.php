@@ -139,7 +139,7 @@
             timeout            : 9000,
           };
         </script>
-        <! -- なぜかこの順番で読み込まないと動かない。。。 -->
+        <!-- なぜかこの順番で読み込まないと動かない。。。 -->
         <script src="{{ asset('assets/javascripts/shops/errorCallback.js') }}"></script>
         <script src="{{ asset('assets/javascripts/shops/initMap.js') }}"></script>
         <script src="{{ asset('assets/javascripts/shops/drawUserMarker.js') }}"></script>
