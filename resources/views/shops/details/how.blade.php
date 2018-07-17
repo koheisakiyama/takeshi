@@ -1,4 +1,4 @@
-{{ Form::select('method[]', ['line'=>'LINE Pay', 'rakuten'=>'楽天ペイ', 'origami'=>'Origami'], null, ['id' => 'example-getting-started','class' => 'form-control', 'multiple'=>'multiple']) }}
+{{ Form::select('method[]', ['line'=>'LINE Pay', 'rakuten'=>'楽天ペイ', 'origami'=>'Origami'], null, ['id' => 'example-getting-started','class' => 'form-control', 'multiple'=>'multiple', 'style'=>'width:100%;']) }}
 
 <script type="text/javascript">
   $(document).ready(function() {

@@ -85,9 +85,9 @@
          {{ Form::open(['action' => 'ShopsController@result', 'method' => 'get', 'style'=>'width=100%;']) }}
           <ul class="nav navbar-nav" style="padding: 0px;width:100%;">
             <li class="active"><a href="/" style="padding: 0;background-color: #A3D1FF; margin:0;"><h1 style="margin: 10px;">pay search</h1></a></li>
-            <li style="width:25%"><a>@include ('shops.details.how')</a></li>
-            <li style="width:25%"><a>@include ('shops.details.what')</a></li>
-            <li style="width:25%"><a>@include ('shops.details.where')</a></li>
+            <li style="width:15%"><a>@include ('shops.details.how')</a></li>
+            <li style="width:15%"><a>@include ('shops.details.what')</a></li>
+            <li style="width:15%"><a>@include ('shops.details.where')</a></li>
             <li>
               <div style="margin: 15px;margin-right: 20px;">
                 {{ Form::text('keyword', '', ['placeholder' => 'フリーワード検索', 'style' => 'width: 100%;height: 30px;']) }}
