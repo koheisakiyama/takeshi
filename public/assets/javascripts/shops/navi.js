@@ -29,7 +29,7 @@ function navigation(position){
   // 2018/07/12 ここまで直線距離を計算する (m)
   //console.log(steps[stepNum]);
   var dffDistance = null;
-  if( stepNum ){
+  if( stepNum == steps.length){
     dffDistance = measureDis(current, steps[stepNum].e_latlng);
     if (dffDistance < 50.) {// 近かったらmodalを表示
       $('#naviComplete').modal();
