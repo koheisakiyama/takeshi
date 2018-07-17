@@ -79,7 +79,7 @@
   </head>
 
   <body>
-    <header class="page-header" style="padding: 0; margin:0; height:10%;width:100%;">
+    <header class="page-header" style="padding: 0;background-color: #A3D1FF; margin:0; height:10%;width:100%;">
       <nav class="navbar navbar-inverse" style="background-color: #A3D1FF; border-color: #A3D1FF; margin:0;">
         <div class="container-fluid">
          {{ Form::open(['action' => 'ShopsController@result', 'method' => 'get', 'style'=>'width=100%;']) }}
