@@ -9,13 +9,14 @@
     <link href="{{ asset('assets/css/bootstrap.min.css')}}" rel='stylesheet' type='text/css'>
     <link href="{{ asset('assets/css/bootstrap-multiselect.css')}}" rel='stylesheet' type='text/css'>
     <script src="{{ asset('assets/javascripts/jquery-3.3.1.js') }}"></script>
-    <script src = "{{ asset('assets/javascripts/bootstrap.min.js') }}"></script>
-    <script src = "{{ asset('assets/javascripts/bootstrap-multiselect.js') }}"></script>
+    <script src="{{ asset('assets/javascripts/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('assets/javascripts/bootstrap-multiselect.js') }}"></script>
     <style>
       /* Always set the map height explicitly to define the size of the div
        * element that contains the map. */
       html, body, div.row-fluid, div.container-fluid{
         height: 100%;
+        width: 100%;
         margin: 0;
         padding: 0;
       }
@@ -74,26 +75,22 @@
           -webkit-transform: translateY(250px);
           transform: translateY(250px);
         }
-        .search-result h3 {
-          color: white;
-          text-align: center;
-        }
     </style>
   </head>
 
   <body>
-    <header class="page-header" style="padding: 0; margin:0; height:10%;">
+    <header class="page-header" style="padding: 0; margin:0; height:10%;width:100%;">
       <nav class="navbar navbar-inverse" style="background-color: #A3D1FF; border-color: #A3D1FF; margin:0;">
         <div class="container-fluid">
-         {{ Form::open(['action' => 'ShopsController@result', 'method' => 'get']) }}
-          <ul class="nav navbar-nav" style="padding: 0px;">
-            <li class="active"><a href="#" style="padding: 0;background-color: #A3D1FF; margin:0;"><h1 style="margin: 10px;">pay search</h1></a></li>
-            <li><a>@include ('shops.details.how')</a></li>
-            <li><a>@include ('shops.details.what')</a></li>
-            <li><a>@include ('shops.details.where')</a></li>
-            <li>      
+         {{ Form::open(['action' => 'ShopsController@result', 'method' => 'get', 'style'=>'width=100%;']) }}
+          <ul class="nav navbar-nav" style="padding: 0px;width:100%;">
+            <li class="active"><a href="/" style="padding: 0;background-color: #A3D1FF; margin:0;"><h1 style="margin: 10px;">pay search</h1></a></li>
+            <li style="width:15%"><a>@include ('shops.details.how')</a></li>
+            <li style="width:15%"><a>@include ('shops.details.what')</a></li>
+            <li style="width:15%"><a>@include ('shops.details.where')</a></li>
+            <li>
               <div style="margin: 15px;margin-right: 20px;">
-                {{ Form::text('keyword', '', ['placeholder' => 'キーワードを入力してください', 'style' => 'width: 150%;height: 30px;']) }}
+                {{ Form::text('keyword', '', ['placeholder' => 'フリーワード検索', 'style' => 'width: 100%;height: 30px;']) }}
               </div>
             </li><!-- フリーワード検索ボックス -->
             <li style="margin-left: 50px;">
@@ -105,11 +102,31 @@
       </nav>
     </header>
 
-    <div class="container-fluid" style="height:90%;">
-      <div class="row-fluid"> 
+    <div class="container-fluid" style="height:90%;width:100%;">
+      <div class="row-fluid">
+        <!-- jsファイルを作成　seina -->
+        <script type="text/javascript">
+          var current = null; // 現在地
+          var center = {lat: 35.6284,lng: 139.736571};
+          var map = null;        // 地図オブジェクト
+          var userMarker = null; // マーカーオブジェクト
+          // 現在地取得のオプション
+          var getOpt = {
+            enableHighAccuracy : true,
+            maximumAge         : 10000,
+            timeout            : 9000,
+          };
+        </script>
+        <! -- なぜかこの順番で読み込まないと動かない。。。 -->
+        <script src="{{ asset('assets/javascripts/shops/errorCallback.js') }}"></script>
+        <script src="{{ asset('assets/javascripts/shops/initMap.js') }}"></script>
+        <script src="{{ asset('assets/javascripts/shops/drawUserMarker.js') }}"></script>
+        <script src="{{ asset('assets/javascripts/shops/currentLocation.js') }}"></script>
+        <script src="{{ asset('assets/javascripts/shops/result.js') }}"></script>
+        <script src="{{ asset('assets/javascripts/shops/navi.js') }}"></script>
+        <script async defer src="https://maps.googleapis.com/maps/api/js?key={{ env('Google_API_Key') }}"></script>
         @yield ('content')
-    <!-- jsファイルを作成　seina -->
-        <script async defer src="https://maps.googleapis.com/maps/api/js?key={{ env('Google_API_Key') }}&callback=initMap"></script>
+
       </div>
     </div>
   </body>
