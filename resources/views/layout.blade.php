@@ -107,24 +107,24 @@
           {{ Form::close() }}
 
                                 <!-- 会員機能関連 -->
-        <ul class="navbar-right" style="margin-right: 75px;margin-top: 10px;list-style: none;">
+<!--         <ul class="navbar-right" style="margin-right: 75px;margin-top: 10px;list-style: none;">
           <li>
             @if (Auth::check())
-              <div class="user_nav grid-6">
+              <div class="user_nav grid-6"> -->
                 <!-- ルートを変更が必要 -->
-                <a href="/">ログアウト</a>
+<!--                 <a href="/">ログアウト</a>
                 <a class="post" href="/">投稿する</a>
               </div>
             @else
               <div class="grid-6">
-                <!-- ルートを変更が必要 -->
-                <a href="menbers/auth/login/" class="" style="width: 125px;height: 64px"><button type="button" class="btn btn-default navbar-btn">ログイン</button></a>
+ -->                <!-- ルートを変更が必要 -->
+<!--                 <a href="menbers/auth/login/" class="" style="width: 125px;height: 64px"><button type="button" class="btn btn-default navbar-btn">ログイン</button></a>
                 <a href="/" class="" style="width: 125px;height: 64px"><button type="button" class="btn btn-default navbar-btn">新規登録</button></a>
               </div>
             @endif
           </li>
         </ul>
-            <!-- 会員機能関連ここまで -->
+ -->            <!-- 会員機能関連ここまで -->
 
         </div>
       </nav>

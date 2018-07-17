@@ -1,3 +1,6 @@
+
+<!-- 会員登録用のファイル -->
+
 @extends('layout')
 
 @section('content')

@@ -19,8 +19,8 @@ Route::get('/', function () {
 
 Route::group(['middleware' => ['web']], function () {
 
-    Route::auth();
-    Route::get('/login','UserController@content');
+    // Route::auth();
+    // Route::get('/login','UserController@content');
     Route::get('/search', 'ShopsController@search');
     Route::get('/result', 'ShopsController@result');
     Route::get('/navi/{id}','ShopsController@navi');
