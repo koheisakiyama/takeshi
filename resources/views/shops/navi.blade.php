@@ -5,7 +5,7 @@
 
   <div id="map" style="width: 100%; height: 75%;"></div>
   <div id="directions_panel" class="pre-scrollable" style="width: 100%; height: 25%;background-color:#A3D1FF;"></div>
-  <div class="modal fade" id="sampleModal" tabindex="-1">
+  <div class="modal fade" id="naviModal" tabindex="-1">
   	<div class="modal-dialog">
   		<div class="modal-content">
   			<div class="modal-body">
@@ -13,6 +13,20 @@
             <li><p><span id="step_comment"></span></p></li>
             <li><p>距離：<span id="step_distance"></span></p></li>
             <li><p>時間：<span id="step_duration"></span></p></li>
+          </ul>
+  			</div>
+  			<div class="modal-footer">
+  				<button type="button" class="btn btn-default" data-dismiss="modal">閉じる</button>
+  			</div>
+  		</div>
+  	</div>
+  </div>
+  <div class="modal fade" id="naviComplete" tabindex="-1">
+  	<div class="modal-dialog">
+  		<div class="modal-content">
+  			<div class="modal-body">
+          <ul style="list-style:none;">
+            <li><p>道案内を終了します。</p></li>
           </ul>
   			</div>
   			<div class="modal-footer">
