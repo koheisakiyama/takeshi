@@ -14,28 +14,29 @@ function startNavi(position) {
     //travelMode: google.maps.DirectionsTravelMode.DRIVING // ルートの種類
   };
   directionsService.route(request, displayRoute)
+  console.log(steps.length);
 }
 
 // 移動した時の現在地をマーカーで表示
 function navigation(position){ 
+  var g_latlng = new google.maps.LatLng(g_ll); 
   current = new google.maps.LatLng(position.coords.latitude, position.coords.longitude); // 現在地の緯度経度取得
 
   errCir.setMap(null); // すで表示されている円を削除
   userMarker.setMap(null); // すで表示されているを削除
-  marker.setMap(null); // すで表示されているを削除
   // マーカーの作成と表示
   drawUserMarker(position);
 
   // 2018/07/12 ここまで直線距離を計算する (m)
-  //console.log(steps[stepNum]);
+  console.log(steps[stepNum]);
   var dffDistance = null;
   if( stepNum == steps.length){
-    dffDistance = measureDis(current, steps[stepNum].e_latlng);
+    dffDistance = measureDis(current, g_latlng);
     if (dffDistance < 50.) {// 近かったらmodalを表示
       $('#naviComplete').modal();
     }
   }else{
-    dffDistance = measureDis(current, steps[stepNum].s_latlng);
+    dffDistance = measureDis(current, steps[stepNum].latlng);
     if (dffDistance < 50.) {// 近かったらmodalを表示
       insertModal(steps[stepNum]);
       stepNum++;
@@ -52,11 +53,10 @@ function displayRoute(result, status) {
   route = result.routes[0].legs[0].steps;
   for (var i in route) {
     steps.push({
-      s_latlng  : route[i].start_location, // ステップの緯度を取得
+      latlng  : route[i].start_location, // ステップの緯度を取得
       comment : route[i].instructions, // ステップの説明を取得
       duration: route[i].duration.text, // ステップの時間を取得
       distance: route[i].distance.text, // ステップの距離を取得
-      e_latlng  : route[i].end_location, // ステップの緯度を取得
     });
   }
   insertModal(steps[0]);
@@ -72,8 +72,8 @@ function insertModal(step){
  
 function measureDis(latlng1, latlng2){
   var distance = Math.sqrt(
-                    Math.pow((current.lat - stepLatLng.lat) * 110946.2521, 2)
-                  + Math.pow((current.lng - stepLatLng.lng) *  90881.8492, 2)
+                    Math.pow((latlng1.lat - latlng2.lat) * 110946.2521, 2)
+                  + Math.pow((latlng1.lng - latlng2.lng) *  90881.8492, 2)
     );
   
   return distance;
