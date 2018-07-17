@@ -10,7 +10,6 @@ function drawUserMarker(position) {
   });
   // 誤差を円で描く
   var errPos = null;     // 位置測定の誤差 単位はメートル
-  var errCir = null;     // 誤差の範囲
   var cirOpt = {
     map: map,
     center: current,

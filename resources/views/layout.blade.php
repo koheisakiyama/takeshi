@@ -110,6 +110,7 @@
           var center = {lat: 35.6284,lng: 139.736571};
           var map = null;        // 地図オブジェクト
           var userMarker = null; // マーカーオブジェクト
+          var errCir = null;     // 誤差の範囲
           // 現在地取得のオプション
           var getOpt = {
             enableHighAccuracy : true,
@@ -117,7 +118,6 @@
             timeout            : 9000,
           };
         </script>
-        <! -- なぜかこの順番で読み込まないと動かない。。。 -->
         <script src="{{ asset('assets/javascripts/shops/errorCallback.js') }}"></script>
         <script src="{{ asset('assets/javascripts/shops/initMap.js') }}"></script>
         <script src="{{ asset('assets/javascripts/shops/drawUserMarker.js') }}"></script>
