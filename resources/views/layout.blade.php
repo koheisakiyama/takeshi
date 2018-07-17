@@ -98,6 +98,28 @@
             </li><!-- 検索ボタン -->
           </ul>
           {{ Form::close() }}
+
+                                          <!-- 会員機能関連 -->
+<!--         <ul class="navbar-right" style="margin-right: 75px;margin-top: 10px;list-style: none;">
+          <li>
+            @if (Auth::check())
+              <div class="user_nav grid-6"> -->
+                <!-- ルートを変更が必要 -->
+<!--                 <a href="/">ログアウト</a>
+                <a class="post" href="/">投稿する</a>
+              </div>
+            @else
+              <div class="grid-6">
+ -->                <!-- ルートを変更が必要 -->
+<!--                 <a href="menbers/auth/login/" class="" style="width: 125px;height: 64px"><button type="button" class="btn btn-default navbar-btn">ログイン</button></a>
+                <a href="/" class="" style="width: 125px;height: 64px"><button type="button" class="btn btn-default navbar-btn">新規登録</button></a>
+              </div>
+            @endif
+          </li>
+        </ul>
+ -->            <!-- 会員機能関連ここまで -->
+
+
         </div>
       </nav>
     </header>
@@ -110,6 +132,7 @@
           var center = {lat: 35.6284,lng: 139.736571};
           var map = null;        // 地図オブジェクト
           var userMarker = null; // マーカーオブジェクト
+          var errCir = null;     // 誤差の範囲
           // 現在地取得のオプション
           var getOpt = {
             enableHighAccuracy : true,
@@ -117,7 +140,6 @@
             timeout            : 9000,
           };
         </script>
-        <! -- なぜかこの順番で読み込まないと動かない。。。 -->
         <script src="{{ asset('assets/javascripts/shops/errorCallback.js') }}"></script>
         <script src="{{ asset('assets/javascripts/shops/initMap.js') }}"></script>
         <script src="{{ asset('assets/javascripts/shops/drawUserMarker.js') }}"></script>
