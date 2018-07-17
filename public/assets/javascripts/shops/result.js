@@ -1,4 +1,5 @@
 function displayShops(latlng) {
+  
   initMap(latlng);
   for(var i in shops) {
     var shopsLatLng = {lat:shops[i].lat, lng:shops[i].lon};

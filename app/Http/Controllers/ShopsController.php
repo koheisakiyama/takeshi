@@ -24,7 +24,7 @@ class ShopsController extends Controller
       $area = $request->area;
       $category = $request->category;
       $ar_method = $request->method;
-// 絞り込み
+      // 絞り込み
 
       //キーワード検索
       $shops = Shop::where('name', 'LIKE', "%{$request->keyword}%")->get();
@@ -41,16 +41,15 @@ class ShopsController extends Controller
         //foreach構文内用の箱を用意
         $methodColl = collect();
         foreach( $ar_method as $method ){
-        //それぞれのコレクションをに追加する。
+          //それぞれのコレクションをに追加する。
           $methodColl = $methodColl->merge($shops->where($method, 1));
         }
-      //絞込み結果を$shopsに戻す
+        //絞込み結果を$shopsに戻す
         $shops = $methodColl;
-      //重複をなくす
+        //重複をなくす
         $shops = $shops->unique();
       }
-
-//絞込みここまで
+      //絞込みここまで
 
       //中心の位置座標 何も入れなければ品川に。
       $latlng = ['lat'=>35.6284, 'lng'=>139.736571];
