@@ -19,6 +19,7 @@ function startNavi(position) {
 // 移動した時の現在地をマーカーで表示
 function navigation(position){ 
   current = new google.maps.LatLng(position.coords.latitude, position.coords.longitude); // 現在地の緯度経度取得
+
   errCir.setMap(null); // すで表示されている円を削除
   userMarker.setMap(null); // すで表示されているを削除
   marker.setMap(null); // すで表示されているを削除
@@ -26,15 +27,19 @@ function navigation(position){
   drawUserMarker(position);
 
   // 2018/07/12 ここまで直線距離を計算する (m)
-  console.log(steps[stepNum]);
-  var dffDistance = Math.sqrt(
-                  Math.pow((current.lat() - stepLat) * 110946.2521, 2)
-                + Math.pow((current.lng() - stepLng) *  90881.8492, 2)
-            );
-  // 近かったらmodalを表示
-  if (dffDistance < 50.) {
-    insertModal(steps[stepNum]);
-    stepNum++;
+  //console.log(steps[stepNum]);
+  var dffDistance = null;
+  if( stepNum ){
+    dffDistance = measureDis(current, steps[stepNum].e_latlng);
+    if (dffDistance < 50.) {// 近かったらmodalを表示
+      $('#naviComplete').modal();
+    }
+  }else{
+    dffDistance = measureDis(current, steps[stepNum].s_latlng);
+    if (dffDistance < 50.) {// 近かったらmodalを表示
+      insertModal(steps[stepNum]);
+      stepNum++;
+    }
   }
 }
 
@@ -47,10 +52,11 @@ function displayRoute(result, status) {
   route = result.routes[0].legs[0].steps;
   for (var i in route) {
     steps.push({
-      latlng  : route[i].start_location, // ステップの緯度を取得
+      s_latlng  : route[i].start_location, // ステップの緯度を取得
       comment : route[i].instructions, // ステップの説明を取得
       duration: route[i].duration.text, // ステップの時間を取得
       distance: route[i].distance.text, // ステップの距離を取得
+      e_latlng  : route[i].end_location, // ステップの緯度を取得
     });
   }
   insertModal(steps[0]);
@@ -61,5 +67,14 @@ function insertModal(step){
   document.getElementById('step_comment').innerHTML=step.comment;
   document.getElementById('step_duration').innerHTML=step.duration;
   document.getElementById('step_distance').innerHTML=step.distance;
-  $('#sampleModal').modal();
+  $('#naviModal').modal();
+}
+ 
+function measureDis(latlng1, latlng2){
+  var distance = Math.sqrt(
+                    Math.pow((current.lat - stepLatLng.lat) * 110946.2521, 2)
+                  + Math.pow((current.lng - stepLatLng.lng) *  90881.8492, 2)
+    );
+  
+  return distance;
 }

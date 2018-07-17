@@ -4,6 +4,6 @@ function displayShops(latlng) {
     var shopsLatLng = {lat:shops[i].lat, lng:shops[i].lon};
     var shopsMarker = new google.maps.Marker({ position:shopsLatLng, map:map});
   }
-  navigator.geolocation.getCurrentPosition(drawUserMarker(position), errorCallback);
+  navigator.geolocation.getCurrentPosition(drawUserMarker, errorCallback);
 }
 
