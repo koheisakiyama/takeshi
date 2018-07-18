@@ -12,9 +12,13 @@ function startNavi(position) {
     destination: g_latlng,   // 到着地点の緯度、経度
     travelMode: google.maps.DirectionsTravelMode.WALKING // ルートの種類
     //travelMode: google.maps.DirectionsTravelMode.DRIVING // ルートの種類
+    //travelMode: google.maps.DirectionsTravelMode.TRANSIT // ルートの種類
+    //travelMode: google.maps.DirectionsTravelMode.BICYCLING // ルートの種類
   };
   directionsService.route(request, displayRoute)
   console.log(steps.length);
+  insertModal(steps[0]);
+  stepNum++;
 }
 
 // 移動した時の現在地をマーカーで表示
@@ -28,7 +32,7 @@ function navigation(position){
   drawUserMarker(position);
 
   // 2018/07/12 ここまで直線距離を計算する (m)
-  console.log(steps[stepNum]);
+  //console.log(steps[stepNum]);
   var dffDistance = null;
   if( stepNum == steps.length){
     dffDistance = measureDis(current, g_latlng);
@@ -48,7 +52,6 @@ function displayRoute(result, status) {
   var directionsRenderer = new google.maps.DirectionsRenderer();
   directionsRenderer.setDirections(result); // 取得したルートをセット
   directionsRenderer.setMap(map); // ルートを地図に表示
-  directionsRenderer.setPanel(document.getElementById('directions_panel')); // 道順を表示する k-koda
 
   route = result.routes[0].legs[0].steps;
   for (var i in route) {
@@ -59,8 +62,7 @@ function displayRoute(result, status) {
       distance: route[i].distance.text, // ステップの距離を取得
     });
   }
-  insertModal(steps[0]);
-  stepNum++;
+  directionsRenderer.setPanel(document.getElementById('directions_panel')); // 道順を表示する k-koda
 }
 
 function insertModal(step){
