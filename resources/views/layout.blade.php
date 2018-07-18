@@ -6,12 +6,20 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-    <link href="{{ asset('assets/css/bootstrap.min.css')}}" rel='stylesheet' type='text/css'>
-    <link href="{{ asset('assets/css/bootstrap-multiselect.css')}}" rel='stylesheet' type='text/css'>
-    <script src="{{ asset('assets/javascripts/jquery-3.3.1.js') }}"></script>
-    <script src="{{ asset('assets/javascripts/bootstrap.min.js') }}"></script>
-    <script src="{{ asset('assets/javascripts/bootstrap-multiselect.js') }}"></script>
-    <style>
+    @if(env('APP_ENV') == "local")
+     <link href="/assets/css/bootstrap.min.css" rel='stylesheet' type='text/css'>
+     <link href="/assets/css/bootstrap-multiselect.css" rel='stylesheet' type='text/css'>
+     <script src="/assets/javascripts/jquery-3.3.1.js"></script>
+     <script src = "/assets/javascripts/bootstrap.min.js"></script>
+     <script src = "/assets/javascripts/bootstrap-multiselect.js"></script>
+   @else
+     <link href="{{ secure_asset('assets/css/bootstrap.min.css') }}" rel='stylesheet' type='text/css'>
+     <link href="{{ secure_asset('assets/css/bootstrap-multiselect.css') }}" rel='stylesheet' type='text/css'>
+     <script src="{{ secure_asset('assets/javascripts/jquery-3.3.1.js') }}"></script>
+     <script src = "{{ secure_asset('assets/javascripts/bootstrap.min.js') }}"></script>
+     <script src = "{{ secure_asset('assets/javascripts/bootstrap-multiselect.js') }}"></script>
+   @endif
+   <style>
       /* Always set the map height explicitly to define the size of the div
        * element that contains the map. */
       html, body, div.row-fluid, div.container-fluid{
@@ -79,7 +87,7 @@
   </head>
 
   <body>
-    <header class="page-header" style="padding: 0; margin:0; height:10%;width:100%;">
+    <header class="page-header" style="padding: 0;background-color: #A3D1FF; margin:0; height:10%;width:100%;">
       <nav class="navbar navbar-inverse" style="background-color: #A3D1FF; border-color: #A3D1FF; margin:0;">
         <div class="container-fluid">
          {{ Form::open(['action' => 'ShopsController@result', 'method' => 'get', 'style'=>'width=100%;']) }}
