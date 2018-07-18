@@ -1,10 +1,10 @@
 
 <!-- 会員登録用のファイル -->
 
-@extends('layout')
+<!-- @extends('layout') -->
 
 @section('content')
-<div class="contents row">
+<div class="contents row" style="margin-left: 10%;">
     <h2>Sign up</h2>
 
     {{ Form::open() }}
