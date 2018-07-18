@@ -3,10 +3,10 @@ function startNavi(position) {
   currentLocation(position);
 
   current = new google.maps.LatLng(position.coords.latitude, position.coords.longitude); // 現在地の緯度経度取得
-  var g_latlng = new google.maps.LatLng(g_ll); 
+  var g_latlng = new google.maps.LatLng(g_ll);
   var directionsService = new google.maps.DirectionsService();
 
-  // ルートを取得
+  // ルートを取得、ここで出発地点と到着地点の２点を取得してルート表示をする。（交通手段も選べる）
   var request = {
     origin:      current,   // 出発地点の緯度、経度
     destination: g_latlng,   // 到着地点の緯度、経度
@@ -50,6 +50,8 @@ function displayRoute(result, status) {
   directionsRenderer.setPanel(document.getElementById('directions_panel')); // 道順を表示する k-koda
 
   route = result.routes[0].legs[0].steps;
+  //stepsをdistance、durationにかえると時間や距離が出てくる。
+  
   for (var i in route) {
     steps.push({
       s_latlng  : route[i].start_location, // ステップの緯度を取得
