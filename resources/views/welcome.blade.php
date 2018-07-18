@@ -4,11 +4,11 @@
         <title>pay search</title>
 
         <link href="https://fonts.googleapis.com/css?family=Lato:100" rel="stylesheet" type="text/css">
-        <link href="{{ asset('assets/css/bootstrap.min.css')}}" rel='stylesheet' type='text/css'>
-    <link href="{{ asset('assets/css/bootstrap-multiselect.css')}}" rel='stylesheet' type='text/css'>
-    <script src="{{ asset('assets/javascripts/jquery-3.3.1.js') }}"></script>
-    <script src = "{{ asset('assets/javascripts/bootstrap.min.js') }}"></script>
-    <script src = "{{ asset('assets/javascripts/bootstrap-multiselect.js') }}"></script>
+        <link href="{{ asset('assets/css/bootstrap.min.css', isset($_SERVER['HTTPS'])) }}" rel='stylesheet' type='text/css'>
+    <link href="{{ asset('assets/css/bootstrap-multiselect.css', isset($_SERVER['HTTPS'])) }}" rel='stylesheet' type='text/css'>
+    <script src="{{ asset('assets/javascripts/jquery-3.3.1.js', isset($_SERVER['HTTPS'])) }}"></script>
+    <script src ="{{ asset('assets/javascripts/bootstrap.min.js', isset($_SERVER['HTTPS'])) }}"></script>
+    <script src ="{{ asset('assets/javascripts/bootstrap-multiselect.js', isset($_SERVER['HTTPS'])) }}"></script>
 
         <style>
             html, body {
