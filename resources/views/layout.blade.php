@@ -6,19 +6,12 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-    @if(env('APP_ENV') == "local")
-     <link href="/assets/css/bootstrap.min.css" rel='stylesheet' type='text/css'>
-     <link href="/assets/css/bootstrap-multiselect.css" rel='stylesheet' type='text/css'>
-     <script src="/assets/javascripts/jquery-3.3.1.js"></script>
-     <script src = "/assets/javascripts/bootstrap.min.js"></script>
-     <script src = "/assets/javascripts/bootstrap-multiselect.js"></script>
-   @else
-     <link href="{{ secure_asset('assets/css/bootstrap.min.css') }}" rel='stylesheet' type='text/css'>
-     <link href="{{ secure_asset('assets/css/bootstrap-multiselect.css') }}" rel='stylesheet' type='text/css'>
-     <script src="{{ secure_asset('assets/javascripts/jquery-3.3.1.js') }}"></script>
-     <script src = "{{ secure_asset('assets/javascripts/bootstrap.min.js') }}"></script>
-     <script src = "{{ secure_asset('assets/javascripts/bootstrap-multiselect.js') }}"></script>
-   @endif
+     <link href='/assets/css/bootstrap.min.css' rel='stylesheet' type='text/css'>
+     <link href='/assets/css/bootstrap-multiselect.css' rel='stylesheet' type='text/css'>
+     <script src='/assets/javascripts/jquery-3.3.1.js'></script>
+     <script src ='/assets/javascripts/bootstrap.min.js'></script>
+     <script src ='/assets/javascripts/bootstrap-multiselect.js'></script>
+     
    <style>
       /* Always set the map height explicitly to define the size of the div
        * element that contains the map. */
@@ -148,12 +141,12 @@
             timeout            : 9000,
           };
         </script>
-        <script src="{{ asset('assets/javascripts/shops/errorCallback.js') }}"></script>
-        <script src="{{ asset('assets/javascripts/shops/initMap.js') }}"></script>
-        <script src="{{ asset('assets/javascripts/shops/drawUserMarker.js') }}"></script>
-        <script src="{{ asset('assets/javascripts/shops/currentLocation.js') }}"></script>
-        <script src="{{ asset('assets/javascripts/shops/result.js') }}"></script>
-        <script src="{{ asset('assets/javascripts/shops/navi.js') }}"></script>
+        <script src='/assets/javascripts/shops/errorCallback.js'></script>
+        <script src='/assets/javascripts/shops/initMap.js'></script>
+        <script src='/assets/javascripts/shops/drawUserMarker.js'></script>
+        <script src='/assets/javascripts/shops/currentLocation.js'></script>
+        <script src='/assets/javascripts/shops/result.js'></script>
+        <script src='/assets/javascripts/shops/navi.js'></script>
         <script async defer src="https://maps.googleapis.com/maps/api/js?key={{ env('Google_API_Key') }}"></script>
         @yield ('content')
 
