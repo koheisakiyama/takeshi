@@ -137,16 +137,14 @@
           // 現在地取得のオプション
           var getOpt = {
             enableHighAccuracy : true,
-            maximumAge         : 10000,
-            timeout            : 9000,
+            maximumAge         : 30000,
+            timeout            : 30000,
           };
         </script>
         <script src="{{ asset('assets/javascripts/shops/errorCallback.js') }}"></script>
         <script src="{{ asset('assets/javascripts/shops/initMap.js') }}"></script>
         <script src="{{ asset('assets/javascripts/shops/drawUserMarker.js') }}"></script>
         <script src="{{ asset('assets/javascripts/shops/currentLocation.js') }}"></script>
-        <script src="{{ asset('assets/javascripts/shops/result.js') }}"></script>
-        <script src="{{ asset('assets/javascripts/shops/navi.js') }}"></script>
         @yield ('content')
 
       </div>

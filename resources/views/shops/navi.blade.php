@@ -36,8 +36,9 @@
   		</div>
   	</div>
   </div>
+
+  <script src="{{ asset('assets/javascripts/shops/navi.js') }}"></script>
   <script type="text/javascript">
-  
     var route = null;
     var stepNum = 0; // ステップ番号
     var steps = new Array();
