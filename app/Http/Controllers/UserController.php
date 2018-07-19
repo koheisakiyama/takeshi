@@ -1,6 +1,3 @@
-
-<!-- ログイン・会員登録用のコントローラー -->
-
 <?php
 
 namespace App\Http\Controllers;
@@ -9,7 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Shop;
-use App\User;
+use Auth;
 
 class UserController extends Controller
 {
@@ -28,7 +25,7 @@ class UserController extends Controller
       $name = Auth::user()->name;
       // $history = History::where('id', Auth::user()->id)->pagenate(5);
 
-      return view ('user.history');
+      return view ('auth.history');
     }
 
     // 以下省略
