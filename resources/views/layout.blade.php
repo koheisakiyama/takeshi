@@ -102,7 +102,7 @@
             @if (Auth::check())
                 <!-- ルートを変更が必要 -->
                 <li class="navbar-right"><a href="/logout">ログアウト</a></li>
-                <li class="navbar-right"><a class="" href="/search">閲覧履歴</a></li>
+                <li class="navbar-right"><a class="" href="/history">閲覧履歴</a></li>
             @else
                 <!-- ルートを変更が必要 -->
                 <li class="navbar-right" style="margin-right: 75px;"><a href="/login" style="width: 15%;"><button type="button" class="btn btn-default navbar-btn">ログイン</button></a></li>
