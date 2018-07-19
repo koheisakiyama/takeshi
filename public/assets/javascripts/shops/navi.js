@@ -1,56 +1,55 @@
-function displayRoute(result, status) {
-  var directionsRenderer = new google.maps.DirectionsRenderer();
-  directionsRenderer.setDirections(result); // 取得したルートをセット
-  directionsRenderer.setMap(map); // ルートを地図に表示
-
-  route = result.routes[0].legs[0].steps;
-  console.log(result.routes[0].legs[0].duration.text);
-  for (var i in route) {
-    steps.push({
-      latlng  : route[i].start_location, // ステップの緯度を取得
-      comment : route[i].instructions, // ステップの説明を取得
-      duration: route[i].duration.text, // ステップの時間を取得
-      distance: route[i].distance.text, // ステップの距離を取得
-    });
-  }
-  console.log(steps.length);
-  directionsRenderer.setPanel(document.getElementById('directions_panel')); // 道順を表示する k-koda
-}
-
-function startNavi(position) {
+function displayRoute(latlng1, latlng2, modeType) {
   // 地図とユーザーのマーカーの作成と表示
-  currentLocation(position);
-
-  current = new google.maps.LatLng(position.coords.latitude, position.coords.longitude); // 現在地の緯度経度取得
-  var g_latlng = new google.maps.LatLng(g_ll); 
+  if(null == s_latlng) {
+    currentLocation(position);
+    current = new google.maps.LatLng(position.coords.latitude, position.coords.longitude); // 現在地の緯度経度取得
+  }
+  var s_latlng = current;
+   
   var directionsService = new google.maps.DirectionsService();
 
-  switch("transit"){
+  switch(modeType){
     case "driving":
-          modeType = google.maps.DirectionsTravelMode.DRIVING; // 自動車
-          break;
-    case "transit":
-          modeType = google.maps.DirectionsTravelMode.TRANSIT; // 電車
-          break;
+      travelMode=google.maps.DirectionsTravelMode.DRIVING;
+      break;
     case "bicycling":
-          modeType = google.maps.DirectionsTravelMode.BICYCLING // 自転車
-          break;
-    default: // デフォルトは徒歩
-          modeType = google.maps.DirectionsTravelMode.WALKING; // 徒歩
-          break;
-    
+      travelMode=google.maps.DirectionsTravelMode.BICYCLING;
+      break;
+    case "transit":
+      travelMode=google.maps.DirectionsTravelMode.TRANSIT;
+      break;
+    default:
+      travelMode=google.maps.DirectionsTravelMode.WALKING;
+      break;
   }
-  // ルートの設定
-  var request = {
-    origin:      current,   // 出発地点の緯度、経度
-    destination: g_latlng,   // 到着地点の緯度、経度
-    travelMode:  modeType,// ルートの種類
+  var request={
+      origin:,         /* 出発地点 */
+      destination:new google.maps.LatLng(latlng2),      /* 到着地点 */
+      travelMode:travelMode            /* 交通手段 */
   };
   // ルートを取得
   directionsService.route(request, function(result, status){
-    displayRoute(result, status);
-    insertModal(steps[0]);
+    var directionsRenderer = new google.maps.DirectionsRenderer();
+    directionsRenderer.setDirections(result); // 取得したルートをセット
+    directionsRenderer.setMap(map); // ルートを地図に表示
+
+    route = result.routes[0].legs[0].steps;
+    console.log(result.routes[0].legs[0].duration.text);
+    for (var i in route) {
+      steps.push({
+        latlng  : route[i].start_location, // ステップの緯度を取得
+        comment : route[i].instructions, // ステップの説明を取得
+        duration: route[i].duration.text, // ステップの時間を取得
+        distance: route[i].distance.text, // ステップの距離を取得
+      });
+    }
+    console.log(steps.length);
+    directionsRenderer.setPanel(document.getElementById('directions_panel')); // 道順を表示する k-koda
   });
+}
+
+function startNavi(result, status) {
+    insertModal(steps[0]);
 }
 
 // 移動した時の現在地をマーカーで表示

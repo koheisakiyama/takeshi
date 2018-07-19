@@ -42,10 +42,12 @@
     var route = null;
     var stepNum = 0; // ステップ番号
     var steps = new Array();
-    var modeType = "walking";
+    var modeType = <?php echo json_encode($modeType); ?>;
     console.log(modeType);
     var s_ll = <?php echo json_encode($s_latlng); ?>; 
-    var g_ll = <?php echo json_encode($g_latlng); ?>; 
+    var g_ll = <?php echo json_encode(['lat'=>$shop->lat, 'lng'=>$shop->lon]); ?>; 
+    console.log(g_ll);
+    displayRoute();
     // 誤差円のオプション
     navigator.geolocation.getCurrentPosition(startNavi, errorCallback,  getOpt);
     // 移動時の現在地の取得

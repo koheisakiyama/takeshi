@@ -3,12 +3,12 @@
 
   <div id="map" style="width: 100%; height: 75%;"></div>
   <div id="select_panel" style="width: 100%; height: 25%;background-color:#A3D1FF;">
-    {{ Form::open(['url' => '/navi/$shop->id', 'method' => 'get', 'style'=>'width=100%;']) }}
+    {{ Form::open(['url' => "/navi/$shop->id", 'method' => 'get', 'style'=>'width=100%;']) }}
       <ul class="nav navbar-nav" style="padding: 0px;width:100%;">
         <li>
           <div style="margin: 15px;">
-            {{ Form::label('keyword', '出発地点') }}
-            {{ Form::text('keyword', '', ['placeholder' => '現在地', 'style' => 'width: 100%;height: 30px;margin-top:15px;']) }}
+            {{ Form::label('startPos', '出発地点') }}
+            {{ Form::text('startPos', '{lat: 35.689032, lng: 139.698044}', ['placeholder' => '現在地', 'style' => 'width: 100%;height: 30px;margin-top:15px;']) }}
           </div>
         </li><!-- フリーワード検索ボックス -->
         <li style="margin: 15px;">
