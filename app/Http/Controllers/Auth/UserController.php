@@ -10,15 +10,16 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Shop;
 
-class LoginController extends Controller
+class UserController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth', array());
+        $this->middleware('auth', array('except' => 'login'));
     }
 
     public function login() {
-      return view ('content');
+      $login = "ログイン画面";
+      return view ('user.login');
     }
 
     // 以下省略

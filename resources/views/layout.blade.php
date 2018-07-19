@@ -87,38 +87,32 @@
           <ul class="nav navbar-nav" style="padding: 0px;width:100%;">
             <li class="active"><a href="/" style="padding: 0;background-color: #A3D1FF; margin:0;"><h1 style="margin: 10px;">pay search</h1></a></li>
             <li style="width:15%"><a>@include ('shops.details.how')</a></li>
-            <li style="width:15%"><a>@include ('shops.details.what')</a></li>
-            <li style="width:15%"><a>@include ('shops.details.where')</a></li>
+            <li style="width:10%"><a>@include ('shops.details.what')</a></li>
+            <li style="width:10%"><a>@include ('shops.details.where')</a></li>
             <li>
               <div style="margin: 15px;margin-right: 20px;">
                 {{ Form::text('keyword', '', ['placeholder' => 'フリーワード検索', 'style' => 'width: 100%;height: 30px;']) }}
               </div>
             </li><!-- フリーワード検索ボックス -->
-            <li style="margin-left: 50px;">
+            <li style="width: 5%;">
               <a>{{ Form::submit('検索', ['class' => 'btn btn-primary navbar-form']) }}</a>
             </li><!-- 検索ボタン -->
-          </ul>
-          {{ Form::close() }}
+            {{ Form::close() }}
 
-                                          <!-- 会員機能関連 -->
-<!--         <ul class="navbar-right" style="margin-right: 75px;margin-top: 10px;list-style: none;">
-          <li>
+            <!-- 会員機能関連 -->
             @if (Auth::check())
-              <div class="user_nav grid-6"> -->
                 <!-- ルートを変更が必要 -->
-<!--                 <a href="/">ログアウト</a>
-                <a class="post" href="/">投稿する</a>
-              </div>
+                <li class="navbar-right"><a href="/logout">ログアウト</a></li>
+                <li class="navbar-right"><a class="" href="/history">閲覧履歴</a></li>
             @else
-              <div class="grid-6">
- -->                <!-- ルートを変更が必要 -->
-<!--                 <a href="menbers/auth/login/" class="" style="width: 125px;height: 64px"><button type="button" class="btn btn-default navbar-btn">ログイン</button></a>
-                <a href="/" class="" style="width: 125px;height: 64px"><button type="button" class="btn btn-default navbar-btn">新規登録</button></a>
-              </div>
+                <!-- ルートを変更が必要 -->
+                <li class="navbar-right" style="margin-right: 75px;"><a href="/login" style="width: 15%;"><button type="button" class="btn btn-default navbar-btn">ログイン</button></a></li>
+                <li class="navbar-right" style="margin-right: 15px; "><a href="/register" style="width: 15%;"><button type="button" class="btn btn-default navbar-btn">新規登録</button></a></li>
             @endif
-          </li>
-        </ul>
- -->            <!-- 会員機能関連ここまで -->
+
+          </ul>
+          
+            <!-- 会員機能関連ここまで -->
 
 
         </div>
