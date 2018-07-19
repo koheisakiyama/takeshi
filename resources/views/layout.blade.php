@@ -11,7 +11,6 @@
      <script src='/assets/javascripts/jquery-3.3.1.js'></script>
      <script src ='/assets/javascripts/bootstrap.min.js'></script>
      <script src ='/assets/javascripts/bootstrap-multiselect.js'></script>
-     
    <style>
       /* Always set the map height explicitly to define the size of the div
        * element that contains the map. */
@@ -103,7 +102,7 @@
             @if (Auth::check())
                 <!-- ルートを変更が必要 -->
                 <li class="navbar-right"><a href="/logout">ログアウト</a></li>
-                <li class="navbar-right"><a class="" href="/history">閲覧履歴</a></li>
+                <li class="navbar-right"><a class="" href="/users/1">閲覧履歴</a></li>
             @else
                 <!-- ルートを変更が必要 -->
                 <li class="navbar-right" style="margin-right: 75px;"><a href="/login" style="width: 15%;"><button type="button" class="btn btn-default navbar-btn">ログイン</button></a></li>
@@ -111,7 +110,6 @@
             @endif
 
           </ul>
-          
             <!-- 会員機能関連ここまで -->
 
 

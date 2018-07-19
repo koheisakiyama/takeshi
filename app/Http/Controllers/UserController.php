@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Shop;
+use App\User;
 
 class UserController extends Controller
 {
@@ -20,6 +21,14 @@ class UserController extends Controller
     public function login() {
       $login = "ログイン画面";
       return view ('user.login');
+    }
+
+//マイページの表示
+    public function show() {
+      $name = Auth::user()->name;
+      // $history = History::where('id', Auth::user()->id)->pagenate(5);
+
+      return view ('user.history');
     }
 
     // 以下省略

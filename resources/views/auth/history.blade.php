@@ -1,12 +1,5 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>pay search</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-
-  <body>
+@extends ('layout');
+@section ('content');
 
 <div id="map" style="height:75%;width:100%"></div>
   <div class="result-list pre-scrollable" style="height:25%;">
@@ -44,5 +37,4 @@
     displayShops(areaLatLng);
   </script>
 
-  </body>
-</html>
+@endsection
