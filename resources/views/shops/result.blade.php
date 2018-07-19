@@ -25,7 +25,7 @@
           @else
             <a href="{{ $shop->link }}" style="font-size: 17px; color: #6495ED">店舗情報</a>
           @endif
-            <a href="/navi/{{ $shop->id }}" style="font-size: 17px; color: #6495ED">ナビの開始</a>
+            <a href="/select/{{ $shop->id }}" style="font-size: 17px; color: #6495ED">このお店に行きたい</a>
           </li>
         @endforeach
       </ul>
