@@ -6,12 +6,12 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-    <link href="{{ asset('assets/css/bootstrap.min.css')}}" rel='stylesheet' type='text/css'>
-    <link href="{{ asset('assets/css/bootstrap-multiselect.css')}}" rel='stylesheet' type='text/css'>
-    <script src="{{ asset('assets/javascripts/jquery-3.3.1.js') }}"></script>
-    <script src="{{ asset('assets/javascripts/bootstrap.min.js') }}"></script>
-    <script src="{{ asset('assets/javascripts/bootstrap-multiselect.js') }}"></script>
-    <style>
+     <link href='/assets/css/bootstrap.min.css' rel='stylesheet' type='text/css'>
+     <link href='/assets/css/bootstrap-multiselect.css' rel='stylesheet' type='text/css'>
+     <script src='/assets/javascripts/jquery-3.3.1.js'></script>
+     <script src ='/assets/javascripts/bootstrap.min.js'></script>
+     <script src ='/assets/javascripts/bootstrap-multiselect.js'></script>
+   <style>
       /* Always set the map height explicitly to define the size of the div
        * element that contains the map. */
       html, body, div.row-fluid, div.container-fluid{
@@ -102,7 +102,7 @@
             @if (Auth::check())
                 <!-- ルートを変更が必要 -->
                 <li class="navbar-right"><a href="/logout">ログアウト</a></li>
-                <li class="navbar-right"><a class="" href="/history">閲覧履歴</a></li>
+                <li class="navbar-right"><a class="" href="/users/1">閲覧履歴</a></li>
             @else
                 <!-- ルートを変更が必要 -->
                 <li class="navbar-right" style="margin-right: 75px;"><a href="/login" style="width: 15%;"><button type="button" class="btn btn-default navbar-btn">ログイン</button></a></li>
@@ -110,7 +110,6 @@
             @endif
 
           </ul>
-          
             <!-- 会員機能関連ここまで -->
 
 
@@ -134,12 +133,12 @@
             timeout            : 9000,
           };
         </script>
-        <script src="{{ asset('assets/javascripts/shops/errorCallback.js') }}"></script>
-        <script src="{{ asset('assets/javascripts/shops/initMap.js') }}"></script>
-        <script src="{{ asset('assets/javascripts/shops/drawUserMarker.js') }}"></script>
-        <script src="{{ asset('assets/javascripts/shops/currentLocation.js') }}"></script>
-        <script src="{{ asset('assets/javascripts/shops/result.js') }}"></script>
-        <script src="{{ asset('assets/javascripts/shops/navi.js') }}"></script>
+        <script src='/assets/javascripts/shops/errorCallback.js'></script>
+        <script src='/assets/javascripts/shops/initMap.js'></script>
+        <script src='/assets/javascripts/shops/drawUserMarker.js'></script>
+        <script src='/assets/javascripts/shops/currentLocation.js'></script>
+        <script src='/assets/javascripts/shops/result.js'></script>
+        <script src='/assets/javascripts/shops/navi.js'></script>
         <script async defer src="https://maps.googleapis.com/maps/api/js?key={{ env('Google_API_Key') }}"></script>
         @yield ('content')
 

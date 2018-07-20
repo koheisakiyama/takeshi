@@ -1,6 +1,3 @@
-
-<!-- ログイン・会員登録用のコントローラー -->
-
 <?php
 
 namespace App\Http\Controllers;
@@ -9,6 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Shop;
+use Auth;
 
 class UserController extends Controller
 {
@@ -20,6 +18,16 @@ class UserController extends Controller
     public function login() {
       $login = "ログイン画面";
       return view ('user.login');
+    }
+
+//マイページ(閲覧履歴)の表示
+    public function show() {
+      $name = Auth::user()->name;
+      $history = History::where('shop_id', Auth::user('user_id')->id)->pagenate(5);
+
+      return view ('auth.history')->with(array('history' => $history));
+
+
     }
 
     // 以下省略
