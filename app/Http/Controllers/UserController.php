@@ -17,8 +17,13 @@ class UserController extends Controller
 
     public function login() {
       $login = "ログイン画面";
-      return view ('user.login');
+
+      return view ('auth.login');
     }
+    public function complete(){
+      $c_singup = "登録完了";
+      return view ('auth.complete');
+          }
 
 //マイページ(閲覧履歴)の表示
     public function show() {
@@ -26,7 +31,6 @@ class UserController extends Controller
       $history = History::where('shop_id', Auth::user('user_id')->id)->pagenate(5);
 
       return view ('auth.history')->with(array('history' => $history));
-
 
     }
 
