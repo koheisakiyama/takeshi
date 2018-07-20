@@ -19,6 +19,7 @@
             <p style="float: left; font-size: 18px; margin-right: 15px;"></p>
             <p style="float: left; font-size: 16px;">{{ $shop->address }}</p>
             <p style="float: left; font-size: 18px; margin-right: 15px; margin-left: 15px;">/</p>
+            <!-- <script>ここに現在地と店のlatlonnngを取得、現在地と各店舗の差を計算した結果を表示する。foreachが実行されるのは確認済み</script> -->
             <p style="float: left; font-size: 16px;">{{ $shop->time }}</p>
             <p style="font-size: 18px; margin-left: 15px; color: #F0F0F0">/</p>
           @if ( $shop->link == "なし")
@@ -33,12 +34,29 @@
       </ul>
   </div>
 
-//デフォルトで出発地を現在地に　//出発地とlatlngの差を求めて現在地からの距離を出す　//差をviewに表示する
+
   <script type="text/javascript">
     var areaLatLng = <?php echo json_encode($latlng); ?> ;
     //var latlng = <?php echo json_encode($latlng); ?> ;
     var shops = <?php echo json_encode($shops); ?> ;
     displayShops(areaLatLng);
+
+//g_latlng=店の緯度経度。
+ //処理を順番に行う処理。
+    function func1(){
+     return new Promise(
+       function (resolve, reject){
+         console.log(current);
+         //デフォルトで出発地を現在地に。現在地取得処理でgetしたlatlngを取得する
+         resolve(現在地のlatlngをfuc2に引数として渡す。);
+       });
+   }
+
+   function func2(hoge){
+    //三平方の定理？　出発地とlatlngの差を求めて現在地からの距離を出す。
+   }
+   func1().then(func2);
+   //差を投げる。それぞれの店舗情報のところで実行する。
   </script>
 
 @endsection
