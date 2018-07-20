@@ -1,4 +1,4 @@
-<!-- @extends('layout') -->
+@extends('layout')
 
 @section('content')
 <div class="contents row" style="margin-left: 10%;">
@@ -23,7 +23,7 @@
 
 
         <div class="actions">
-            <input type="submit" value="Log in">
+            <input type="submit" value="Log in" href='search'>
         </div>
     {{ Form::close() }}
 </div>
