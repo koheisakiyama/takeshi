@@ -22,8 +22,8 @@ class UserController extends Controller
 
 //マイページ(閲覧履歴)の表示
     public function show() {
-      $name = Auth::user()->name;
-      $history = History::where('shop_id', Auth::user('user_id')->id)->pagenate(5);
+      $name = Auth::user($id)->name;
+      $history = History::where('user_id', $id)->pagenate(5);
 
       return view ('auth.history')->with(array('history' => $history));
 
