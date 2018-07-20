@@ -33,7 +33,7 @@
         </div>
 
         <div class="actions">
-            <input type="submit" value="Sign up">
+            <input type="submit" value="Sign up" href='/complete'>
         </div>
     {{ Form::close() }}
 </div>
