@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddColumnShopsTable extends Migration
+class CreateHistoriesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,8 +12,11 @@ class AddColumnShopsTable extends Migration
      */
     public function up()
     {
-        Schema::table('shops', function (Blueprint $table) {
-            $table->text('link');
+        Schema::create('histories', function (Blueprint $table) {
+            $table->increments('id');
+            $table->integer('user_id');
+            $table->integer('shop_id');
+            $table->timestamps();
         });
     }
 
@@ -24,8 +27,6 @@ class AddColumnShopsTable extends Migration
      */
     public function down()
     {
-        Schema::table('shops', function (Blueprint $table) {
-            //
-        });
+        Schema::drop('histories');
     }
 }

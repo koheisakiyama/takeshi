@@ -24,7 +24,7 @@ class ShopsController extends Controller
       $area = $request->area;
       $category = $request->category;
       $ar_method = $request->method;
-// 絞り込み
+      // 絞り込み
 
       //キーワード検索
       $shops = Shop::where('name', 'LIKE', "%{$request->keyword}%")->get();
@@ -74,7 +74,6 @@ class ShopsController extends Controller
     //出発地(検索で選択された場所)と目的地(クリックされた店のid)のlatとlonを取得、ビューに渡す。seina
 
     $shop = Shop::find($id); //idからDBにアクセスして取得したレコード。
-
     $s_latlng = ['lat'=>35.65803, 'lng'=>139.699447];
     //出発地の場合分けをする 江田
       switch ($shop->area) {
@@ -89,8 +88,7 @@ class ShopsController extends Controller
           break;
       }
         
-       $g_latlng = ['lat'=>$shop->lat, 'lng'=>$shop->lon];
-
+      $g_latlng = ['lat'=>$shop->lat, 'lng'=>$shop->lon];
       return view('shops.navi')->with(['s_latlng' => $s_latlng, 'g_latlng'=>$g_latlng]);
     }
 }
