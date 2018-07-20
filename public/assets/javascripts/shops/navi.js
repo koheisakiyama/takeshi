@@ -1,10 +1,11 @@
 function displayRoute(latlng1, latlng2, modeType) {
   // 地図とユーザーのマーカーの作成と表示
+  var s_latlng = new google.maps.LatLng(latlng1);
+  var g_latlng = new google.maps.LatLng(latlng2);
   if(null == s_latlng) {
     currentLocation(position);
-    current = new google.maps.LatLng(position.coords.latitude, position.coords.longitude); // 現在地の緯度経度取得
+    s_latlng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude); // 現在地の緯度経度取得
   }
-  var s_latlng = current;
    
   var directionsService = new google.maps.DirectionsService();
 
@@ -24,7 +25,7 @@ function displayRoute(latlng1, latlng2, modeType) {
   }
   var request={
       origin:,         /* 出発地点 */
-      destination:new google.maps.LatLng(latlng2),      /* 到着地点 */
+      destination:,      /* 到着地点 */
       travelMode:travelMode            /* 交通手段 */
   };
   // ルートを取得
