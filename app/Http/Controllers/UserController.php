@@ -1,6 +1,3 @@
-
-<!-- ログイン・会員登録用のコントローラー -->
-
 <?php
 
 namespace App\Http\Controllers;
@@ -19,7 +16,11 @@ class UserController extends Controller
 
     public function login() {
       $login = "ログイン画面";
-      return view ('user.login');
+      return view ('auth.login');
+    }
+    public function complete(){
+      $c_singup = "登録完了";
+      return view ('auth.complete');
     }
 
     // 以下省略

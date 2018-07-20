@@ -100,9 +100,26 @@
 
             <!-- 会員機能関連 -->
             @if (Auth::check())
-                <!-- ルートを変更が必要 -->
-                <li class="navbar-right"><a href="/logout">ログアウト</a></li>
-                <li class="navbar-right"><a class="" href="/history">閲覧履歴</a></li>
+                <!-- ログイン機能Ver1 -->
+<!--                 <li class="navbar-right"><a href="/logout">ログアウト</a></li>
+                <li class="navbar-right"><a class="" href="/complete">閲覧履歴</a></li> -->
+
+                <!-- ログイン機能ver2 -->
+                <div class="navbar-right" style="margin-right: 3%;font-size: 17px;">
+            <span>
+              <div style="margin-bottom: 0;margin-top: 1%;"> 
+              ようこそ{{ Auth::user()->name }}さん
+            </div>
+              <!-- <ul class="user__info"> -->
+                <li>
+                  <a href="/users/{{ Auth::user()->id }}"><button type="button" class="btn btn-primary navbar-form">マイページ</button></a>
+                  <a href="/logout"><button type="button" class="btn btn-primary navbar-form">ログアウト</button></a>
+                </li>
+              <!-- </ul> -->
+            </span>
+            <!-- <a class="post" href="/tweets/create">投稿する</a> -->
+          </div>
+
             @else
                 <!-- ルートを変更が必要 -->
                 <li class="navbar-right" style="margin-right: 75px;"><a href="/login" style="width: 15%;"><button type="button" class="btn btn-default navbar-btn">ログイン</button></a></li>
