@@ -20,12 +20,14 @@ class UserController extends Controller
       return view ('user.login');
     }
 
-//マイページの表示
+//マイページ(閲覧履歴)の表示
     public function show() {
       $name = Auth::user()->name;
-      // $history = History::where('id', Auth::user()->id)->pagenate(5);
+      $history = History::where('shop_id', Auth::user('user_id')->id)->pagenate(5);
 
-      return view ('auth.history');
+      return view ('auth.history')->with(array('history' => $history));
+
+
     }
 
     // 以下省略
