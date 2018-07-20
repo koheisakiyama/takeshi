@@ -1,6 +1,3 @@
-
-<!-- ログイン・会員登録用のコントローラー -->
-
 <?php
 
 namespace App\Http\Controllers;
