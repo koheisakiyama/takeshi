@@ -25,6 +25,17 @@ class UserController extends Controller
       return view ('auth.complete');
           }
 
+//閲覧履歴をテーブルに登録する
+    // public function store() {
+    //   History::create(
+    //     array(
+    //     'link' -> 
+    //   )
+    //   );
+
+    // }
+
+
 //マイページ(閲覧履歴)の表示
     public function show() {
       $name = Auth::user($id)->name;
