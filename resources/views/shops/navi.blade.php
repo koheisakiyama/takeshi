@@ -50,6 +50,7 @@
   navigator.geolocation.getCurrentPosition(startNavi, errorCallback,  getOpt);
   // 移動時の現在地の取得
   navigator.geolocation.watchPosition(navigation, errorCallback, getOpt);
+  
 </script>
 
 @endsection

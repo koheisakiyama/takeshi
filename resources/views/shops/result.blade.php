@@ -4,6 +4,7 @@
 
   <div id="map" style="height:75%;width:100%"></div>
   <div class="result-list pre-scrollable" style="height:25%;">
+  <script type=" "></script>
   <!--
     <input type="checkbox" id="navTgl">
     <label for="navTgl" class="open">≡</label>
@@ -25,16 +26,18 @@
           @else
             <a href="{{ $shop->link }}" style="font-size: 17px; color: #6495ED">店舗情報</a>
           @endif
-            <a href="/navi/{{ $shop->id }}" style="font-size: 17px; color: #6495ED">ナビの開始</a>
+            <a href="/navi/{{ $shop->id }}" style="font-size: 17px; color: #6495ED">ルート探索</a>
+            <p>ーーーーーーーーーー現在地からの距離：mーーーーーーーーーー</p>
           </li>
         @endforeach
       </ul>
   </div>
 
+//デフォルトで出発地を現在地に　//出発地とlatlngの差を求めて現在地からの距離を出す　//差をviewに表示する
   <script type="text/javascript">
     var areaLatLng = <?php echo json_encode($latlng); ?> ;
     //var latlng = <?php echo json_encode($latlng); ?> ;
-    var shops= <?php echo json_encode($shops); ?> ;
+    var shops = <?php echo json_encode($shops); ?> ;
     displayShops(areaLatLng);
   </script>
 

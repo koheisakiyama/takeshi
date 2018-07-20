@@ -71,7 +71,7 @@ function insertModal(step){
   document.getElementById('step_distance').innerHTML=step.distance;
   $('#naviModal').modal();
 }
- 
+
 function measureDis(latlng1, latlng2){
   var distance = Math.sqrt(
                     Math.pow((current.lat - stepLatLng.lat) * 110946.2521, 2)
