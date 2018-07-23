@@ -19,27 +19,7 @@
             <p style="float: left; font-size: 18px; margin-right: 15px;"></p>
             <p style="float: left; font-size: 16px;">{{ $shop->address }}</p>
             <p style="float: left; font-size: 18px; margin-right: 15px; margin-left: 15px;">/</p>
-            <!-- <script>ここに現在地と店のlatlonnngを取得、現在地と各店舗の差を計算した結果を表示する。foreachが実行されるのは確認済み</script> -->
-            <p style="float: left; font-size: 16px;">{{ $shop->time }}</p>
-            <p style="font-size: 18px; margin-left: 15px; color: #F0F0F0">/</p>
-          @if ( $shop->link == "なし")
-            <p>URLないです</p>
-          @else
-            <a href="{{ $shop->link }}" style="font-size: 17px; color: #6495ED">店舗情報</a>
-          @endif
-            <a href="/navi/{{ $shop->id }}" style="font-size: 17px; color: #6495ED">ルート探索</a>
-            <p>ーーーーーーーーーー現在地からの距離：mーーーーーーーーーー</p>
-          </li>
-        @endforeach
-      </ul>
-  </div>
-
-
-  <script type="text/javascript">
-    var areaLatLng = <?php echo json_encode($latlng); ?> ;
-    //var latlng = <?php echo json_encode($latlng); ?> ;
-    var shops = <?php echo json_encode($shops); ?> ;
-    displayShops(areaLatLng);
+            <!-- <script>ここに現在地と店のlatlonnngを取得、現在地と各店舗の差を計算した結果を表示する。foreachが実行されるのは確認済み
 
 //g_latlng=店の緯度経度。
  //処理を順番に行う処理。
@@ -57,6 +37,39 @@
    }
    func1().then(func2);
    //差を投げる。それぞれの店舗情報のところで実行する。
+
+const pro1 = new Promise(
+     function (resolve, reject){
+       var hoge=‘hoge’;
+       console.log(hoge);//１個めの処理
+       resolve(hoge);//２への引数
+     }
+   );
+   pro1.then(function(hoge){
+         console.log(‘fuga’+hoge); //２個めの処理
+     }
+   );
+            </script> -->
+            <p style="float: left; font-size: 16px;">{{ $shop->time }}</p>
+            <p style="font-size: 18px; margin-left: 15px; color: #F0F0F0">/</p>
+          @if ( $shop->link == "なし")
+            <p>URLないです</p>
+          @else
+            <a href="{{ $shop->link }}" style="font-size: 17px; color: #6495ED">店舗情報</a>
+          @endif
+            <a href="/navi/{{ $shop->id }}" style="font-size: 17px; color: #6495ED">ルート探索</a>
+            <p>ーーーーーーーーーー現在地からの距離：mーーーーーーーーーー</p>
+          </li>
+        @endforeach
+      </ul>
+  </div>
+
+  <script type="text/javascript">
+    var areaLatLng = <?php echo json_encode($latlng); ?> ;
+    //var latlng = <?php echo json_encode($latlng); ?> ;
+    var shops = <?php echo json_encode($shops); ?> ;
+    displayShops(areaLatLng);
+
   </script>
 
 @endsection

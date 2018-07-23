@@ -13,7 +13,7 @@ function startNavi(position) {
     travelMode: google.maps.DirectionsTravelMode.WALKING // ルートの種類
     //travelMode: google.maps.DirectionsTravelMode.DRIVING // ルートの種類
   };
-  directionsService.route(request, displayRoute)
+  directionsService.route(request, displayRoute) //ここでリクエストすることでresult,statusが取得できる。
 }
 
 // 移動した時の現在地をマーカーで表示

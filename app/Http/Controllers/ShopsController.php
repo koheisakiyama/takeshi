@@ -65,6 +65,8 @@ class ShopsController extends Controller
           $latlng = ['lat'=>35.65803, 'lng'=>139.699447];
           break;
       }
+      $url = "https://maps.googleapis.com/maps/api/distancematrix/json?origins={ }&destinations={ }&mode=walking&language=ja&key=AIzaSyAFuOXebpB74jiB1s4JCet2gEg2yHIKvhA";
+
 
       return view ('shops.result') -> with(['shops' => $shops, 'latlng'=>$latlng]);
     }
