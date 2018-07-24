@@ -23,6 +23,7 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
     public function history()
     {
       return $this->hasMany(history::class);

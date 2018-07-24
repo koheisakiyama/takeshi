@@ -57,7 +57,7 @@
 
             /*ボタン位置変更*/
             .white {
-                margin: 20px;
+                padding-top: 20px;
             }
 
 
@@ -67,7 +67,8 @@
         <div class="container">
             <div class="content">
                 <div class="title">pay search</div>
-                <div class="text">あなたのキャッシュレス決済を、もっと賢く、スマートに</div>
+                <div class="text" style="padding-bottom: 30px">
+                あなたのキャッシュレス決済を、もっと賢く、スマートに</div>
                 <!--ウェルカム画面のボタンを押すとindexに遷移する -->
                 <a href="/search" class="btn btn-primary btn-lg">
                 <i class="glyphicon glyphicon-ruble"></i>Lets start!!!</a>
