@@ -6,7 +6,10 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Shop;
+use App\History;
+use App\User;
 use Auth;
+
 
 class UserController extends Controller
 {
@@ -27,10 +30,11 @@ class UserController extends Controller
 
 //マイページ(閲覧履歴)の表示
     public function show() {
-      $name = Auth::user()->name;
-      $history = History::where('shop_id', Auth::user('user_id')->id)->pagenate(5);
+      // $name = Auth::user($id)->name;
+      // $histories = History::where('user_id', Auth::user()->id)->get()->pagenate(5);
 
-      return view ('auth.history')->with(array('history' => $history));
+      return view ('auth.history');
+      // ->with(array('name' => $name, 'history'=> $histories));
 
     }
 

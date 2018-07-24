@@ -100,9 +100,6 @@
 
             <!-- 会員機能関連 -->
             @if (Auth::check())
-                <!-- ログイン機能Ver1 -->
-<!--                 <li class="navbar-right"><a href="/logout">ログアウト</a></li>
-                <li class="navbar-right"><a class="" href="/complete">閲覧履歴</a></li> -->
 
                 <!-- ログイン機能ver2 -->
                 <div class="navbar-right" style="margin-right: 3%;font-size: 17px;">
