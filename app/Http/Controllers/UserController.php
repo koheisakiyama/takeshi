@@ -43,7 +43,6 @@ class UserController extends Controller
     public function show($id) {
       $name = Auth::user($id)->name;
       $history = History::where('user_id', $id)->get();
-      // $history = $history ->merge($user_search -> Shop::where('id', $shop_id))->paginate(5);
 
       return view ('auth.history')->with(array('name' => $name, 'history'=> $history));
 

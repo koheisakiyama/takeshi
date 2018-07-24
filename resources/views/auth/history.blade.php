@@ -3,7 +3,6 @@
 @section('content')
 <div class="contents row" style="margin-left: 10%;">
     <h2>{{ $name}}さんの閲覧履歴</h2>
-    <!-- {{ Form::open() }} -->
     <ul class="list-group search-result-list" style="margin-bottom:0px;">
         @foreach ($history as $histories)
           <li class="list-group-item search-result-item" style="background-color: #F0F0F0">
@@ -23,6 +22,5 @@
         @endforeach
       </ul>
 
-    <!-- {{ Form::close() }} -->
 </div>
 @endsection
