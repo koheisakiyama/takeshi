@@ -17,7 +17,7 @@
 
 </style>
 
-<div class="panel panel-default box-size clearfix" style="width: 20%; margin-top: 80px; ">
+<div class="panel panel-default box-size clearfix" style="width: 280px; margin-top: 80px; ">
 <div class="panel-body" >
 <!-- <div class="container"> -->
 <div class="contents row" style="margin-left: 20%;">

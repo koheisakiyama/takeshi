@@ -24,7 +24,7 @@
 
 </style>
 
-<div class="panel panel-default box-size clearfix" style="width: 30%; margin-top: 80px; ">
+<div class="panel panel-default box-size clearfix" style="width: 400px; margin-top: 80px; ">
 <div class="panel-body">
 <div class="contents row" style="margin-left: 20%;">
     <div class="space">

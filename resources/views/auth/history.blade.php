@@ -1,7 +1,17 @@
 @extends('layout')
 
 @section('content')
-<div class="contents row" style="margin-left: 10%;">
+
+<!-- <style>
+
+.box_size {
+  margin-right: 10%;
+}
+
+</style>
+ -->
+
+<div class="contents row" style="margin-left: 10%; margin-right: 10%">
     <h2>{{ $name}}さんの閲覧履歴</h2>
     <ul class="list-group search-result-list" style="margin-bottom:0px;">
         @foreach ($history as $histories)
