@@ -12,4 +12,8 @@ class History extends Model
     {
       return $this->belongsTo(user::class);
     }
+    public function shop()
+    {
+      return $this->belongsTo(shop::class);
+    }
 }
