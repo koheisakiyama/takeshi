@@ -31,7 +31,6 @@
       </ul>
   </div>
 
-  <script src="{{ asset('assets/javascripts/shops/result.js') }}"></script>
   <script type="text/javascript">
     var areaLatLng = <?php echo json_encode($latlng); ?> ;
     //var latlng = <?php echo json_encode($latlng); ?> ;

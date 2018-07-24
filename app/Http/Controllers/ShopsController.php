@@ -63,6 +63,9 @@ class ShopsController extends Controller
         case '渋谷':
           $latlng = ['lat'=>35.65803, 'lng'=>139.699447];
           break;
+        default:
+          $latlng = null;
+          break;
       }
 
       return view ('shops.result') -> with(['shops' => $shops, 'latlng'=>$latlng]);
@@ -80,7 +83,12 @@ class ShopsController extends Controller
       // ルート表示のコントローラー
       //出発地(検索で選択された場所)と目的地(クリックされた店のid)のlatとlonを取得、ビューに渡す。seina
       $shop = Shop::find($id); //idからDBにアクセスして取得したレコード。
-      $s_latlng = $request->startPos;
+      $s_latlng = null;
+      if(is_numeric($request->startLat) and is_numeric($request->startLng)){
+        $s_latlng = ['lat'=>floatval($request->startLat), 'lng'=>floatval($request->startLng)];
+      } else {
+        $s_latlng = null;
+      }
       $modeType = $request->modeType;
       //$g_latlng = ['lat'=>$shop->lat, 'lng'=>$shop->lon];
 

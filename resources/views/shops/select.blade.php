@@ -7,8 +7,8 @@
       <ul class="nav navbar-nav" style="padding: 0px;width:100%;">
         <li>
           <div style="margin: 15px;">
-            {{ Form::label('startPos', '出発地点') }}
-            {{ Form::text('startPos', '{lat: 35.689032, lng: 139.698044}', ['placeholder' => '現在地', 'style' => 'width: 100%;height: 30px;margin-top:15px;']) }}
+            {{ Form::text('startLat', "現在地の緯度", ['placeholder' => '現在地Lat', 'style' => 'width: 100%;height: 30px;margin-top:15px;']) }}
+            {{ Form::text('startLng', "現在地の経度", ['placeholder' => '現在地Lng', 'style' => 'width: 100%;height: 30px;margin-top:15px;']) }}
           </div>
         </li><!-- フリーワード検索ボックス -->
         <li style="margin: 15px;">
@@ -21,7 +21,6 @@
       </ul>
     {{ Form::close() }}
   </div>
-  <script src="{{ asset('assets/javascripts/shops/userAndShop.js') }}"></script>
   <script type="text/javascript">
     var shop_latlng = <?php echo json_encode($latlng); ?>; 
     console.log(shop_latlng);
