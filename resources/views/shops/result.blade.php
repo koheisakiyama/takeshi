@@ -4,7 +4,11 @@
 
   <div id="map" style="height:75%;width:100%"></div>
   <div class="result-list pre-scrollable" style="height:25%;">
-  <script type=" "></script>
+
+  <script type="text/javascript">
+    var shops = <? php echo json_encode($shops); ?> ;
+
+  </script>
   <!--
     <input type="checkbox" id="navTgl">
     <label for="navTgl" class="open">≡</label>
@@ -19,37 +23,6 @@
             <p style="float: left; font-size: 18px; margin-right: 15px;"></p>
             <p style="float: left; font-size: 16px;">{{ $shop->address }}</p>
             <p style="float: left; font-size: 18px; margin-right: 15px; margin-left: 15px;">/</p>
-            <!-- <script>ここに現在地と店のlatlonnngを取得、現在地と各店舗の差を計算した結果を表示する。foreachが実行されるのは確認済み
-
-//g_latlng=店の緯度経度。
- //処理を順番に行う処理。
-    function func1(){
-     return new Promise(
-       function (resolve, reject){
-         console.log(current);
-         //デフォルトで出発地を現在地に。現在地取得処理でgetしたlatlngを取得する
-         resolve(現在地のlatlngをfuc2に引数として渡す。);
-       });
-   }
-
-   function func2(hoge){
-    //三平方の定理？　出発地とlatlngの差を求めて現在地からの距離を出す。
-   }
-   func1().then(func2);
-   //差を投げる。それぞれの店舗情報のところで実行する。
-
-const pro1 = new Promise(
-     function (resolve, reject){
-       var hoge=‘hoge’;
-       console.log(hoge);//１個めの処理
-       resolve(hoge);//２への引数
-     }
-   );
-   pro1.then(function(hoge){
-         console.log(‘fuga’+hoge); //２個めの処理
-     }
-   );
-            </script> -->
             <p style="float: left; font-size: 16px;">{{ $shop->time }}</p>
             <p style="font-size: 18px; margin-left: 15px; color: #F0F0F0">/</p>
           @if ( $shop->link == "なし")
@@ -58,6 +31,20 @@ const pro1 = new Promise(
             <a href="{{ $shop->link }}" style="font-size: 17px; color: #6495ED">店舗情報</a>
           @endif
             <a href="/navi/{{ $shop->id }}" style="font-size: 17px; color: #6495ED">ルート探索</a>
+            
+            <script type="text/javascript">
+             var pro1 = new Promise(
+              function (resolve, reject){
+                currentll = new google.maps.LatLng(35.628776,139.739052);
+                resolve(currentll);
+              });
+             pro1.then(function(currentll){
+              let g_latlng = new google.maps.LatLng(shops -> lat,shops -> lon ); //shopsのlatlonが取り出せない〜〜が配列を取り出し、距離計算のcomputedistansebetweenがうまく発動すれば繰り返し処理はうまくいく・・・
+              let distance = computeDistanceBetween(currentll,g_latlng);
+              console.log(distance);
+              });
+            </script>
+            
             <p>ーーーーーーーーーー現在地からの距離：mーーーーーーーーーー</p>
           </li>
         @endforeach
@@ -67,9 +54,7 @@ const pro1 = new Promise(
   <script type="text/javascript">
     var areaLatLng = <?php echo json_encode($latlng); ?> ;
     //var latlng = <?php echo json_encode($latlng); ?> ;
-    var shops = <?php echo json_encode($shops); ?> ;
     displayShops(areaLatLng);
-
   </script>
 
 @endsection

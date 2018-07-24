@@ -6,4 +6,3 @@ function displayShops(latlng) {
   }
   navigator.geolocation.getCurrentPosition(drawUserMarker, errorCallback);
 }
-
