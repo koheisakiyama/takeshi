@@ -28,8 +28,5 @@ class User extends Authenticatable
     {
       return $this->hasMany(history::class);
     }
-    public function shop()
-    {
-      return $this->belongsTo(shop::class);
-    }
+
 }
