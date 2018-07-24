@@ -24,8 +24,12 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
-    public function histories()
+    public function history()
     {
-        return $this->hasMany(History::class);
+      return $this->hasMany(history::class);
+    }
+    public function shop()
+    {
+      return $this->belongsTo(shop::class);
     }
 }
