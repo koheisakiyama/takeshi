@@ -122,8 +122,8 @@
 
             @else
                 <!-- ルートを変更が必要 -->
-                <li class="navbar-right" style="margin-right: 75px;"><a href="/login" style="width: 15%;"><button type="button" class="btn btn-default navbar-btn">ログイン</button></a></li>
-                <li class="navbar-right" style="margin-right: 15px; "><a href="/register" style="width: 15%;"><button type="button" class="btn btn-default navbar-btn">新規登録</button></a></li>
+                <li class="navbar-right" style="margin-right: 75px; padding: 0;"><a href="/login" style="width: 15%;"><button type="button" class="btn btn-default navbar-btn">ログイン</button></a></li>
+                <li class="navbar-right" style="margin-right: 15px; padding: 0;"><a href="/register" style="width: 15%;"><button type="button" class="btn btn-default navbar-btn">新規登録</button></a></li>
             @endif
 
           </ul>
