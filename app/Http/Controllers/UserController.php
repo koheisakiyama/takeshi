@@ -29,9 +29,11 @@ class UserController extends Controller
           }
 
 //閲覧履歴をテーブルに登録する
-    // public function store() {
-    //   History::create(
-    //     array(
+    public function store() {
+      History::create(
+        array(
+          'user_id' => 'Auth::user()->id',
+          'shop_id' => ''
     //     'link' ->
     //   )
     //   );
