@@ -30,9 +30,9 @@
             <a href="{{ $shop->link }}" style="font-size: 17px; color: #6495ED">店舗情報</a>
           @endif
             <a href="/navi/{{ $shop->id }}" style="font-size: 17px; color: #6495ED">ルート探索</a>
+            <p style="float: left; font-size: 18px; margin-right: 15px;"></p>
             <p style="float: left; font-size: 16px;"> 現在地からの距離：<span id = "shop_{{$shop -> id}}"></span>m</p>
             <p style="float: left; font-size: 18px; margin-right: 15px;"></p>
-
           </li>
         @endforeach
       </ul>
