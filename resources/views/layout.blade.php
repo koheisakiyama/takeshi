@@ -6,8 +6,16 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
+        <script src="{{ asset('assets/javascripts/shops/errorCallback.js') }}"></script>
+        <script src="{{ asset('assets/javascripts/shops/initMap.js') }}"></script>
+        <script src="{{ asset('assets/javascripts/shops/drawUserMarker.js') }}"></script>
+        <script src="{{ asset('assets/javascripts/shops/currentLocation.js') }}"></script>
+        <script src="{{ asset('assets/javascripts/shops/result.js') }}"></script>
+        <script src="{{ asset('assets/javascripts/shops/navi.js') }}"></script>
+
     <link href="{{ asset('assets/css/bootstrap.min.css')}}" rel='stylesheet' type='text/css'>
     <link href="{{ asset('assets/css/bootstrap-multiselect.css')}}" rel='stylesheet' type='text/css'>
+        <script async defer src="https://maps.googleapis.com/maps/api/js?key={{ env('Google_API_Key') }}&libraries=geometry"></script>
     <script src="{{ asset('assets/javascripts/jquery-3.3.1.js') }}"></script>
     <script src="{{ asset('assets/javascripts/bootstrap.min.js') }}"></script>
     <script src="{{ asset('assets/javascripts/bootstrap-multiselect.js') }}"></script>
@@ -140,13 +148,7 @@
             timeout            : 9000,
           };
         </script>
-        <script src="{{ asset('assets/javascripts/shops/errorCallback.js') }}"></script>
-        <script src="{{ asset('assets/javascripts/shops/initMap.js') }}"></script>
-        <script src="{{ asset('assets/javascripts/shops/drawUserMarker.js') }}"></script>
-        <script src="{{ asset('assets/javascripts/shops/currentLocation.js') }}"></script>
-        <script src="{{ asset('assets/javascripts/shops/result.js') }}"></script>
-        <script src="{{ asset('assets/javascripts/shops/navi.js') }}"></script>
-        <script async defer src="https://maps.googleapis.com/maps/api/js?key={{ env('Google_API_Key') }}"></script>
+        
         @yield ('content')
 
       </div>
