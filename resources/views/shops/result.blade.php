@@ -18,32 +18,32 @@
     -->
     <!-- //デフォルトで出発地を現在地に　//出発地とlatlngの差を求めて現在地からの距離を出す　//差をviewに表示する -->
 
-      <ul class="list-group search-result-list" style="margin-bottom:0px;">
+      <!-- <ul class="list-group search-result-list" style="margin-bottom:0px;"> -->
+        <table class="table table-bordered table-striped" style="width:100%">
         @foreach ($shops as $shop)
-          <li class="list-group-item search-result-item" style="background-color: #F0F0F0">
-            <p style="float: left; font-size: 18px; font-weight: bold; color: #4169E1">{{ $shop->name }}</p>
-            <p style="float: left; font-size: 18px; margin-right: 15px;"></p>
-            <p style="float: left; font-size: 16px;">{{ $shop->address }}</p>
-            <p style="float: left; font-size: 18px; margin-right: 15px; margin-left: 15px;">/</p>
-            <p style="float: left; font-size: 16px;">{{ $shop->time }}</p>
-            <p style="font-size: 18px; margin-left: 15px; color: #F0F0F0">/</p>
+            <tbody>
+              <tr>
+                <th style=" font-size: 18px; font-weight: bold; color: #4169E1">{{ $shop->name }}</th>
+                <th style="font-size: 16px; margin-left: 40px;"> 現在地からの距離：<span id = "shop_{{$shop -> id}}"></span>m</th>
+                <th style="font-size: 16px; margin-left: 40px;">{{ $shop->time }}</th>
+              </tr>
+
+              <tr>
+                <th style="font-size: 16px;">{{ $shop->address }}</th>
           @if ( $shop->link == "なし")
-            <p>URLないです</p>
+            <th>URLないです</th>
           @else
-            <a href="{{ $shop->link }}" style="font-size: 17px; color: #6495ED" data-user="{{Auth::user()->id}}" data-shop="{{$shop->id}}" method="POST" class="post">店舗情報</a>
-<!--             <input type="text" name="shop_id" id="shop_id" value="{{$shop->id}}">
-            <input type="text" name="user_id" id="user_id" value="{{Auth::user()->id}}">
-            <input type="submit" >
- -->
+            <th href="{{ $shop->link }}" style="font-size: 17px; color: #6495ED" data-user="{{Auth::user()->id}}" data-shop="{{$shop->id}}" method="POST" class="post">店舗情報</a>
           @endif
-            <a href="/select/{{ $shop->id }}" style="font-size: 17px; color: #6495ED">このお店に行きたい</a>
-            <p style="float: left; font-size: 18px; margin-right: 15px;"></p>
-            <p style="float: left; font-size: 16px;"> 現在地からの距離：<span id = "shop_{{$shop -> id}}"></span>m</p>
-            <p style="float: left; font-size: 18px; margin-right: 15px;"></p>
-          </li>
+                <th href="/select/{{ $shop->id }}" style="font-size: 17px; color: #6495ED">このお店に行きたい</th>
+                <th style="font-size: 18px; margin-right: 15px;"></th>
+
+                <th style="font-size: 18px; margin-right: 15px;"></th>
+              </tr>
+            </tbody>
         @endforeach
-      </ul>
-      
+      </table>
+
   <script>
     //クリックされた時にhistoryデータベースに店舗情報を保存する処理
     $('.post').on('click', function(){
