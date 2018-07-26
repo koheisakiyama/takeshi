@@ -4,10 +4,6 @@
 
   <div id="map" style="height:75%;width:100%"></div>
   <div class="result-list pre-scrollable" style="height:25%;">
-
-    <script type="text/javascript">
-      var shops = <?php echo json_encode($shops); ?> ;
-    </script>
     <!--
     <input type="checkbox" id="navTgl">
     <label for="navTgl" class="open">≡</label>
@@ -41,6 +37,7 @@
 
       <script type="text/javascript">
         var areaLatLng = <?php echo json_encode($latlng); ?>;
+        var shops = <?php echo json_encode($shops); ?> ;
         displayShops(areaLatLng);
       </script>
 
