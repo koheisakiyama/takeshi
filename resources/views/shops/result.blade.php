@@ -6,7 +6,7 @@
   <div class="result-list pre-scrollable" style="height:25%;">
 
   <script type="text/javascript">
-    var shops = <? php echo json_encode($shops); ?> ;
+    var shops = <?php echo json_encode($shops); ?>;
   </script>
 
   <!--
@@ -40,10 +40,12 @@
         @endforeach
       </ul>
 
-      <script type="text/javascript"
+      <script type="text/javascript">
+        
         var areaLatLng = <?php echo json_encode($latlng); ?>;
         var shops = <?php echo json_encode($shops); ?>;
         displayShops(areaLatLng);
+
       </script>
 
   </div>

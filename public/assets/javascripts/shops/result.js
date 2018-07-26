@@ -5,7 +5,7 @@ function displayShops(latlng) {
       // 地図とユーザーのマーカーの作成と表示
       navigator.geolocation.getCurrentPosition(
           function (position){
-            curennt = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+            current = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
             if(null == latlng){
               center = current;
             } else {
@@ -24,9 +24,9 @@ function displayShops(latlng) {
   pro1.then(
     function(){
       for(var i in shops) {
-        var shopLatLng = new google.maps.LatLng(shops[i].lat(), shops[i].lon());
+        var shopLatLng = new google.maps.LatLng(shops[i].lat, shops[i].lon);
         var shopMarker = new google.maps.Marker({position:shopLatLng, map:map});
-        let distance = Math.floor(google.maps.geometry.spherical.computeDistanceBetween(current,shopsLatLng));
+        let distance = Math.floor(google.maps.geometry.spherical.computeDistanceBetween(current,shopLatLng));
         //現在地と店の緯度経度から２点間距離を測る
         document.getElementById('shop_' + shops[i].id).innerHTML= distance; //jsファイルからビューファイルに数を渡す
       }
