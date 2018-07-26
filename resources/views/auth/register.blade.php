@@ -42,7 +42,8 @@
         </div>
 
         <div class="field space">
-            <label>パスワードを設定してください</label>
+            <label>パスワードを設定してください<br>
+                   （6文字以上）</label>
             @if (false)
                 <em>(6 characters minimum)</em>
             @endif
