@@ -6,13 +6,22 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-     <link href='/assets/css/bootstrap.min.css' rel='stylesheet' type='text/css'>
-     <link href='/assets/css/bootstrap-multiselect.css' rel='stylesheet' type='text/css'>
-     <script src='/assets/javascripts/jquery-3.3.1.js'></script>
-     <script src ='/assets/javascripts/bootstrap.min.js'></script>
-     <script src ='/assets/javascripts/bootstrap-multiselect.js'></script>
-     
-   <style>
+    <link href="{{ asset('assets/css/bootstrap.min.css')}}" rel='stylesheet' type='text/css'>
+    <link href="{{ asset('assets/css/bootstrap-multiselect.css')}}" rel='stylesheet' type='text/css'>
+    <script src="{{ asset('assets/javascripts/shops/errorCallback.js') }}"></script>
+    <script src="{{ asset('assets/javascripts/shops/initMap.js') }}"></script>
+    <script src="{{ asset('assets/javascripts/shops/drawUserMarker.js') }}"></script>
+    <script src="{{ asset('assets/javascripts/shops/currentLocation.js') }}"></script>
+    <script src="{{ asset('assets/javascripts/shops/measureDistance.js') }}"></script>
+    <script src="{{ asset('assets/javascripts/shops/getLatLng.js') }}"></script>
+    <script src="{{ asset('assets/javascripts/shops/result.js') }}"></script>
+    <script src="{{ asset('assets/javascripts/shops/userAndShop.js') }}"></script>
+    <script src="{{ asset('assets/javascripts/shops/navi.js') }}"></script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key={{ env('Google_API_Key') }}&libraries=geometry"></script>
+    <script src="{{ asset('assets/javascripts/jquery-3.3.1.js') }}"></script>
+    <script src="{{ asset('assets/javascripts/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('assets/javascripts/bootstrap-multiselect.js') }}"></script>
+    <style>
       /* Always set the map height explicitly to define the size of the div
        * element that contains the map. */
       html, body, div.row-fluid, div.container-fluid{
@@ -87,38 +96,45 @@
           <ul class="nav navbar-nav" style="padding: 0px;width:100%;">
             <li class="active"><a href="/" style="padding: 0;background-color: #A3D1FF; margin:0;"><h1 style="margin: 10px;">pay search</h1></a></li>
             <li style="width:15%"><a>@include ('shops.details.how')</a></li>
-            <li style="width:15%"><a>@include ('shops.details.what')</a></li>
-            <li style="width:15%"><a>@include ('shops.details.where')</a></li>
+            <li style="width:10%"><a>@include ('shops.details.what')</a></li>
+            <li style="width:10%"><a>@include ('shops.details.where')</a></li>
             <li>
               <div style="margin: 15px;margin-right: 20px;">
                 {{ Form::text('keyword', '', ['placeholder' => 'フリーワード検索', 'style' => 'width: 100%;height: 30px;']) }}
               </div>
             </li><!-- フリーワード検索ボックス -->
-            <li style="margin-left: 50px;">
+            <li style="width: 5%;">
               <a>{{ Form::submit('検索', ['class' => 'btn btn-primary navbar-form']) }}</a>
             </li><!-- 検索ボタン -->
-          </ul>
-          {{ Form::close() }}
+            {{ Form::close() }}
 
-                                          <!-- 会員機能関連 -->
-<!--         <ul class="navbar-right" style="margin-right: 75px;margin-top: 10px;list-style: none;">
-          <li>
+            <!-- 会員機能関連 -->
             @if (Auth::check())
-              <div class="user_nav grid-6"> -->
-                <!-- ルートを変更が必要 -->
-<!--                 <a href="/">ログアウト</a>
-                <a class="post" href="/">投稿する</a>
-              </div>
+
+                <!-- ログイン機能ver2 -->
+                <div class="navbar-right" style="margin-right: 3%;font-size: 17px;">
+            <span>
+              <div style="margin-bottom: 0;margin-top: 1%;"> 
+              ようこそ{{ Auth::user()->name }}さん
+            </div>
+              <!-- <ul class="user__info"> -->
+                <li>
+                  <a href="/users/{{ Auth::user()->id }}"><button type="button" class="btn btn-primary navbar-form">マイページ</button></a>
+                  <a href="/logout"><button type="button" class="btn btn-primary navbar-form">ログアウト</button></a>
+                </li>
+              <!-- </ul> -->
+            </span>
+            <!-- <a class="post" href="/tweets/create">投稿する</a> -->
+          </div>
+
             @else
-              <div class="grid-6">
- -->                <!-- ルートを変更が必要 -->
-<!--                 <a href="menbers/auth/login/" class="" style="width: 125px;height: 64px"><button type="button" class="btn btn-default navbar-btn">ログイン</button></a>
-                <a href="/" class="" style="width: 125px;height: 64px"><button type="button" class="btn btn-default navbar-btn">新規登録</button></a>
-              </div>
+                <!-- ルートを変更が必要 -->
+                <li class="navbar-right" style="margin-right: 75px;"><a href="/login" style="width: 15%;"><button type="button" class="btn btn-default navbar-btn">ログイン</button></a></li>
+                <li class="navbar-right" style="margin-right: 15px; "><a href="/register" style="width: 15%;"><button type="button" class="btn btn-default navbar-btn">新規登録</button></a></li>
             @endif
-          </li>
-        </ul>
- -->            <!-- 会員機能関連ここまで -->
+
+          </ul>
+            <!-- 会員機能関連ここまで -->
 
 
         </div>
@@ -137,17 +153,10 @@
           // 現在地取得のオプション
           var getOpt = {
             enableHighAccuracy : true,
-            maximumAge         : 10000,
-            timeout            : 9000,
+            maximumAge         : 35000,
+            timeout            : 30000,
           };
         </script>
-        <script src='/assets/javascripts/shops/errorCallback.js'></script>
-        <script src='/assets/javascripts/shops/initMap.js'></script>
-        <script src='/assets/javascripts/shops/drawUserMarker.js'></script>
-        <script src='/assets/javascripts/shops/currentLocation.js'></script>
-        <script src='/assets/javascripts/shops/result.js'></script>
-        <script src='/assets/javascripts/shops/navi.js'></script>
-        <script async defer src="https://maps.googleapis.com/maps/api/js?key={{ env('Google_API_Key') }}"></script>
         @yield ('content')
 
       </div>
