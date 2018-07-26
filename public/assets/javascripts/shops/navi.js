@@ -105,7 +105,9 @@ function navigation(position){
   }
 }
 
+
 // ポップアップの表示
+
 function insertModal(step){
   console.log(steps.length);
   document.getElementById('step_comment').innerHTML=step.comment;
@@ -116,6 +118,7 @@ function insertModal(step){
 }
  
 // 直線距離の計算
+
 function measureDis(latlng1, latlng2){
   var distance = Math.sqrt(
                     Math.pow((latlng1.lat() - latlng2.lat()) * 110946.2521, 2)
