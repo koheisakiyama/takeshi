@@ -12,6 +12,8 @@
     <script src="{{ asset('assets/javascripts/shops/initMap.js') }}"></script>
     <script src="{{ asset('assets/javascripts/shops/drawUserMarker.js') }}"></script>
     <script src="{{ asset('assets/javascripts/shops/currentLocation.js') }}"></script>
+    <script src="{{ asset('assets/javascripts/shops/measureDistance.js') }}"></script>
+    <script src="{{ asset('assets/javascripts/shops/getLatLng.js') }}"></script>
     <script src="{{ asset('assets/javascripts/shops/result.js') }}"></script>
     <script src="{{ asset('assets/javascripts/shops/userAndShop.js') }}"></script>
     <script src="{{ asset('assets/javascripts/shops/navi.js') }}"></script>
