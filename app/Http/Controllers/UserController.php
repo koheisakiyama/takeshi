@@ -29,16 +29,16 @@ class UserController extends Controller
           }
 
 //閲覧履歴をテーブルに登録する
-    public function store() {
-      History::create(
+    public function store(Request $request) {
+      $history = History::create(
         array(
-          'user_id' => 'Auth::user()->id',
-          'shop_id' => ''
-    //     'link' ->
-    //   )
-    //   );
-
-    // }
+          'user_id' => $request->user_id,
+          'shop_id' => $request->shop_id
+        )
+      );
+      return response();
+      // お手本ではセミコロン以前にjson($memo)がある
+    }
 
 
 //マイページ(閲覧履歴)の表示

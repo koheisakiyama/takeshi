@@ -7,3 +7,16 @@ function displayShops(latlng) {
   navigator.geolocation.getCurrentPosition(drawUserMarker, errorCallback);
 }
 
+function post(user, shop) {
+  $.ajax({
+    type: "POST",
+    dataType: "json",
+    url: "/result",
+    data: {
+          'user_id' : user,
+          'shop_id' : shop
+    },
+  }).done(function(){
+    // 一旦何も書かずにやってみる
+  });
+}

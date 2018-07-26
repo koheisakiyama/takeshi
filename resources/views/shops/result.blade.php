@@ -23,7 +23,11 @@
           @if ( $shop->link == "なし")
             <p>URLないです</p>
           @else
-            <a href="{{ $shop->link }}" style="font-size: 17px; color: #6495ED">店舗情報</a>
+            <a href="{{ $shop->link }}" style="font-size: 17px; color: #6495ED" data-user="{{Auth::user()->id}}" data-shop="{{$shop->id}}" method="POST" class="post">店舗情報</a>
+            <input type="text" name="shop_id" id="shop_id" value="{{$shop->id}}">
+            <input type="text" name="user_id" id="user_id" value="{{Auth::user()->id}}">
+            <input type="submit" >
+
           @endif
             <a href="/navi/{{ $shop->id }}" style="font-size: 17px; color: #6495ED">ナビの開始</a>
           </li>
@@ -31,9 +35,15 @@
       </ul>
   </div>
 
+<script>
+  $('.post').on('click', function(){
+      post($(this).data('user'), $(this).data('shop'));
+  });
+</script>
+
   <script type="text/javascript">
     var areaLatLng = <?php echo json_encode($latlng); ?> ;
-    //var latlng = <?php echo json_encode($latlng); ?> ;
+    // var latlng = <?php echo json_encode($latlng); ?> ;
     var shops= <?php echo json_encode($shops); ?> ;
     displayShops(areaLatLng);
   </script>
