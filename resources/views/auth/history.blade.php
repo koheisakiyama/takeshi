@@ -15,7 +15,7 @@
           @if ( $histories->shop->link == "なし")
             <p>URLないです</p>
           @else
-            <a href="{{ $histories->shop->link }}" style="font-size: 17px; color: #6495ED">店舗情報</a>
+            <a href="{{ $histories->shop->link }}" style="font-size: 17px; color: #6495ED" >店舗情報</a>
           @endif
             <a href="/navi/{{ $histories->shop->id }}" style="font-size: 17px; color: #6495ED">ナビの開始</a>
           </li>
