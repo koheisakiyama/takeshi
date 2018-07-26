@@ -71,6 +71,7 @@ class ShopsController extends Controller
       return view ('shops.result') -> with(['shops' => $shops, 'latlng'=>$latlng]);
     }
     
+
     // ナビのスタートと手段の選択
     public function select($id){
       $shop = Shop::find($id); //idからDBにアクセスして取得したレコード。

@@ -4,11 +4,11 @@
         <title>pay search</title>
 
         <link href="https://fonts.googleapis.com/css?family=Lato:100" rel="stylesheet" type="text/css">
-        <link href="{{ asset('assets/css/bootstrap.min.css')}}" rel='stylesheet' type='text/css'>
-    <link href="{{ asset('assets/css/bootstrap-multiselect.css')}}" rel='stylesheet' type='text/css'>
-    <script src="{{ asset('assets/javascripts/jquery-3.3.1.js') }}"></script>
-    <script src = "{{ asset('assets/javascripts/bootstrap.min.js') }}"></script>
-    <script src = "{{ asset('assets/javascripts/bootstrap-multiselect.js') }}"></script>
+        <link href='/assets/css/bootstrap.min.css' rel='stylesheet' type='text/css'>
+        <link href='/assets/css/bootstrap-multiselect.css' rel='stylesheet' type='text/css'>
+        <script src='/assets/javascripts/jquery-3.3.1.js'></script>
+        <script src ='/assets/javascripts/bootstrap.min.js'></script>
+        <script src ='/assets/javascripts/bootstrap-multiselect.js'></script>
 
         <style>
             html, body {
@@ -57,7 +57,7 @@
 
             /*ボタン位置変更*/
             .white {
-                margin: 20px;
+                padding-top: 20px;
             }
 
 
@@ -67,7 +67,8 @@
         <div class="container">
             <div class="content">
                 <div class="title">pay search</div>
-                <div class="text">あなたのキャッシュレス決済を、もっと賢く、スマートに</div>
+                <div class="text" style="padding-bottom: 30px">
+                あなたのキャッシュレス決済を、もっと賢く、スマートに</div>
                 <!--ウェルカム画面のボタンを押すとindexに遷移する -->
                 <a href="/search" class="btn btn-primary btn-lg">
                 <i class="glyphicon glyphicon-ruble"></i>Lets start!!!</a>
