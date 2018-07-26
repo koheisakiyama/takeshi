@@ -1,13 +1,16 @@
+
 function drawUserMarker(position) {
   current = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+  
   userMarker = new google.maps.Marker({
     icon: {
             path: google.maps.SymbolPath.CIRCLE,
-            scale: 4
+            scale: 4,
           },
     map : map,             // 対象の地図オブジェクト
-    position : current,   // 緯度・経度
+    position : current   // 緯度・経度
   });
+  
   // 誤差を円で描く
   var errPos = null;     // 位置測定の誤差 単位はメートル
   var cirOpt = {
