@@ -33,13 +33,15 @@
           @if ( $shop->link == "なし")
             <th>URLないです</th>
           @else
+            <th>
               @if (Auth::check())
-                <th href="{{ $shop->link }}" style="font-size: 17px; color: #6495ED" data-user="{{Auth::user()->id}}" data-shop="{{$shop->id}}" method="POST" class="post">店舗情報</th>
+                <a href="{{ $shop->link }}" style="font-size: 17px; color: #6495ED" data-user="{{Auth::user()->id}}" data-shop="{{$shop->id}}" method="POST" class="post">店舗情報</th>
               @else
-                <th href="{{ $shop->link }}" style="font-size: 17px; color: #6495ED">店舗情報</th>
+                <a href="{{ $shop->link }}" style="font-size: 17px; color: #6495ED">店舗情報</a>
               @endif
+            </th>
           @endif
-                <th href="/select/{{ $shop->id }}" style="font-size: 17px; color: #6495ED">このお店に行きたい</th>
+                <th><a href="/select/{{ $shop->id }}" style="font-size: 17px; color: #6495ED">このお店に行きたい</a></th>
                 <th style="font-size: 18px; margin-right: 15px;"></th>
 
                 <th style="font-size: 18px; margin-right: 15px;"></th>
