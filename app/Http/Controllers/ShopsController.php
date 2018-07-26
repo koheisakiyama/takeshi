@@ -47,7 +47,7 @@ class ShopsController extends Controller
         //絞込み結果を$shopsに戻す
         $shops = $methodColl;
         //重複をなくす
-        $shops = $shops->unique();
+        $shops = $shops->unique('shop_id');
       }
       //絞込みここまで
 
@@ -91,9 +91,6 @@ class ShopsController extends Controller
         $s_latlng = null;
       }
       $modeType = $request->modeType;
-      //$g_latlng = ['lat'=>$shop->lat, 'lng'=>$shop->lon];
-
-      //return view('shops.navi')->with(['shop' => $shop, 's_latlng' => $s_latlng, 'g_latlng'=>$g_latlng, 'modeType'=>$modeType]);
       return view('shops.navi')->with(['shop' => $shop, 's_latlng' => $s_latlng, 'modeType'=>$modeType]);
     }
 }
