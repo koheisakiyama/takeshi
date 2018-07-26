@@ -7,7 +7,6 @@
 
   <script type="text/javascript">
     var shops = <? php echo json_encode($shops); ?> ;
-
   </script>
 
   <!--
@@ -33,8 +32,7 @@
           @else
             <a href="{{ $shop->link }}" style="font-size: 17px; color: #6495ED">店舗情報</a>
           @endif
-            <a href="/navi/{{ $shop->id }}" style="font-size: 17px; color: #6495ED">ルート探索</a>
-
+            <a href="/select/{{ $shop->id }}" style="font-size: 17px; color: #6495ED">このお店に行きたい</a>
             <p style="float: left; font-size: 18px; margin-right: 15px;"></p>
             <p style="float: left; font-size: 16px;"> 現在地からの距離：<span id = "shop_{{$shop -> id}}"></span>m</p>
             <p style="float: left; font-size: 18px; margin-right: 15px;"></p>
@@ -42,12 +40,10 @@
         @endforeach
       </ul>
 
-      <script type="text/javascript">
-        
+      <script type="text/javascript"
         var areaLatLng = <?php echo json_encode($latlng); ?>;
         var shops = <?php echo json_encode($shops); ?>;
         displayShops(areaLatLng);
-
       </script>
 
   </div>

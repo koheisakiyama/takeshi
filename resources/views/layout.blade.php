@@ -5,17 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-
-        <script src="{{ asset('assets/javascripts/shops/errorCallback.js') }}"></script>
-        <script src="{{ asset('assets/javascripts/shops/initMap.js') }}"></script>
-        <script src="{{ asset('assets/javascripts/shops/drawUserMarker.js') }}"></script>
-        <script src="{{ asset('assets/javascripts/shops/currentLocation.js') }}"></script>
-        <script src="{{ asset('assets/javascripts/shops/result.js') }}"></script>
-        <script src="{{ asset('assets/javascripts/shops/navi.js') }}"></script>
-
     <link href="{{ asset('assets/css/bootstrap.min.css')}}" rel='stylesheet' type='text/css'>
     <link href="{{ asset('assets/css/bootstrap-multiselect.css')}}" rel='stylesheet' type='text/css'>
-        <script async defer src="https://maps.googleapis.com/maps/api/js?key={{ env('Google_API_Key') }}&libraries=geometry"></script>
+    <script src="{{ asset('assets/javascripts/shops/errorCallback.js') }}"></script>
+    <script src="{{ asset('assets/javascripts/shops/initMap.js') }}"></script>
+    <script src="{{ asset('assets/javascripts/shops/drawUserMarker.js') }}"></script>
+    <script src="{{ asset('assets/javascripts/shops/currentLocation.js') }}"></script>
+    <script src="{{ asset('assets/javascripts/shops/measureDistance.js') }}"></script>
+    <script src="{{ asset('assets/javascripts/shops/getLatLng.js') }}"></script>
+    <script src="{{ asset('assets/javascripts/shops/result.js') }}"></script>
+    <script src="{{ asset('assets/javascripts/shops/userAndShop.js') }}"></script>
+    <script src="{{ asset('assets/javascripts/shops/navi.js') }}"></script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key={{ env('Google_API_Key') }}&libraries=geometry"></script>
     <script src="{{ asset('assets/javascripts/jquery-3.3.1.js') }}"></script>
     <script src="{{ asset('assets/javascripts/bootstrap.min.js') }}"></script>
     <script src="{{ asset('assets/javascripts/bootstrap-multiselect.js') }}"></script>
@@ -87,7 +88,7 @@
   </head>
 
   <body>
-    <header class="page-header" style="padding: 0; margin:0; height:10%;width:100%;">
+    <header class="page-header" style="padding: 0;background-color: #A3D1FF; margin:0; height:10%;width:100%;">
       <nav class="navbar navbar-inverse" style="background-color: #A3D1FF; border-color: #A3D1FF; margin:0;">
         <div class="container-fluid">
          {{ Form::open(['action' => 'ShopsController@result', 'method' => 'get', 'style'=>'width=100%;']) }}
@@ -144,11 +145,11 @@
           // 現在地取得のオプション
           var getOpt = {
             enableHighAccuracy : true,
-            maximumAge         : 10000,
-            timeout            : 9000,
+            maximumAge         : 35000,
+            timeout            : 30000,
           };
         </script>
-        
+
         @yield ('content')
 
       </div>
