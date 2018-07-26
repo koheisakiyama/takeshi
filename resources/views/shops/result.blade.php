@@ -13,7 +13,6 @@
     </div>
     -->
     <!-- //デフォルトで出発地を現在地に　//出発地とlatlngの差を求めて現在地からの距離を出す　//差をviewに表示する -->
-  
 
       <ul class="list-group search-result-list" style="margin-bottom:0px;">
         @foreach ($shops as $shop)
@@ -38,9 +37,11 @@
       </ul>
 
       <script type="text/javascript">
+        
         var areaLatLng = <?php echo json_encode($latlng); ?>;
         var shops = <?php echo json_encode($shops); ?>;
         displayShops(areaLatLng);
+
       </script>
 
   </div>
