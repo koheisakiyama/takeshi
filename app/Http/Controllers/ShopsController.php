@@ -47,7 +47,7 @@ class ShopsController extends Controller
         //絞込み結果を$shopsに戻す
         $shops = $methodColl;
         //重複をなくす
-        $shops = $shops->unique('shop_id');
+        $shops = $shops->unique();
       }
       //絞込みここまで
 

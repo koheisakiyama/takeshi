@@ -23,10 +23,9 @@ function displayShops(latlng) {
 //検索結果の緯度経度にマーカを指し、それぞれの現在地からの距離を測定してビューファイルに投げる
   pro1.then(
     function(){
-      var shopMarkers = new Array();
-      var infoWindows = new Array();
       for(var i in shops) {
         var shopLatLng = new google.maps.LatLng(shops[i].lat, shops[i].lon);
+        // infoWindowの中に出てくる内容
         var content = '<div>'
                       +'<h3>'+shops[i].name+'</h3>'
                       + '<p>'
@@ -36,39 +35,40 @@ function displayShops(latlng) {
                       +'</p>'
                     + '</div>';
 
-        var shopMarker = new google.maps.Marker({
+        // shopMarkerの設定
+        var shopMarkerOpt = {
                               position:shopLatLng, 
                               map:map,
                               titel:"TITLE",
                               summary:"summary",
-                         });
-        var infoWindow = new google.maps.InfoWindow({
+                            }
+        // infoWindowの設定
+        var infoWindowOpt = {
                               lat: shops[i].lat,
                               lng: shops[i].lon,
                               content: content,
-        });
+                            }
         let distance = Math.floor(google.maps.geometry.spherical.computeDistanceBetween(current,shopLatLng));
         //現在地と店の緯度経度から２点間距離を測る
         document.getElementById('shop_' + shops[i].id).innerHTML= distance; //jsファイルからビューファイルに数を渡す
-        shopMarkers[i] = shopMarker;
-        infoWindows[i] = infoWindow;
-        shopMarkers[i].addListener('click', function() { // マーカーをクリックしたとき
-          infoWindows[i].open(map, shopMarkers[i]); // 吹き出しの表示
-        });
+        shopMarkers[i] = new google.maps.Marker(shopMarkerOpt);
+        infoWindows[i] = new google.maps.InfoWindow(infoWindowOpt);
+        // マーカーをクリックしたときの動き
+        google.maps.event.addListener(shopMarkers[i], 'click', clickMarker);
       }
-      google.maps.event.addListener(marker[i], 'click', function(e) {
-        for(var i = 0; i < markers.length; i++) {
-          if(marker[i].position.G == e.latLng.G && marker[i].position.K == e.latLng.K) {
-            //クリックしたマーカーだったら詳細を表示
-            infoWindow[i].open(map, marker[i]);
-          } else {
-            //クリックしたマーカーでなければ詳細を閉じる
-            infoWindow[i].close();
-          }
-        }
-      });
+  });
+}
+
+function clickMarker(event) {
+  for (var j in shopMarkers){
+    if(shopMarkers[j].position.lat() == event.latLng.lat() && shopMarkers[j].position.lng() == event.latLng.lng()) {
+      //クリックしたマーカーだったら詳細を表示
+      infoWindows[j].open(map, shopMarkers[j]);
+    } else {
+      //クリックしたマーカーでなければ詳細を閉じる
+      infoWindows[j].close();
     }
-  );
+  }
 }
 
 //History DB に閲覧履歴を保存しつつ、店舗詳細のリンク先に遷移する
