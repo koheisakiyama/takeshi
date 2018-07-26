@@ -4,15 +4,10 @@
 
   <div id="map" style="height:75%;width:100%"></div>
   <div class="result-list pre-scrollable" style="height:25%;">
-<<<<<<< HEAD
-  <!-- <script type=" "></script> -->
-=======
 
   <script type="text/javascript">
     var shops = <? php echo json_encode($shops); ?> ;
-
   </script>
->>>>>>> 8b38437ad51246f63c8d45f6cbf136fe7e9ad1f0
   <!--
     <input type="checkbox" id="navTgl">
     <label for="navTgl" class="open">≡</label>
@@ -36,49 +31,20 @@
           @else
             <a href="{{ $shop->link }}" style="font-size: 17px; color: #6495ED">店舗情報</a>
           @endif
-            <a href="/navi/{{ $shop->id }}" style="font-size: 17px; color: #6495ED">ルート探索</a>
-<<<<<<< HEAD
+            <a href="/select/{{ $shop->id }}" style="font-size: 17px; color: #6495ED">このお店に行きたい</a>
             <p style="float: left; font-size: 18px; margin-right: 15px;"></p>
             <p style="float: left; font-size: 16px;"> 現在地からの距離：<span id = "shop_{{$shop -> id}}"></span>m</p>
             <p style="float: left; font-size: 18px; margin-right: 15px;"></p>
-=======
-            
-            <script type="text/javascript">
-             var pro1 = new Promise(
-              function (resolve, reject){
-                currentll = new google.maps.LatLng(35.628776,139.739052);
-                resolve(currentll);
-              });
-             pro1.then(function(currentll){
-              let g_latlng = new google.maps.LatLng(shops -> lat,shops -> lon ); //shopsのlatlonが取り出せない〜〜が配列を取り出し、距離計算のcomputedistansebetweenがうまく発動すれば繰り返し処理はうまくいく・・・
-              let distance = computeDistanceBetween(currentll,g_latlng);
-              console.log(distance);
-              });
-            </script>
-            
-            <p>ーーーーーーーーーー現在地からの距離：mーーーーーーーーーー</p>
->>>>>>> 8b38437ad51246f63c8d45f6cbf136fe7e9ad1f0
           </li>
         @endforeach
       </ul>
 
-      <script type="text/javascript">
-        
+      <script type="text/javascript"
         var areaLatLng = <?php echo json_encode($latlng); ?>;
         var shops = <?php echo json_encode($shops); ?>;
         displayShops(areaLatLng);
-
       </script>
 
   </div>
-
-<<<<<<< HEAD
-=======
-  <script type="text/javascript">
-    var areaLatLng = <?php echo json_encode($latlng); ?> ;
-    //var latlng = <?php echo json_encode($latlng); ?> ;
-    displayShops(areaLatLng);
-  </script>
->>>>>>> 8b38437ad51246f63c8d45f6cbf136fe7e9ad1f0
 
 @endsection

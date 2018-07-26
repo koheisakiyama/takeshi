@@ -4,7 +4,25 @@
 @section ('content')
 
   <div id="map" style="width: 100%; height: 75%;"></div>
-  <div id="directions_panel" class="pre-scrollable" style="width: 100%; height: 25%;background-color:#A3D1FF;"></div>
+  <!--
+  <div id="directions_panel" class="pre-scrollable" style="width: 100%; height: 25%;background-color:#A3D1FF;">
+  </div>
+  -->
+  <div class="pre-scrollable" style="width: 100%; height: 25%;background-color:#A3D1FF;">
+    <table id="direction-table" class="table table-striped" style="width:90%;margin:auto;">
+    <thead>
+      <tr>
+        <th></th>
+        <th class="direction-title">{{ $shop->name }}までの道のり</th>
+        <th class="direction-time"></th>
+        <th class="direction-distance" style="text-align:center;"><button onclick="startNavi();">ナビを開始する</button></th>
+      </tr>
+    </thead>
+    <tbody id="direction-table-body">
+    </tbody>
+    </table>
+  </div>
+
   <div class="modal fade" id="naviModal" tabindex="-1">
   	<div class="modal-dialog">
   		<div class="modal-content">
@@ -35,22 +53,18 @@
   		</div>
   	</div>
   </div>
-<!-- 
-  <script src="{{ asset('assets/javascripts/shopRoad.js') }}"></script>
 
-   -->
-<script type="text/javascript">
-
-  var route = null;
-  var stepNum = 0; // ステップ番号
-  var steps = new Array();
-  var s_ll = <?php echo json_encode($s_latlng); ?>; 
-  var g_ll = <?php echo json_encode($g_latlng); ?>; 
-  // 誤差円のオプション
-  navigator.geolocation.getCurrentPosition(startNavi, errorCallback,  getOpt);
-  // 移動時の現在地の取得
-  navigator.geolocation.watchPosition(navigation, errorCallback, getOpt);
-  
-</script>
+  <script type="text/javascript">
+    var route = null;
+    var stepNum = 0; // ステップ番号
+    var steps = new Array();
+    var modeType = <?php echo json_encode($modeType); ?>;
+    var s_ll = <?php echo json_encode($s_latlng); ?>; 
+    var g_ll = <?php echo json_encode(['lat'=>$shop->lat, 'lng'=>$shop->lon]); ?>; 
+    console.log(s_ll);
+    displayRoute(s_ll, g_ll, modeType);
+    // 移動時の現在地の取得
+    //navigator.geolocation.watchPosition(navigation, errorCallback, getOpt);
+  </script>
 
 @endsection
