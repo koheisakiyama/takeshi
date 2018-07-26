@@ -37,7 +37,6 @@ class UserController extends Controller
         )
       );
       return response();
-      // お手本ではセミコロン以前にjson($memo)がある
     }
 
 
