@@ -20,4 +20,3 @@ function displayShops(latlng) {
     getOpt
   );
 }
-

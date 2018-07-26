@@ -52,7 +52,7 @@ class ShopsController extends Controller
 
 //絞込みここまで
 
-      //中心の位置座標 何も入れなければ品川に。07/20：出発地は任意の場所にするからここいらないのでは。
+      //中心の位置座標 何も入れなければ現在地にしたい。
       $latlng = ['lat'=>35.6284, 'lng'=>139.736571];
       switch ($area) {
         case '新宿':
