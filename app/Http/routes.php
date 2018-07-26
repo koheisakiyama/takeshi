@@ -24,6 +24,7 @@ Route::group(['middleware' => ['web']], function () {
     Route::get('/complete','UserController@complete');
     Route::get('/search', 'ShopsController@search');
     Route::get('/result', 'ShopsController@result');
+    Route::get('/select/{id}','ShopsController@select');
     Route::get('/navi/{id}','ShopsController@navi');
     Route::get('/users/{id}', 'UserController@show');
 
