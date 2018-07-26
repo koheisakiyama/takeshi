@@ -24,7 +24,7 @@ function displayShops(latlng) {
   pro1.then(
     function(){
       for(var i in shops) {
-        var shopLatLng = new google.maps.LatLng(shops[i].lat(), shops[i].lon());
+        var shopLatLng = new google.maps.LatLng(shops[i].lat, shops[i].lon);
         var shopMarker = new google.maps.Marker({position:shopLatLng, map:map});
         let distance = Math.floor(google.maps.geometry.spherical.computeDistanceBetween(current,shopsLatLng));
         //現在地と店の緯度経度から２点間距離を測る
