@@ -23,13 +23,50 @@ function displayShops(latlng) {
 
   pro1.then(
     function(){
+      var shopMarkers = new Array();
+      var infoWindows = new Array();
       for(var i in shops) {
         var shopLatLng = new google.maps.LatLng(shops[i].lat, shops[i].lon);
-        var shopMarker = new google.maps.Marker({position:shopLatLng, map:map});
+        var content = '<div>'
+                      +'<h3>'+shops[i].name+'</h3>'
+                      + '<p>'
+                        +'住所:<span>'+shops[i].address+'</span><br>'
+                        +'詳細:<span><a href='+shops[i].link+'>'+shops[i].link+'</a></span><br>'
+                        +'営業時間:<span>'+shops[i].time+'</span><br>'
+                      +'</p>'
+                    + '</div>';
+
+        var shopMarker = new google.maps.Marker({
+                              position:shopLatLng, 
+                              map:map,
+                              titel:"TITLE",
+                              summary:"summary",
+                         });
+        var infoWindow = new google.maps.InfoWindow({
+                              lat: shops[i].lat,
+                              lng: shops[i].lon,
+                              content: content,
+        });
         let distance = Math.floor(google.maps.geometry.spherical.computeDistanceBetween(current,shopLatLng));
         //現在地と店の緯度経度から２点間距離を測る
         document.getElementById('shop_' + shops[i].id).innerHTML= distance; //jsファイルからビューファイルに数を渡す
+        shopMarkers[i] = shopMarker;
+        infoWindows[i] = infoWindow;
+        shopMarkers[i].addListener('click', function() { // マーカーをクリックしたとき
+          infoWindows[i].open(map, shopMarkers[i]); // 吹き出しの表示
+        });
       }
+      google.maps.event.addListener(marker[i], 'click', function(e) {
+        for(var i = 0; i < markers.length; i++) {
+          if(marker[i].position.G == e.latLng.G && marker[i].position.K == e.latLng.K) {
+            //クリックしたマーカーだったら詳細を表示
+            infoWindow[i].open(map, marker[i]);
+          } else {
+            //クリックしたマーカーでなければ詳細を閉じる
+            infoWindow[i].close();
+          }
+        }
+      });
     }
   );
 }

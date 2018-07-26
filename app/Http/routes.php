@@ -25,6 +25,5 @@ Route::group(['middleware' => ['web']], function () {
     Route::get('/result', 'ShopsController@result');
     Route::get('/select/{id}','ShopsController@select');
     Route::get('/navi/{id}','ShopsController@navi');
-    Route::get('/showroad/{id}','ShopsController@');
 
 });
