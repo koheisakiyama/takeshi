@@ -60,10 +60,10 @@
     var steps = new Array();
     var modeType = <?php echo json_encode($modeType); ?>;
     var s_ll = <?php echo json_encode($s_latlng); ?>; 
-    var g_ll = <?php echo json_encode(['lat'=>$shop->lat, 'lng'=>$shop->lon]); ?>; 
+    var shop = <?php echo json_encode($shop); ?>; 
     var infoWindows = new Array();
     //console.log(s_ll);
-    displayRoute(s_ll, g_ll, modeType);
+    displayRoute(s_ll, shop, modeType);
 
     $('.step-box').on('click',function(){
                    if(currentInfoWindow){

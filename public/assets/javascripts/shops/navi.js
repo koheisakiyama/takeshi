@@ -1,4 +1,4 @@
-function displayRoute(latlng1, latlng2, modeType) {
+function displayRoute(start, shop, modeType) {
   var s_latlng = null;
   var g_latlng = null;
   switch(modeType){
@@ -21,12 +21,12 @@ function displayRoute(latlng1, latlng2, modeType) {
       navigator.geolocation.getCurrentPosition(
         function(position){
           current = new google.maps.LatLng(position.coords.latitude, position.coords.longitude)
-          if(null==latlng1){
+          if(null==start){
             s_latlng = current;
           } else {
-            s_latlng = new google.maps.LatLng(latlng1);
+            s_latlng = new google.maps.LatLng(start);
           }
-          g_latlng = new google.maps.LatLng(latlng2);
+          g_latlng = new google.maps.LatLng(shop.lat, shop.lon);
           initMap(s_latlng);
           var latlngs = new Array(s_latlng, g_latlng);
           drawUserMarker(position);
