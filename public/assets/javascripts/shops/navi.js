@@ -51,7 +51,7 @@ function displayRoute(latlng1, latlng2, modeType) {
         directionsRenderer.setMap(map); // ルートを地図に表示
 
         route = result.routes[0].legs[0].steps;
-        console.log(result.routes[0].legs[0].duration.text);
+        //console.log(result.routes[0].legs[0].duration.text);
         for (var i in route) {
           steps.push({
               latlng  : route[i].start_location, // ステップの緯度を取得
@@ -65,12 +65,23 @@ function displayRoute(latlng1, latlng2, modeType) {
                          + "<th>" + route[i].instructions  + "</th>"
                          + "<th>" + route[i].duration.text + "</th>"
                          + "<th style='text-align:center'>" + route[i].distance.text + "</th>";
+          tr_element.setAttribute("class", "step-box");
           tr_element.innerHTML = addContent;
           var parent_object = document.getElementById("direction-table-body");
           parent_object.appendChild(tr_element);
         }
     });
   });
+}
+
+$('.step-box').on('click',clickObj);
+function clickObj(){
+  if(currentInfoWindow){
+    currentInfoWindow.close();
+  }
+  //console.log($(this).data('shop'));
+  var i = $(this).data('shop');
+  infoWindows[i].open(map,shopMarkers[i]);
 }
 
 function startNavi() {
@@ -81,7 +92,9 @@ function startNavi() {
 function navigation(position){ 
   var g_latlng = new google.maps.LatLng(g_ll); 
   current = new google.maps.LatLng(position.coords.latitude, position.coords.longitude); // 現在地の緯度経度取得
-  console.log(current);
+  //console.log(current);
+  map.setCenter(current);
+  map.setZoom(17.5);
 
   errCir.setMap(null); // すで表示されている円を削除
   userMarker.setMap(null); // すで表示されているを削除
@@ -109,7 +122,7 @@ function navigation(position){
 // ポップアップの表示
 
 function insertModal(step){
-  console.log(steps.length);
+  //console.log(steps.length);
   document.getElementById('step_comment').innerHTML=step.comment;
   document.getElementById('step_duration').innerHTML=step.duration;
   document.getElementById('step_distance').innerHTML=step.distance;
@@ -124,6 +137,6 @@ function measureDis(latlng1, latlng2){
                     Math.pow((latlng1.lat() - latlng2.lat()) * 110946.2521, 2)
                   + Math.pow((latlng1.lng() - latlng2.lng()) *  90881.8492, 2)
   );
-  console.log(distance);
+  //console.log(distance);
   return distance;
 }

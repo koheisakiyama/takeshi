@@ -51,24 +51,23 @@ function displayShops(latlng) {
         let distance = Math.floor(google.maps.geometry.spherical.computeDistanceBetween(current,shopLatLng));
         //現在地と店の緯度経度から２点間距離を測る
         document.getElementById('shop_' + shops[i].id).innerHTML= distance; //jsファイルからビューファイルに数を渡す
-        shopMarkers[i] = new google.maps.Marker(shopMarkerOpt);
-        infoWindows[i] = new google.maps.InfoWindow(infoWindowOpt);
+        shopMarkers[shops[i].id] = new google.maps.Marker(shopMarkerOpt);
+        infoWindows[shops[i].id] = new google.maps.InfoWindow(infoWindowOpt);
         // マーカーをクリックしたときの動き
-        google.maps.event.addListener(shopMarkers[i], 'click', clickMarker);
+        clickMarker(shops[i].id);
       }
   });
 }
 
-function clickMarker(event) {
-  for (var j in shopMarkers){
-    if(shopMarkers[j].position.lat() == event.latLng.lat() && shopMarkers[j].position.lng() == event.latLng.lng()) {
-      //クリックしたマーカーだったら詳細を表示
-      infoWindows[j].open(map, shopMarkers[j]);
-    } else {
-      //クリックしたマーカーでなければ詳細を閉じる
-      infoWindows[j].close();
+function clickMarker(i) {
+  var shopMarker = shopMarkers[i];
+  google.maps.event.addListener(shopMarker, 'click', function(){
+    if(currentInfoWindow){
+      currentInfoWindow.close();
     }
-  }
+    infoWindows[i].open(map,shopMarkers[i]);
+    currentInfoWindow = infoWindows[i];
+  });
 }
 
 //History DB に閲覧履歴を保存しつつ、店舗詳細のリンク先に遷移する
