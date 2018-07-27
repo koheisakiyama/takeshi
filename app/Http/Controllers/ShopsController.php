@@ -91,9 +91,6 @@ class ShopsController extends Controller
         $s_latlng = null;
       }
       $modeType = $request->modeType;
-      //$g_latlng = ['lat'=>$shop->lat, 'lng'=>$shop->lon];
-
-      //return view('shops.navi')->with(['shop' => $shop, 's_latlng' => $s_latlng, 'g_latlng'=>$g_latlng, 'modeType'=>$modeType]);
       return view('shops.navi')->with(['shop' => $shop, 's_latlng' => $s_latlng, 'modeType'=>$modeType]);
     }
 }
