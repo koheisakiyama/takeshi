@@ -49,6 +49,20 @@
       $('.post').on('click', function(){
         post($(this).data('user'), $(this).data('shop'));
       });
+      //History DB に閲覧履歴を保存しつつ、店舗詳細のリンク先に遷移する
+      function post(user, shop) {　
+        $.ajax({
+          type: "POST",
+          dataType: "json",
+          url: "/result",
+          data: {
+                'user_id' : user,
+                'shop_id' : shop
+          },
+        }).done(function(){
+          // 一旦何も書かずにやってみる
+        });
+      }
 
       var shopMarkers = new Array();
       var infoWindows = new Array();

@@ -74,16 +74,6 @@ function displayRoute(latlng1, latlng2, modeType) {
   });
 }
 
-$('.step-box').on('click',clickObj);
-function clickObj(){
-  if(currentInfoWindow){
-    currentInfoWindow.close();
-  }
-  //console.log($(this).data('shop'));
-  var i = $(this).data('shop');
-  infoWindows[i].open(map,shopMarkers[i]);
-}
-
 function startNavi() {
     var watchId = navigator.geolocation.watchPosition(navigation, errorCallback, getOpt);
 }

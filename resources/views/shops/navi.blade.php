@@ -64,6 +64,15 @@
     var infoWindows = new Array();
     //console.log(s_ll);
     displayRoute(s_ll, g_ll, modeType);
+
+    $('.step-box').on('click',function(){
+                   if(currentInfoWindow){
+                     currentInfoWindow.close();
+                   }
+                   //console.log($(this).data('shop'));
+                   var i = $(this).data('shop');
+                   infoWindows[i].open(map,shopMarkers[i]);
+    });
   </script>
 
 @endsection
