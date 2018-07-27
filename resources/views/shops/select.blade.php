@@ -33,7 +33,9 @@
       </ul>
     {{ Form::close() }}
   </div>
+
   <script type="text/javascript">
+    var currentMarker = null;
     var shop_latlng = <?php echo json_encode(['lat'=>$shop->lat, 'lng'=>$shop->lon]); ?>; 
     ///console.log(shop_latlng);
     // 誤差円のオプション
@@ -45,6 +47,7 @@
       // 取得した住所を引数に指定してcodeAddress()関数を実行
       getLatLng(address);
     }
+
   </script>
 
 @endsection

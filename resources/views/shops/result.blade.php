@@ -5,64 +5,82 @@
   <div id="map" style="height:75%;width:100%"></div>
   <div class="result-list pre-scrollable" style="height:25%;">
 
-  <script type="text/javascript">
-    var shops = <?php echo json_encode($shops); ?>;
-  </script>
+    <script type="text/javascript">
+      var shops = <?php echo json_encode($shops); ?>;
+    </script>
 
-  <!--
-    <input type="checkbox" id="navTgl">
-    <label for="navTgl" class="open">≡</label>
-    <label for="navTgl" class="close"></label>
-    <div class="search-result">
-    </div>
-    -->
-    <!-- //デフォルトで出発地を現在地に　//出発地とlatlngの差を求めて現在地からの距離を出す　//差をviewに表示する -->
+    <!--
+      <input type="checkbox" id="navTgl">
+      <label for="navTgl" class="open">≡</label>
+      <label for="navTgl" class="close"></label>
+      <div class="search-result">
+      </div>
+      -->
 
-      <!-- <ul class="list-group search-result-list" style="margin-bottom:0px;"> -->
-        <table class="table table-bordered table-striped" style="width:100%">
-        @foreach ($shops as $shop)
-            <tbody>
-              <tr>
-                <th style=" font-size: 18px; font-weight: bold; color: #4169E1">{{ $shop->name }}</th>
-                <th style="font-size: 16px; margin-left: 40px;"> 現在地からの距離：<span id = "shop_{{$shop -> id}}"></span>m</th>
-                <th style="font-size: 16px; margin-left: 40px;">{{ $shop->time }}</th>
-              </tr>
-
-              <tr>
-                <th style="font-size: 16px;">{{ $shop->address }}</th>
-          @if ( $shop->link == "なし")
-            <th>URLないです</th>
-          @else
+    <table class="table table-bordered table-striped" style="width:100%">
+      @foreach ($shops as $shop)
+        <tbody style="border:solid medium">
+          <tr>
+            <th class="shop-name-box" data-shop="{{$shop->id}}" style="font-size: 18px; font-weight: bold; color: #4169E1">{{ $shop->name }}</th>
+            <th style="font-size: 16px; margin-left: 40px;"> 現在地からの距離：<span id = "shop_{{$shop -> id}}"></span>m</th>
+            <th style="font-size: 16px; margin-left: 40px;">{{ $shop->time }}</th>
+          </tr>
+          <tr>
+            <th style="font-size: 16px;">{{ $shop->address }}</th>
             <th>
-              @if (Auth::check())
-                <a href="{{ $shop->link }}" style="font-size: 17px; color: #6495ED" data-user="{{Auth::user()->id}}" data-shop="{{$shop->id}}" method="POST" class="post">店舗情報</th>
-              @else
-                <a href="{{ $shop->link }}" style="font-size: 17px; color: #6495ED">店舗情報</a>
-              @endif
+            @if ( $shop->link == "なし")
+              URLないです
+            @else
+                @if (Auth::check())
+                  <a href="{{ $shop->link }}" style="font-size: 17px; color: #6495ED" data-user="{{Auth::user()->id}}" data-shop="{{$shop->id}}" method="POST" class="post">店舗情報</a>
+                @else
+                  <a href="{{ $shop->link }}" style="font-size: 17px; color: #6495ED">店舗情報</a>
+                @endif
+            @endif
             </th>
-          @endif
-                <th><a href="/select/{{ $shop->id }}" style="font-size: 17px; color: #6495ED">このお店に行きたい</a></th>
-                <th style="font-size: 18px; margin-right: 15px;"></th>
+            <th><a href="/select/{{ $shop->id }}" style="font-size: 17px; color: #6495ED">このお店に行きたい</a></th>
+          </tr>
+        </tbody>
+      @endforeach
+    </table>
 
-                <th style="font-size: 18px; margin-right: 15px;"></th>
-              </tr>
-            </tbody>
-        @endforeach
-      </table>
+    <script>
+      //クリックされた時にhistoryデータベースに店舗情報を保存する処理
+      $('.post').on('click', function(){
+        post($(this).data('user'), $(this).data('shop'));
+      });
+      //History DB に閲覧履歴を保存しつつ、店舗詳細のリンク先に遷移する
+      function post(user, shop) {　
+        $.ajax({
+          type: "POST",
+          dataType: "json",
+          url: "/result",
+          data: {
+                'user_id' : user,
+                'shop_id' : shop
+          },
+        }).done(function(){
+          // 一旦何も書かずにやってみる
+        });
+      }
 
-  <script>
-    //クリックされた時にhistoryデータベースに店舗情報を保存する処理
-    $('.post').on('click', function(){
-      post($(this).data('user'), $(this).data('shop'));
-    });
-  </script>
+      var shopMarkers = new Array();
+      var infoWindows = new Array();
+      var currentInfoWindow = null;
+      var areaLatLng = <?php echo json_encode($latlng); ?>;
+      var shops = <?php echo json_encode($shops); ?>;
+      displayShops(areaLatLng);
+      $('.shop-name-box').on('click',clickObj);
+      function clickObj(){
+        if(currentInfoWindow){
+          currentInfoWindow.close();
+        }
+        console.log($(this).data('shop'));
+        var i = $(this).data('shop');
+        infoWindows[i].open(map,shopMarkers[i]);
+      }
+    </script>
 
-  <script type="text/javascript">
-    var areaLatLng = <?php echo json_encode($latlng); ?>;
-    var shops = <?php echo json_encode($shops); ?>;
-    displayShops(areaLatLng);
-  </script>
-
-  </div>
+    </div>
 
 @endsection

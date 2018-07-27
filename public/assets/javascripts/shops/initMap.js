@@ -9,4 +9,4 @@ function initMap(latlng) {
     document.getElementById("map"), // マップを表示する要素
     mapOpt         // マップオプション
   );
-}
+};

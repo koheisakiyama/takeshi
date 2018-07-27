@@ -60,11 +60,19 @@
     var steps = new Array();
     var modeType = <?php echo json_encode($modeType); ?>;
     var s_ll = <?php echo json_encode($s_latlng); ?>; 
-    var g_ll = <?php echo json_encode(['lat'=>$shop->lat, 'lng'=>$shop->lon]); ?>; 
-    console.log(s_ll);
-    displayRoute(s_ll, g_ll, modeType);
-    // 移動時の現在地の取得
-    //navigator.geolocation.watchPosition(navigation, errorCallback, getOpt);
+    var shop = <?php echo json_encode($shop); ?>; 
+    var infoWindows = new Array();
+    //console.log(s_ll);
+    displayRoute(s_ll, shop, modeType);
+
+    $('.step-box').on('click',function(){
+                   if(currentInfoWindow){
+                     currentInfoWindow.close();
+                   }
+                   //console.log($(this).data('shop'));
+                   var i = $(this).data('shop');
+                   infoWindows[i].open(map,shopMarkers[i]);
+    });
   </script>
 
 @endsection
