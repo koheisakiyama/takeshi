@@ -22,10 +22,15 @@ function showUserAndShop(position) {
       if(currentMarker){
         currentMarker.setMap(null);
       }
+      var markerPosition = new google.maps.LatLng(event.latLng.lat(), event.latLng.lng());
       currentMarker = new google.maps.Marker({
         draggable:true,
         map: map,
-        position: new google.maps.LatLng(event.latLng.lat(), event.latLng.lng()),
+        position: markerPosition,
       });
+      console.log(markerPosition.lat());
+      document.getElementById('startLat').value= markerPosition.lat();
+      document.getElementById('startLng').value= markerPosition.lng();
+      //jsファイルからビューファイルに数を渡す
   };
 }
