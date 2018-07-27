@@ -45,10 +45,6 @@ class UserController extends Controller
       $name = Auth::user($id)->name;
       $history = History::where('user_id', $id)->get();
       $history = $history->unique('shop_id');
-<<<<<<< HEAD
-
-=======
->>>>>>> 4161c6458c5c250107608b08933692924ad35529
       return view ('auth.history')->with(array('name' => $name, 'history'=> $history));
 
     }
