@@ -12,4 +12,20 @@ function showUserAndShop(position) {
   userMarker = drawUserMarker(position);
   var shopMarker = new google.maps.Marker({ position:shopLatLng, map:map});
   console.log(map.getZoom());
+
+  //mapをクリックしたときにマーカーをうち、マップ表示する。
+  google.maps.event.addListener(map, 'click', mylistener);
+
+  //クリックしたときの処理
+  function mylistener(event){
+      //marker作成
+      if(currentMarker){
+        currentMarker.setMap(null);
+      }
+      currentMarker = new google.maps.Marker({
+        draggable:true,
+        map: map,
+        position: new google.maps.LatLng(event.latLng.lat(), event.latLng.lng()),
+      });
+  };
 }
