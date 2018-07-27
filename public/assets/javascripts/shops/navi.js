@@ -80,7 +80,7 @@ function startNavi() {
 
 // 移動した時の現在地をマーカーで表示
 function navigation(position){ 
-  var g_latlng = new google.maps.LatLng(g_ll); 
+  var g_latlng = new google.maps.LatLng(shop.lat, shop.lon); 
   current = new google.maps.LatLng(position.coords.latitude, position.coords.longitude); // 現在地の緯度経度取得
   //console.log(current);
   map.setCenter(current);
